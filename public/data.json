@@ -1,0 +1,240 @@
+[
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/主要道路@mtg",
+        "name": "主要道路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/mtg13",
+        "name": "mtg13",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/高速路@mtg",
+        "name": "高速路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/Camera",
+        "name": "Camera",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/门头沟@mtg",
+        "name": "门头沟@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/快速路@mtg",
+        "name": "快速路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/城区山区@data",
+        "name": "城区山区@data",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/小路@mtg",
+        "name": "小路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/mtg17",
+        "name": "mtg17",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/mtg16",
+        "name": "mtg16",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/国道@mtg",
+        "name": "国道@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/次要道路@mtg",
+        "name": "次要道路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/铁路@mtg",
+        "name": "铁路@mtg",
+        "resourceType": "ArithmeticResource"
+    },
+    {
+        "resourceConfigID": "map3DData",
+        "supportedMediaTypes": [
+            "application/xml",
+            "text/xml",
+            "application/json",
+            "application/fastjson",
+            "application/rjson",
+            "text/html",
+            "application/jsonp",
+            "application/x-java-serialized-object",
+            "*/*"
+        ],
+        "path": "http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/派出所辖区线@data",
+        "name": "派出所辖区线@data",
+        "resourceType": "ArithmeticResource"
+    }
+]

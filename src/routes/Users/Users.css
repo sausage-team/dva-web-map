@@ -1,0 +1,30 @@
+
+.normal {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.center{
+    position: absolute;
+    top: 45%;
+    left: 65%;
+    margin: 0px 0 0 -173px;
+    width: 346px;
+    /* height: 360px; */
+    padding:0 20px;
+    /* -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, 0.08); */
+    /* box-shadow: 0 0 100px rgba(0, 0, 0, 0.08); */
+}
+.marginTop{
+    margin-top: 15px;
+}
+.but{
+    width: 100%;
+    margin-top: 26px;
+}
+.log{
+    position: absolute;
+    top:45%;
+    left: 65%;
+    margin: -154px 0 0 -197px;
+}

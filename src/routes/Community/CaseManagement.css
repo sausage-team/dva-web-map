@@ -1,0 +1,51 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative
+  }
+  .slider{
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    left: 15%;
+    z-index: 10;
+  }
+  .tab{
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    overflow: hidden;
+    z-index: 10;
+  }
+.mapeg{
+  position:absolute;
+  top: 60%;
+  left: 20px;
+  z-index: 5;
+  width: 220px;
+}
+.mapeg1{
+ overflow: hidden;
+ text-align: center;
+ background-color: #fff;
+ width: 145px;
+ margin: 0;
+ padding: 0;
+ box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+}
+.span{
+  line-height: 38px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.rightTop{
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  z-index: 10;
+  border-radius: 3px;
+  padding: 4px;
+  background-color: #fff;
+  box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+}

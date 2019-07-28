@@ -1,0 +1,21 @@
+
+.mainIndex{
+  width: 100%;
+  height: calc(100vh - 64px);
+  overflow:hidden ;
+  position: relative
+}
+.map{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(100vw - 80px);
+  height: 100%;
+}
+.map2{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(100vw - 80px);
+  height: 100%;
+}

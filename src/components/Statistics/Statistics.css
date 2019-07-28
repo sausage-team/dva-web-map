@@ -1,0 +1,39 @@
+
+.normal {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(88, 88, 88, 0.5);
+}
+.list{
+    margin: 0 18px;
+    border-bottom: 1px solid #ededed;
+    overflow: hidden;
+}
+.listOne{
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+    overflow: hidden
+}
+.but{
+    float: right;
+    margin:4px 18px 0 0;
+}
+.hTwo{
+    font-size: 16px;
+    color: #333;
+    line-height: 40px;
+    margin: 0 0 0 18px;
+    width: 70%;
+    float: left;
+}
+.left{
+    float: left;
+    width: 5%;
+    padding: 14px 0;
+}
+.right{
+    float: right;
+    width: 95%;
+    padding: 14px 0;
+}

@@ -1,0 +1,68 @@
+{
+  "sources": {
+    "测试": {
+      "tiles": [
+        "http://192.168.0.13:8090/iserver/services/map-mvt-CeShi/rest/maps/测试/tileFeature.mvt?returnAttributes=true&width=512&height=512&viewBounds={bbox-epsg-3857}"
+      ],
+      "type": "vector"
+    }
+  },
+  "name": "测试",
+  "layers": [
+    {
+      "paint": {
+        "background-color": "rgba(255,255,255,1.00)"
+      },
+      "id": "background",
+      "type": "background"
+    },
+    {
+      "layout": {
+        "visibility": "visible"
+      },
+      "maxzoom": 21,
+      "paint": {
+        "fill-color": "rgba(54,225,7,1.00)",
+        "fill-opacity": 0.5,
+        "fill-antialias": true
+      },
+      "id": "mentougou@北京市平面坐标",
+      "source": "测试",
+      "source-layer": "mentougou@北京市平面坐标",
+      "type": "fill",
+      "minzoom": 0
+    },
+    {
+      "layout": {
+        "visibility": "visible"
+      },
+      "maxzoom": 21,
+      "paint": {
+        "line-width": 0.38,
+        "line-color": "rgba(92,81,78,1.00)"
+      },
+      "id": "mentougou@北京市平面坐标_outline",
+      "source": "测试",
+      "source-layer": "mentougou@北京市平面坐标",
+      "type": "line",
+      "minzoom": 0
+    },
+    {
+      "layout": {
+        "visibility": "visible"
+      },
+      "maxzoom": 21,
+      "paint": {
+        "line-width": 1.13,
+        "line-color": "rgba(255,0,0,1.00)"
+      },
+      "id": "普通道路匝道L@北京市平面坐标",
+      "source": "测试",
+      "source-layer": "普通道路匝道L@北京市平面坐标",
+      "type": "line",
+      "minzoom": 0
+    }
+  ],
+  "glyphs": "http://192.168.0.13:8090/iserver/services/map-mvt-CeShi/rest/maps/测试/tileFeature/sdffonts/{fontstack}/{range}.pbf",
+  "version": 8
+}

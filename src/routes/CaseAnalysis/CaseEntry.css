@@ -1,0 +1,52 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative
+  }
+  .slider{
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    left: 15%;
+    z-index: 10;
+  }
+  .updata{
+    position: absolute;
+    top:29px;
+    left: 36px;
+    z-index: 12;
+    border-radius: 5px;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+  }
+  .tab{
+   width:95%;
+   position: absolute;
+   bottom:16px;
+   left: 2.5%;
+   padding: 5px;
+   background: rgba(255, 255, 255, 1);
+   border-radius: 5px;
+   box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+  }
+  .but{
+    overflow: hidden;
+    position: fixed;
+    padding: 2px;
+    border-radius: 5px;
+    top:40%;
+    right: 8px;
+    z-index: 12;
+    background:rgba(255, 255, 255, 1);
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+  }
+  .rightTop{
+    position: absolute;
+    top: 26px;
+    right: 26px;
+    z-index: 99;
+    border-radius: 3px;
+    padding: 4px;
+    background-color: #fff;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+}

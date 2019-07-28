@@ -1,0 +1,20 @@
+/*地图容器样式*/
+.map{
+    height: 100%;
+    width: 100%;
+    float: right;
+    position: relative;
+  }
+  #mapContainer .mapboxgl-canvas {
+    height: 100% !important;
+  }
+  .mapboxgl-ctrl-top-right {
+    background-color: mediumblue !important;
+  }
+  .overlays{
+    display: none !important;
+  }
+  
+  
+  
+  

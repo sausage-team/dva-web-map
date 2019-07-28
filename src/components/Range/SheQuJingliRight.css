@@ -1,0 +1,60 @@
+.mainIndex{
+    position: absolute;
+    right: 30px; 
+    width: 300px;
+    top:76px;
+    height: 350px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 6px;
+    padding: 10px;
+    -webkit-box-shadow: #666 0px 0px 10px;
+    -moz-box-shadow: #666 0px 0px 10px;
+     box-shadow: #666 0px 0px 10px;
+     z-index: 7;
+}
+.content{
+    width: 100%;
+    overflow-y: auto;
+    height: 285px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+.title{
+    font-size: 14px;
+    color: #373737;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+.subTitleBox{
+    display: flex;
+    flex-direction: row;
+}
+.subTitleText{
+    padding-right: 5px;
+    width: 85px
+}
+.subTitleLine{
+    margin: 0px 0;
+    align-self:center
+}
+.dividerline{
+    margin: 10px 0;
+}
+.memberInfo{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+.memberInfo img{
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+.memberText{
+    display: flex;
+    flex-direction: column;
+}
+.memberText span{
+    font-size: 14px;
+    margin: 5px 0;
+}

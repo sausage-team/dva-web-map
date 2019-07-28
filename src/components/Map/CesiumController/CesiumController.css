@@ -1,0 +1,12 @@
+.indexDiv{
+    width: 191px;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+    background-color: rgba(33, 33, 33, 0.5);
+    padding:10px 14px; 
+}
+.indexDivTop{
+    margin-bottom: 14px;
+}
+.btn{
+    margin: 0px 5px;
+}

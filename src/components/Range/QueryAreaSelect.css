@@ -1,0 +1,27 @@
+.mainBox{
+    position:relative;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.title{
+    font-size: 14px;
+    color: #373737;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+.dividerline{
+    margin: 10px 0;
+}
+.search{
+    width: 100%;
+    color: #858585;
+    border-radius:0;
+    /* border: #c3c3c3 1px solid; */
+}
+.areaBox{
+    margin: 10px 0;
+}
+.Switch{
+    float: right;
+}

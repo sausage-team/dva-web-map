@@ -1,0 +1,75 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative;
+  }
+  .tab{
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .specialTab{
+    position: absolute;
+    top: 90px;
+    left: 25px;
+    overflow: hidden;
+    z-index: 10;
+  }
+  .slider{
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    left: 15%;
+    z-index: 10;
+  }
+  .PavementAnalysisTab{
+    position: absolute;
+    top:150px;
+    right:45px;
+    z-index: 11;
+    width: 450px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow-y: auto;
+    padding: 10px 0 10px 10px;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+  }
+  .hTwo{
+    font-size: 16px;
+    text-align: center;
+    line-height: 24px;
+  }
+  .model{
+    position: absolute;
+    top:150px;
+    left: 20px;
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    height:500px;
+    z-index: 10;
+  }
+  .but{
+    overflow: hidden;
+    position: fixed;
+    padding: 2px;
+    border-radius: 5px;
+    top:40%;
+    right: 8px;
+    z-index: 12;
+    background:rgba(255, 255, 255, 1)
+  }
+  .rightTop{
+    position: absolute;
+    top: 26px;
+    right: 26px;
+    z-index: 10;
+    border-radius: 3px;
+    padding: 4px;
+    background-color: #fff;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+}

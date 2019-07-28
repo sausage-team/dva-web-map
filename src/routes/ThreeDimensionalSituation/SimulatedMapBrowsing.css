@@ -1,0 +1,33 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative;
+  }
+  .Radio{
+    position: absolute;
+    top:29px;
+    left: 36px;
+    padding: 4px;
+    z-index: 5;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+    overflow:hidden;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+  .CesiumController{
+    position: absolute;
+    top:90px;
+    left: 36px;
+    z-index: 5;
+  }
+  .rightTop{
+    position: absolute;
+    top: 26px;
+    right: 123px;
+    z-index: 99;
+    border-radius: 3px;
+    padding: 4px;
+    background-color: #fff;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+}

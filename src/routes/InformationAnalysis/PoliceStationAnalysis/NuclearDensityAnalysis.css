@@ -1,0 +1,21 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative
+  }
+  .slider{
+    position: absolute;
+    bottom: 20px;
+    width: 70%;
+    left: 15%;
+    z-index: 10;
+  }
+  .MapController{
+    z-index: 10;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 530px;
+    overflow: hidden;
+  }

@@ -1,0 +1,21 @@
+.mainIndex{
+    width: 100%;
+    height: calc(100vh - 64px);
+    overflow:hidden ;
+    position: relative;
+  }
+  .contriller{
+      position: absolute;
+      top:100px;
+      left: 36px;
+      width: 260px;
+  }
+  .threeCameraTab{
+    position: absolute;
+    top:300px;
+    right: 36px;
+    width: 340px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
+  }
