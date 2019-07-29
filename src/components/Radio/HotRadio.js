@@ -23,7 +23,7 @@ class HotRadio extends React.Component {
                     break;
                 case '3':
                     mapObj.flyTo({
-                        center: [116.105333325246, 39.9381722493916],
+                        center: [114.60955588089992, 30.589574087170054],
                         zoom: 11.5,
                         speed: 0.5,
                         bearing: 0,

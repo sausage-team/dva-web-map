@@ -92,7 +92,7 @@ class IndexPage extends React.Component {
       })
       this.afterMap.resize();
       this.afterMap.flyTo({
-        center: [115.78452, 39.99631],
+        center: [114.60955588089992, 30.589574087170054],
         zoom: 11,
         speed: 0.2
       })

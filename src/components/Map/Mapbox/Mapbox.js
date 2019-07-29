@@ -33,7 +33,7 @@ class Mapbox extends React.Component {
     //地图初始化的时候进行图层判断加载删除
     map.on('load', () => {
       map.flyTo({
-        center: [115.78452, 39.99631],
+        center: [114.60955588089992,30.589574087170054],
         zoom: 11,
         speed: 0.2
       })

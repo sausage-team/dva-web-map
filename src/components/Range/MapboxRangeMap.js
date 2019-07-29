@@ -93,7 +93,7 @@ class MapboxRangeMap extends React.Component {
           this.props.twoHightToMap(selGeometry, level);
         }
       } else {
-        map.flyTo({ center: [116.046281457133, 39.9524222241071], zoom: 13, speed: 0.2 })
+        map.flyTo({ center: [114.60955588089992,30.589574087170054], zoom: 13, speed: 0.2 })
       }
     })
   }
