@@ -46,7 +46,7 @@ class SiderDemo extends React.Component {
           </Helmet>
           <Header className="header">
             <div className={styles.logo} >
-              <img src={logo} style={{ width: '40px', height: '40px', margin: 0, lineHeight: '44px', float: 'left' }} /><span style={{ float: 'left', marginTop: '0', fontSize: '20px', color: '#fff', marginLeft: '10px' }}>门头沟地理信息防控平台</span>
+              <img src={logo} style={{ width: '40px', height: '40px', margin: 0, lineHeight: '44px', float: 'left' }} /><span style={{ float: 'left', marginTop: '0', fontSize: '20px', color: '#fff', marginLeft: '10px' }}>后湖社区地理信息防控平台</span>
             </div>
           </Header>
           <Layout>

@@ -10,7 +10,7 @@ const Loader = ({ spinning, fullScreen }) => {
   >
     <div className={styles.warpper}>
       <div className={styles.inner} />
-      <div className={styles.text} >门头沟公安局</div>
+      <div className={styles.text} >江岸区公安局</div>
     </div>
   </div>)
 }

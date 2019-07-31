@@ -114,9 +114,11 @@ class ReactMap extends React.Component {
         }
         // })
         let viewport = {
-            longitude: 115.78452,
-            latitude: 39.99631,
-            zoom: 10,
+            // longitude: 115.78452,
+            // latitude: 39.99631,
+            longitude: 114.3038583200,
+            latitude: 30.6479700100,
+            zoom: 13,
             pitch: 0,
             transitionInterpolator: new FlyToInterpolator(),
             transitionDuration: 1500

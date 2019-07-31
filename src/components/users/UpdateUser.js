@@ -128,7 +128,7 @@ class UpdateUser extends React.Component {
             ],
           })(
             <Select placeholder="请选择派出所" disabled={pcsIsDisable}>
-              <Option value="门头沟分局">门头沟分局</Option>
+              <Option value="江岸区分局">江岸区分局</Option>
               {policeData.map(item => <Option key={item.policeNum} value={item.policeName}>{item.policeName}</Option>) }
             </Select>
           )}

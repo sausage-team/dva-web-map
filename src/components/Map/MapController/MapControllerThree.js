@@ -115,8 +115,10 @@ class MapControllerThree extends React.Component {
     }
     goToViewport = (zoom, pitch, x, y) => {
         let viewport = {
-            longitude: x || 115.78452,
-            latitude: y || 39.99631,
+            // longitude: x || 115.78452,
+            // latitude: y || 39.99631,
+            longitude: x || 114.3038583200,
+            latitude: y || 30.6479700100,
             zoom: zoom,
             pitch: pitch,
             bearing: 0,
