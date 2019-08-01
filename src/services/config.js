@@ -1,6 +1,6 @@
 //地图服务地址
-// export const iserverBasePath = 'http://127.0.0.1:8090/iserver/services/data-MTGDATA/rest/data';
-export const iserverBasePath = 'http://graph.policegap.cn:8090/iserver/services/data-mtghx_v2_20180227_dark/rest/data';
+export const iserverBasePath = 'http://graph.policegap.cn:8090/iserver/services/data-wuhan/rest/data';
+// export const iserverBasePath = 'http://graph.policegap.cn:8090/iserver/services/data-mtghx_v2_20180227_dark/rest/data';
 // export const iserverBasePath = 'http://10.12.69.181:8090/iserver/services/data-MTGDATA/rest/data';
 //业务服务地址
 export const apiService = 'http://graph.policegap.cn:8099/mtg-xlgc/';
