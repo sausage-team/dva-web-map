@@ -80,7 +80,7 @@ class MapControllerThree extends React.Component {
                     type: 'map/getHotMapThree',
                     payload: this.props.map.mapReactObj
                 })
-                this.goToViewport(12, 0, 114.60955588089992, 30.589574087170054);
+                this.goToViewport(12, 0, 114.3038583200, 30.6479700100);
                 break;
             case '3':
                 switch (this.props.map.groupData || 'a') {
@@ -89,7 +89,7 @@ class MapControllerThree extends React.Component {
                             type: 'map/getCustersMapThree',
                             payload: this.props.map.mapReactObj
                         })
-                        this.goToViewport(13, 0, 114.60955588089992, 30.589574087170054);
+                        this.goToViewport(13, 0, 114.3038583200, 30.6479700100);
                         break;
                     case 'b':
                         // this.props.dispatch({
@@ -103,13 +103,13 @@ class MapControllerThree extends React.Component {
                             type: 'map/getHoneycombThree',
                             payload: this.props.map.mapReactObj
                         })
-                        this.goToViewport(13, 0, 114.60955588089992, 30.589574087170054);
+                        this.goToViewport(13, 0, 114.3038583200, 30.6479700100);
                         break;
                 }
                 break;
             case '4':
                 this.props.dispatch({ type: 'map/getDackMapThree' })
-                this.goToViewport(11.5, 60, 114.60955588089992, 30.589574087170054);
+                this.goToViewport(11.5, 60, 114.3038583200, 30.6479700100);
                 break;
         }
     }
@@ -142,7 +142,7 @@ class MapControllerThree extends React.Component {
                     type: 'map/getCustersMapThree',
                     payload: this.props.map.mapReactObj
                 })
-                this.goToViewport(11, 0, 114.60955588089992, 30.589574087170054);
+                this.goToViewport(11, 0, 114.3038583200, 30.6479700100);
                 break;
             case 'b':
                 // this.props.dispatch({

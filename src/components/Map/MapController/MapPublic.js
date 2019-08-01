@@ -296,7 +296,7 @@ class MapPublic extends React.Component {
             case '白天':
                 mapObj.setStyle(this.props.map.style1);
                 mapObj.flyTo({
-                    center: [114.60955588089992, 30.589574087170054],
+                    center: [114.3038583200, 30.6479700100],
                     zoom: 10,
                     speed: 0.5,
                     bearing: 0,
@@ -306,7 +306,7 @@ class MapPublic extends React.Component {
             case '黑夜':
                 mapObj.setStyle(this.props.map.style2);
                 mapObj.flyTo({
-                    center: [114.60955588089992, 30.589574087170054],
+                    center: [114.3038583200, 30.6479700100],
                     zoom: 10,
                     speed: 0.5,
                     bearing: 0,
@@ -333,7 +333,7 @@ class MapPublic extends React.Component {
                 }
                 mapObj.setStyle(mapStyle);
                 mapObj.flyTo({
-                    center: [114.60955588089992, 30.589574087170054],
+                    center: [114.3038583200, 30.6479700100],
                     zoom: 10,
                     bearing: 0,
                     speed: 0.5,

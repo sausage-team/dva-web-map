@@ -12,7 +12,7 @@ class RadioTab extends React.Component {
         if (e.target.value == 1) {
             let mapObj = this.props.map.mapObj;
             mapObj.flyTo({
-                center: [114.60955588089992, 30.589574087170054],
+                center: [114.3038583200, 30.6479700100],
                 zoom: 12,
                 speed: 0.5,
                 bearing:0,
@@ -21,7 +21,7 @@ class RadioTab extends React.Component {
         } else {
             let mapObj = this.props.map.mapObj;
             mapObj.flyTo({
-                center: [114.60955588089992, 30.589574087170054],
+                center: [114.3038583200, 30.6479700100],
                 zoom: 11.5,
                 speed: 0.5,
                 bearing:0,

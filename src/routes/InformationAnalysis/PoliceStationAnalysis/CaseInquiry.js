@@ -137,7 +137,7 @@ class CaseInquiry extends React.Component {
     };
     this.props.statistics.echartslayer.chart.setOption(option);
     map.flyTo({
-      center: [114.60955588089992, 30.589574087170054],
+      center: [114.3038583200, 30.6479700100],
       zoom: 10,
       speed: 0.5
     })
@@ -157,7 +157,7 @@ class CaseInquiry extends React.Component {
     data.features = []
     map.getSource('pointOne').setData(data);
     map.flyTo({
-      center: [114.60955588089992, 30.589574087170054],
+      center: [114.3038583200, 30.6479700100],
       zoom: 10,
       speed: 0.5
     })

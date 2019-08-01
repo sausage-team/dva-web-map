@@ -41,7 +41,7 @@ export default {
       // style:'http://192.168.12.100:8090/iserver/services/map-mvt-BaiTian/rest/maps/白天/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true',
       attributionControl: false,
       zoom: 10,
-      center: [114.60955588089992,30.589574087170054],
+      center: [114.3038583200, 30.6479700100],
       maxZoom: 19,
       minZoom: 10
     },
@@ -63,8 +63,8 @@ export default {
     viewport: {
       width: document.documentElement.clientWidth,
       height: document.documentElement.clientHeight,
-      longitude: 114.60955588089992,
-      latitude: 30.589574087170054,
+      longitude: 114.3038583200,
+      latitude: 30.6479700100,
       zoom: 11,
       minZoom: 10,
       maxZoom: 18,
