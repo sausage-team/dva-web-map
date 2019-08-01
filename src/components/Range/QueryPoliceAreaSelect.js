@@ -138,7 +138,8 @@ componentWillUnmount(){
     let datasets=fangKong.datasets;
     const {dataSource} = this.state;
     const {oneOptions,twoOptions} = this.props.policeArea.selectData;
-    const oneSelect=oneOptions.map(item=><Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
+    const oneSelect = ''
+    // const oneSelect=oneOptions.map(item=><Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
     const twoSelect=twoOptions.map(item=><Option key={item.id}>{item.properties[datasets.level2.filedKeyName]}</Option>);
     return (
       <div className={styles.mainBox}>
