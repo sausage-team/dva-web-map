@@ -40,12 +40,12 @@ class PoliceAreaDataInfo extends React.Component {
            <div className={styles.contentLeft}>
             <span className={styles.subTitle}>警力概况</span>
             <div className={styles.contentSubDiv}>
-              <div className={styles.contentSubDivitem}><span>派出所警力数占比：</span><span style={{color:'#ff0000'}}>{jingliLV}</span>({pcsJingliNum},全区{jingliNumAll})</div>
-              <div className={styles.contentSubDivitem}><span>社区警力数占比：</span><span style={{color:'#ff0000'}}>{sqJingliLv}%</span>({pcsSqJingliNum},全区{sqJingliNumAll})</div>
+              <div className={styles.contentSubDivitem}><span>派出所警力数占比：</span><span style={{color:'#ff0000'}}>{jingliLV || 0}%</span>({pcsJingliNum || 0},全区{jingliNumAll || 0})</div>
+              <div className={styles.contentSubDivitem}><span>社区警力数占比：</span><span style={{color:'#ff0000'}}>{sqJingliLv || 0}%</span>({pcsSqJingliNum || 0},全区{sqJingliNumAll || 0})</div>
              </div>
              <div className={styles.contentSubDiv}>
-               <div className={styles.contentSubDivitem}><span>一村一格警力数占比：</span><span style={{color:'#ff0000'}}>{cgJingliLv}%</span>({pcsCgJingliNum},全区{cgJingliNumAll})</div>
-               <div className={styles.contentSubDivitem}><span>辅警数占比：</span><span style={{color:'#ff0000'}}>{fuzhuJingliLv}%</span>({pcsFuzhuJingliNum},全区{fuzhuJingliNumAll})</div>
+               <div className={styles.contentSubDivitem}><span>一村一格警力数占比：</span><span style={{color:'#ff0000'}}>{cgJingliLv || 0}%</span>({pcsCgJingliNum || 0},全区{cgJingliNumAll || 0})</div>
+               <div className={styles.contentSubDivitem}><span>辅警数占比：</span><span style={{color:'#ff0000'}}>{fuzhuJingliLv || 0}%</span>({pcsFuzhuJingliNum || 0},全区{fuzhuJingliNumAll || 0})</div>
              </div>
              <div className={styles.contentSubDiv}>
              <span className={styles.subTitle}>刑事发案情况</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div className={styles.contentSubDivitem}><span>所在所得警情等级：</span><span style={{color:'#ff0000'}}>{selGeometry.properties['警情等级']}</span></div>
@@ -54,10 +54,10 @@ class PoliceAreaDataInfo extends React.Component {
            <div className={styles.contentRight}>
              <span className={styles.subTitle}>人口概况</span>
              <div className={styles.contentSubDiv}>
-               <div><span>社区总数占比：</span><span style={{color:'#ff0000'}}>{sqLv}%</span>({sqNum},全区{pscsqNum})</div>
+               <div><span>社区总数占比：</span><span style={{color:'#ff0000'}}>{sqLv || 0}%</span>({sqNum || 0},全区{pscsqNum || 0})</div>
              </div>
-             <div ><span>户籍人口总数占比：</span><span style={{color:'#ff0000'}}>{registryLv}%</span>({pcsregistryNum},全区{registryNum})</div>
-             <div><span>流动人口总数占比：</span><span style={{color:'#ff0000'}}>{noRegistryNumLv}%</span>({pcsNoregistryNum},全区{noRegistryNum})</div>
+             <div ><span>户籍人口总数占比：</span><span style={{color:'#ff0000'}}>{registryLv || 0}%</span>({pcsregistryNum || 0},全区{registryNum || 0})</div>
+             <div><span>流动人口总数占比：</span><span style={{color:'#ff0000'}}>{noRegistryNumLv || 0}%</span>({pcsNoregistryNum || 0},全区{noRegistryNum || 0})</div>
            </div>
         </div>
      </div>

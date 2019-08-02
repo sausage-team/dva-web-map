@@ -58,6 +58,7 @@ class QueryPoliceAreaSelect extends React.Component {
         })
     if(mapType==1){//二维
       this.props.twoHightToMap(pcsObj[0]);
+      console.log(3)
       }else{
         this.props.threeHightToMap(pcsObj[0]);
       }
@@ -137,8 +138,15 @@ componentWillUnmount(){
   render() {
     let datasets=fangKong.datasets;
     const {dataSource} = this.state;
-    const {oneOptions,twoOptions} = this.props.policeArea.selectData;
+    // const {oneOptions,twoOptions} = this.props.policeArea.selectData;
+    const oneOptions = this.props.policeArea.cqsq || [];
+    const twoOptions = this.props.policeArea.pcs;
     const oneSelect = ''
+    // debugger
+    console.log('this.props.policeArea',this.props.policeArea)
+    console.log('twoOptions',twoOptions)
+    console.log('datasets.level2.filedKeyName',datasets.level2.filedKeyName)
+    
     // const oneSelect=oneOptions.map(item=><Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
     const twoSelect=twoOptions.map(item=><Option key={item.id}>{item.properties[datasets.level2.filedKeyName]}</Option>);
     return (

@@ -95,7 +95,7 @@ class DataStatistics extends React.Component {
     this.props.statistics.echartslayer.chart.setOption(option);
     map.flyTo({
       center: [record.smx, record.smy],
-      zoom: 19,
+      zoom: 14,
       speed: 0.5
     })
   }

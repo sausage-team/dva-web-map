@@ -36,8 +36,10 @@ class PoliceAreaQuery extends React.Component {
         'fill-outline-color': '#ff0000',
       }
     });
-    let lng = parseFloat(selGeometry.properties['GEOX'])
-    let lat = parseFloat(selGeometry.properties['GEOY'])
+    // let lng = parseFloat(selGeometry.properties['GEOX'])
+    let lng = parseFloat(selGeometry.properties['SMSDRIW'])
+    // let lat = parseFloat(selGeometry.properties['GEOY'])
+    let lat = parseFloat(selGeometry.properties['SMSDRIS'])
     map.flyTo({ center: [lng, lat], zoom: 11, speed: 0.2})
   }
   //三维地图数据高亮显示
@@ -93,6 +95,7 @@ class PoliceAreaQuery extends React.Component {
   }
   render() {
     let { uiView, mapType } = this.props.policeArea;
+    console.log('uiView',uiView)
     return (
       <div className={styles.mainBox}>
         {mapType == 1 ? <MapBoxMap twoHightToMap={this.twoHightToMap} /> : <ThreeRangeMap threeHightToMap={this.threeHightToMap} />}
