@@ -58,7 +58,6 @@ class QueryPoliceAreaSelect extends React.Component {
         })
     if(mapType==1){//二维
       this.props.twoHightToMap(pcsObj[0]);
-      console.log(3)
       }else{
         this.props.threeHightToMap(pcsObj[0]);
       }
@@ -152,7 +151,9 @@ componentWillUnmount(){
     return (
       <div className={styles.mainBox}>
        <Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>
-        <div className={styles.title}><span>辖区查询</span><Switch checkedChildren="二维" unCheckedChildren="三维" className={styles.Switch} onChange={this.mapChange} /></div>
+        <div className={styles.title}><span>辖区查询</span>
+          {/* <Switch checkedChildren="二维" unCheckedChildren="三维" className={styles.Switch} onChange={this.mapChange} /> */}
+        </div>
         <Divider type="horizontal" className={styles.dividerline}/>
         <div>
           <AutoComplete
