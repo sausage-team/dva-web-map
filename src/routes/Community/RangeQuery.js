@@ -39,8 +39,10 @@ class RangeQuery extends React.Component {
         'fill-outline-color': '#438bf9',
       }
     });
-    let lng = parseFloat(selGeometry.properties['GEOX'])
-    let lat = parseFloat(selGeometry.properties['GEOY'])
+    // let lng = parseFloat(selGeometry.properties['GEOX'])
+    let lng = parseFloat(selGeometry.properties['SMSDRIW'])
+    // let lat = parseFloat(selGeometry.properties['GEOY'])
+    let lat = parseFloat(selGeometry.properties['SMSDRIS'])
     map.flyTo({ center: [lng, lat], zoom: sellevel == 1 ? 10 : 16, speed: 0.2 })
   }
   //二维高亮到地图 带高度显示
@@ -67,8 +69,10 @@ class RangeQuery extends React.Component {
         'fill-extrusion-base': 50,
       }
     });
-    let lng = parseFloat(selGeometry.properties['GEOX'])
-    let lat = parseFloat(selGeometry.properties['GEOY'])
+    // let lng = parseFloat(selGeometry.properties['GEOX'])
+    let lng = parseFloat(selGeometry.properties['SMSDRIW'])
+    // let lat = parseFloat(selGeometry.properties['GEOY'])
+    let lat = parseFloat(selGeometry.properties['SMSDRIS'])
     map.flyTo({ center: [lng, lat], zoom: 14, speed: 0.2, bearing: 0, pitch: 60 })
   }
   //三维地图数据高亮显示
