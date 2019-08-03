@@ -69,12 +69,12 @@ class Mapbox extends React.Component {
         // }
         return;
       }
-      map.setLayoutProperty('城区山区@data#1_山区_outline', 'visibility', 'none');
-      map.setLayoutProperty('城区山区@data#1_城区_outline', 'visibility', 'none');
-      map.setLayoutProperty('派出所辖区@data_outline', 'visibility', 'none');
-      map.setLayoutProperty('派出所辖区@data#1', 'visibility', 'none');
-      map.setLayoutProperty('网格面@data_outline_0', 'visibility', 'none');
-      map.setLayoutProperty('网格面@data#1', 'visibility', 'none');
+      // map.setLayoutProperty('城区山区@data#1_山区_outline', 'visibility', 'none');
+      // map.setLayoutProperty('城区山区@data#1_城区_outline', 'visibility', 'none');
+      // map.setLayoutProperty('派出所辖区@data_outline', 'visibility', 'none');
+      // map.setLayoutProperty('派出所辖区@data#1', 'visibility', 'none');
+      // map.setLayoutProperty('网格面@data_outline_0', 'visibility', 'none');
+      // map.setLayoutProperty('网格面@data#1', 'visibility', 'none');
       let mapValue = this.props.mapPublic.mapValue;
       for (let i in mapValue) {
         switch (mapValue[i]) {

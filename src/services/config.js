@@ -5,7 +5,7 @@ export const iserverBasePath = 'http://graph.policegap.cn:8090/iserver/services/
 //业务服务地址
 // export const apiService = 'http://graph.policegap.cn:8099/mtg-xlgc/';
 // export const apiService = 'http://182.92.2.91:8081/mtg-xlgc/';
-export const apiService = 'http://192.168.18.169:8080/mtg-xlgc/';
+export const apiService = 'http://192.168.18.187:8080/mtg-xlgc/';
 // export const apiService = 'http://10.12.69.182:8080/mtg-xlgc/';
 //警员头像
 export const userAvABaseUrl = apiService+'photos/';

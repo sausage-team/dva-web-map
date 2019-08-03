@@ -3,30 +3,30 @@ import { Upload, Icon, message, Button } from 'antd';
 export default {
   namespace: 'statistics',
   state: {
-    police: {},
+    police: [],
     county: {},
-    countyList: {},
-    caseType: '',
+    countyList: [],
+    caseType: [],
     caseTypeMethod: '',
-    caseTypeMethodList: '',
-    placeType: '',
+    caseTypeMethodList: [],
+    placeType: [],
     placeTypeDetail: '',
-    placeTypeDetailList: '',
+    placeTypeDetailList: [],
     timeType: [
       { value: "0612", label: "上午 06:00 ~ 12:00" },
       { value: "1218", label: "下午 12:00 ~ 18:00" },
       { value: "1824", label: "前半夜 18:00 ~ 24:00" },
       { value: "0006", label: "后半夜 00:00 ~ 06:00" }
     ],
-    checkCaseType: "",
-    checkPlaceType: "",
+    checkCaseType: [],
+    checkPlaceType: [],
     center: {
-      ploiceArea: '',
-      countyName: '',
+      ploiceArea: [],
+      countyName: [],
       caseType: '',
-      caseTypeMethod: '',
+      caseTypeMethod: [],
       placeType: '',
-      placeTypeDetail: '',
+      placeTypeDetail: [],
       caseDateBegin: '',
       caseDateEnd: '',
       timeStep: '',
@@ -150,6 +150,7 @@ export default {
       })
     },
     *police({ payload }, { call, put, select }) {
+      debugger
       let token = localStorage.getItem('token')
       const data = yield call(valid, 'sm/police/queryNameList?token=' + token + '', {});
       let policeList = []
@@ -157,6 +158,8 @@ export default {
         let obj = { label: data.data.policeList[i].policeName, value: data.data.policeList[i].policeName }
         policeList.push(obj)
       }
+      debugger
+      console.log('policeList', policeList)
       yield put({
         type: 'setPolice',
         payload: policeList

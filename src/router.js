@@ -92,7 +92,7 @@ function RouterConfig({ history, app }) {
     <ConnectedRouter history={history}>
       <Layout>
         <Switch>
-          <Route exact path="/" exact component={IndexPage} />
+          <Route exact path="/" exact component={PavementAnalysis} />
           <Route exact path="/indexPage" exact component={IndexPage} />
           <Route exact path="/NuclearDensityAnalysis" exact component={NuclearDensityAnalysis} />
           <Route exact path="/CaseEntry" exact component={CaseEntry} />

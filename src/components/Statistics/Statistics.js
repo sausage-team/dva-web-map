@@ -178,6 +178,7 @@ class Statistics extends React.Component {
     document.getElementById('J_bridge').contentWindow.postMessage(p,bdpConfig);
   }
     render() {
+      console.log('this.props.statistics----',this.props.statistics)
         return (
             <div className={styles.normal}>
             <Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>

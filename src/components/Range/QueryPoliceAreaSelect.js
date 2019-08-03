@@ -141,10 +141,6 @@ componentWillUnmount(){
     const oneOptions = this.props.policeArea.cqsq || [];
     const twoOptions = this.props.policeArea.pcs;
     const oneSelect = ''
-    // debugger
-    console.log('this.props.policeArea',this.props.policeArea)
-    console.log('twoOptions',twoOptions)
-    console.log('datasets.level2.filedKeyName',datasets.level2.filedKeyName)
     
     // const oneSelect=oneOptions.map(item=><Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
     const twoSelect=twoOptions.map(item=><Option key={item.id}>{item.properties[datasets.level2.filedKeyName]}</Option>);

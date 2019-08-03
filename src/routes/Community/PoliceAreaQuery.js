@@ -95,7 +95,6 @@ class PoliceAreaQuery extends React.Component {
   }
   render() {
     let { uiView, mapType } = this.props.policeArea;
-    console.log('uiView',uiView)
     return (
       <div className={styles.mainBox}>
         {mapType == 1 ? <MapBoxMap twoHightToMap={this.twoHightToMap} /> : <ThreeRangeMap threeHightToMap={this.threeHightToMap} />}
