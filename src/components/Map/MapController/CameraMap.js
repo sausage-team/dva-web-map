@@ -42,7 +42,7 @@ class CameraMap extends React.Component {
                 })
                 mapObj.flyTo({
                     center: [114.3038583200, 30.6479700100],
-                    zoom: 10,
+                    zoom: 11,
                     speed: 0.3,
                     bearing: 0,
                     pitch: 0
@@ -50,7 +50,7 @@ class CameraMap extends React.Component {
             } else {
                 mapObj.flyTo({
                     center: [114.3038583200, 30.6479700100],
-                    zoom: 10,
+                    zoom: 11,
                     speed: 0.3,
                     bearing: 0,
                     pitch: 0

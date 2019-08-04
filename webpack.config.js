@@ -6,6 +6,7 @@ const cesiumSource = 'Cesium';
 const cesiumWorkers = './Workers';
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = (webpackConfig, env) => {
+  console.log('--------env--------', env)
     const production = env === 'production'
     // FilenameHash
     if (webpackConfig.module) {
@@ -41,6 +42,8 @@ module.exports = (webpackConfig, env) => {
                 }
             ],
         })
+        // 打包报错处理：Uncaught ReferenceError: t is not defined 
+        webpackConfig.module.noParse = /(mapbox-gl)\.js$/
     }
     webpackConfig.plugins.push(
         new webpack.LoaderOptionsPlugin({
@@ -50,8 +53,10 @@ module.exports = (webpackConfig, env) => {
     )
     webpackConfig.plugins = webpackConfig.plugins.concat([
         new HtmlWebpackPlugin({
-            template: `${__dirname}/src/index.ejs`,
-            filename: production ? '../index.html' : 'index.html',
+            template: production ? `${__dirname}/src/indexPro.ejs` : `${__dirname}/src/index.ejs`,
+            // template: `${__dirname}/src/indexPro.ejs`,
+            // filename: production ? 'index.html' : '../index.html',
+            filename: 'index.html',
             minify: production ? {
                 collapseWhitespace: true,
             } : null,

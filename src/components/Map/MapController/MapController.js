@@ -78,7 +78,7 @@ class MapController extends React.Component {
                     type: 'map/getHotMapData',
                     payload: this.props.map.mapReactObj
                 })
-                this.goToViewport(12, 0, 114.3038583200, 30.6479700100);
+                this.goToViewport(10, 0, 114.3038583200, 30.6479700100);
                 break;
             case '3':
                 switch (this.props.map.groupData || 'a') {
@@ -147,7 +147,7 @@ class MapController extends React.Component {
                     type: 'map/GridMapDate',
                     payload: this.props.map.mapReactObj
                 })
-                this.goToViewport(10.5, 0);
+                this.goToViewport(12, 0, 114.3038583200, 30.6479700100);
                 break;
             case 'c':
                 this.props.dispatch({
@@ -182,7 +182,7 @@ class MapController extends React.Component {
                             <DatePicker
                                 disabledDate={this.disabledStartDate}
                                 format="YYYY-MM-DD"
-                                defaultValue={moment('2017-01-01', 'YYYY-MM-DD')}
+                                defaultValue={moment('2018-01-01', 'YYYY-MM-DD')}
                                 placeholder="开始时间"
                                 onChange={this.onStartChange}
                                 onOpenChange={this.handleStartOpenChange}
@@ -193,7 +193,7 @@ class MapController extends React.Component {
                             <DatePicker
                                 disabledDate={this.disabledEndDate}
                                 format="YYYY-MM-DD"
-                                defaultValue={moment('2017-12-31', 'YYYY-MM-DD')}
+                                defaultValue={moment('2018-12-31', 'YYYY-MM-DD')}
                                 placeholder="结束时间"
                                 onChange={this.onEndChange}
                                 open={endOpen}
@@ -219,7 +219,7 @@ class MapController extends React.Component {
                         <div className={styles.center}>
                             <RadioGroup style={{ marginTop: '20px' }} defaultValue="a" size="large" onChange={this.radioChang}>
                                 <RadioButton value="a">&nbsp;&nbsp;圆&nbsp;&nbsp;</RadioButton>
-                                <RadioButton value="b">网&nbsp;格</RadioButton>
+                                {/* <RadioButton value="b">网&nbsp;格</RadioButton> */}
                                 <RadioButton value="c">蜂&nbsp;巢</RadioButton>
                             </RadioGroup>
                         </div>

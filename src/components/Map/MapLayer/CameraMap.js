@@ -50,7 +50,8 @@ class CameraMap {
       },
       datasetNames: ['data:Camera'],
       fromIndex: 0,
-      toIndex: 10000
+      toIndex: 10000,
+      maxFeatures:10000
     });
     let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
     service.getFeaturesBySQL(sqlParam, (serviceResult) => {
@@ -88,7 +89,7 @@ class CameraMap {
           type: "geojson",
           data: this.MapLayData(this.data),
         },
-        "maxzoom": 18,
+        "maxzoom": 16,
         "paint": {
           "heatmap-weight": {
             "property": "mag",
@@ -134,7 +135,7 @@ class CameraMap {
           data: serviceResult.result.features
         },
         "paint": {
-          "circle-radius": 7,
+          "circle-radius": 3,
           "circle-color": 'orange',
           "circle-stroke-color": "#000",
           "circle-stroke-width": 1,
@@ -152,7 +153,7 @@ class CameraMap {
           }
         },
         "paint": {
-          "circle-radius": 10,
+          "circle-radius": 6,
           "circle-color": 'rgb(0, 255, 255)',
         }
       })

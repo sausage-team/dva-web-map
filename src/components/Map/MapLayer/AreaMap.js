@@ -29,7 +29,8 @@ class AreaMap {
             IDs: IDs,
             datasetNames: ['data:派出所辖区'],
             fromIndex: 0,
-            toIndex: 10000
+            toIndex: 10000,
+            maxFeatures: 10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         let themeLayerOptions = {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Cesium.css'
-require('../../../../Cesium/Workers/zlib.min.js');
+// require('../../../../Cesium/Workers/zlib.min.js');
+import '../../../../Cesium/Workers/zlib.min.js';
 import { connect } from 'dva';
 import img from '../../../../public/worldimage.jpg';
 import { ThreeServerApi } from '../../../services/config';

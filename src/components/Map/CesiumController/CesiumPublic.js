@@ -3,7 +3,7 @@ import styles from './CesiumPublic.css';
 import { connect } from 'dva';
 import { Upload, Icon, message, Button, Select, Spin, Input, DatePicker, Switch } from 'antd';
 import { width } from 'window-size';
-import { NiuniuCaptureObject, rgb2value, StartCapture } from '../MapController/Niuniu'
+// import { NiuniuCaptureObject, rgb2value, StartCapture } from '../MapController/Niuniu'
 class CesiumPublic extends React.Component {
     constructor(props) {
         super(props);
@@ -168,7 +168,7 @@ class CesiumPublic extends React.Component {
         })
     }
     phontFun = () => {
-        StartCapture()
+        // StartCapture()
     }
     render() {
         return (<div className={styles.main}>

@@ -38,7 +38,7 @@ class GridMap {
     toLonLat(x, y) {
         var arr = [];
         var arrend = [];
-        var zoom = 15;
+        var zoom = 16;
         let lon = parseFloat(x);
         let lat = parseFloat(y)
         var lon_min = lon / Math.pow(2, zoom) * 360 - 180;

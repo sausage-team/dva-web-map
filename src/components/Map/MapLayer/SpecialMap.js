@@ -40,7 +40,7 @@ class SpecialMap {
         var sqlParam = new SuperMap.GetFeaturesBySQLParameters({
             queryParameter: {
                 name: "派出所辖区",
-                attributeFilter: "POLICE_NUM in (" + policeNum.toString() + ")"
+                // attributeFilter: "POLICE_NUM in (" + policeNum.toString() + ")"
             },
             datasetNames: ['data:派出所辖区']
         });

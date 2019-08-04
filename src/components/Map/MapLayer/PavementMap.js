@@ -23,7 +23,8 @@ class PavementMap {
             IDs: IDs,
             datasetNames: ['data:路网分析面'],
             fromIndex: 0,
-            toIndex: 10000
+            toIndex: 10000,
+            maxFeatures: 10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {

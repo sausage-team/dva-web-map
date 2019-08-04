@@ -27,7 +27,8 @@ class SiderDemo extends React.Component {
     } else {
       return (
         <Layout style={{ minHeight: '100vh' }}>
-         <Loader fullScreen spicnning={this.props.loading.effects['layout/query']} />
+         {/* <Loader fullScreen spicnning={this.props.loading.effects['layout/query']} /> */}
+         <Loader fullScreen spicnning={this.props.map.loading} />
           <link rel="shortcut icon" href={favicon} />
           <Helmet>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,7 +51,7 @@ class SiderDemo extends React.Component {
     }
   }
 }
-function layoutModel({layout,loading}) {
-  return {layout,loading};
+function layoutModel({layout,loading, map}) {
+  return {layout,loading, map};
 }
 export default withRouter(connect(layoutModel)(SiderDemo));

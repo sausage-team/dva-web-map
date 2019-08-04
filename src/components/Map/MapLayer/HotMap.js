@@ -80,7 +80,7 @@ class HotMap {
         type: "geojson",
         data: this.MapLayData(this.data),
       },
-      "maxzoom": 17,
+      "maxzoom": 16,
       "paint": {
         //Increase the heatmap weight based on frequency and property magnitude
         "heatmap-weight": {

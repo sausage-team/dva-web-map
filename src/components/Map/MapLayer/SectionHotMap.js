@@ -18,14 +18,15 @@ class SectionHotMap {
     addMapLay(data, value) {
 
         let IDs = [];
-        for (let i = 1; i <= 155; i++) {
+        for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
         }
         let idsParam = new SuperMap.GetFeaturesByIDsParameters({
             IDs: IDs,
             datasetNames: ['data:路网分析_道路'],
             fromIndex: 0,
-            toIndex: 10000
+            toIndex: 10000,
+            maxFeatures: 10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {

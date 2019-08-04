@@ -391,7 +391,7 @@ export function NiuniuCaptureObject() {
         if (!self.autoConnectAfterPageLoad || !self.IsNeedCustomizedProtocol()) {
             return;
         }
-        self.connectHost();
+        // self.connectHost();
     }
 
     this.getNextPort = function () {
@@ -548,7 +548,7 @@ export function NiuniuCaptureObject() {
             }
         }
 
-        self.TimeOutID = setTimeout(captureObjSelf.connectHost(), 800);
+        // self.TimeOutID = setTimeout(captureObjSelf.connectHost(), 800);
     }
 
     this.LoopEchoMessage = function () {
@@ -598,7 +598,7 @@ export function NiuniuCaptureObject() {
                 $('#startCaptureFrame').attr('src', newUrl);
 
                 self.IsWaitCustomizedCallBack = true;
-                self.connectHost();
+                // self.connectHost();
                 return emCaptureUnknown;
             }
 

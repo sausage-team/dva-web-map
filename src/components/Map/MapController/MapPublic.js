@@ -6,7 +6,7 @@ import mapboxgl from 'mapbox-gl';
 import turf from 'turf';
 import html2canvas from 'html2canvas';
 require('@supermap/iclient-mapboxgl');
-import { NiuniuCaptureObject, rgb2value, StartCapture } from './Niuniu';
+// import { NiuniuCaptureObject, rgb2value, StartCapture } from './Niuniu';
 import { iserverBasePath,ThreeServerApi } from '../../../services/config'
 const CheckboxGroup = Checkbox.Group;
 class MapPublic extends React.Component {
@@ -168,7 +168,8 @@ class MapPublic extends React.Component {
                             },
                             datasetNames: ['data:网格面'],
                             fromIndex: 0,
-                            toIndex: 100000
+                            toIndex: 100000,
+                            maxFeatures: 100000
                         });
                         let service2 = new mapboxgl.supermap.FeatureService(iserverBasePath);
                         service2.getFeaturesBySQL(sqlParam2, (serviceResult) => {
@@ -327,7 +328,7 @@ class MapPublic extends React.Component {
                         "id": "simple-tiles",
                         "type": "raster",
                         "source": "raster-tiles",
-                        maxZoom: 18,
+                        maxZoom: 16,
                         minZoom: 10
                     }]
                 }
@@ -421,7 +422,7 @@ class MapPublic extends React.Component {
         })
     }
     phontFun = () => {
-        StartCapture()
+        // StartCapture()
     }
     render() {
         return (

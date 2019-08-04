@@ -193,7 +193,7 @@ class DataTab extends React.Component {
     this.props.caseEntry.echartslayer.chart.setOption(option);
     map.flyTo({
       center: [record.smx, record.smy],
-      zoom: 19,
+      zoom: 16,
       speed: 0.5
     })
   }

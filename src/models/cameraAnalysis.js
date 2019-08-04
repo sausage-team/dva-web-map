@@ -1,7 +1,7 @@
 export default {
   namespace: 'cameraAnalysis',
   state: {
-    time:['2017-01-01','2018-01-01'],
+    time:['2019-07-01','2019-07-31'],
     mapStart:' ',
     loading:true,
     columns:[],

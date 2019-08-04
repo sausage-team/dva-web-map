@@ -19,14 +19,24 @@ class TSHotMap {
         for (let i = 1; i <= data.length; i++) {
             IDs.push(i)
         }
-        let idsParam = new SuperMap.GetFeaturesByIDsParameters({
-            IDs: IDs,
-            datasetNames: ['data:Camera_voronoi'],
-            fromIndex: 0,
-            toIndex: 10000
+        // let idsParam = new SuperMap.GetFeaturesByIDsParameters({
+        //     IDs: IDs,
+        //     datasetNames: ['data:Camera_voronoi'],
+        //     fromIndex: 0,
+        //     toIndex: 10000,
+        //     maxFeatures: 10000
+        // });
+        var sqlParam = new SuperMap.GetFeaturesBySQLParameters({
+          queryParameter: {
+            name: "Camera_voronoi",
+          },
+          datasetNames: ['data:Camera_voronoi'],
+          fromIndex: 0,
+          toIndex: 10000,
+          maxFeatures:10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
-        service.getFeaturesByIDs(idsParam, (serviceResult) => {
+        service.getFeaturesByIDs(sqlParam, (serviceResult) => {
             console.log(serviceResult);
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"];
             let features = {
@@ -85,7 +95,7 @@ class TSHotMap {
                             'properties': { num: data[j].caseNum, color: color[o], SMX: x, SMY: y, ID: data[j].smid },
                             'geometry': {
                                 'type': "Point",
-                                //数据
+                                //数杮
                                 'coordinates': [parseFloat(x), parseFloat(y)]
                             }
                         }

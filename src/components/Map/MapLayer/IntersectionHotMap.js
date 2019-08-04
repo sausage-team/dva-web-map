@@ -24,7 +24,8 @@ class IntersectionHotMap {
             IDs: IDs,
             datasetNames: ['data:路网分析_路口'],
             fromIndex: 0,
-            toIndex: 10000
+            toIndex: 10000,
+            maxFeatures: 10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {

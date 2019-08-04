@@ -77,7 +77,7 @@ class HotMapTwo {
         type: "geojson",
         data: this.MapLayData(this.data),
       },
-      "maxzoom": 18,
+      "maxzoom": 16,
       "paint": {
         //Increase the heatmap weight based on frequency and property magnitude
         "heatmap-weight": {
@@ -125,7 +125,7 @@ class HotMapTwo {
         type: "geojson",
         data: this.MapLayData(this.data),
       },
-      "minzoom": 17,
+      "minzoom": 16,
       "paint": {
         "circle-radius": 4,
         //Color circle by earthquake magnitude

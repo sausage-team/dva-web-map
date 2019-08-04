@@ -30,19 +30,19 @@ export default {
     mapReactObj: '',
     // style1:'http://localhost:8090/iserver/services/map-mvt-WanShang/rest/maps/晚上/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true',
     // style2:'http://localhost:8090/iserver/services/map-mvt-WanShang/rest/maps/晚上/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true',
-    style2: `${ThreeServerApi}map-mvt-wuhan/rest/maps/wuhan/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
-    style1: `${ThreeServerApi}map-mvt-wuhan/rest/maps/wuhan/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
+    style2: `${ThreeServerApi}map-mvt-wuhan6/rest/maps/wuhan6/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
+    style1: `${ThreeServerApi}map-mvt-wuhan6/rest/maps/wuhan6/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
     // style2: `${ThreeServerApi}map-mvt-mtgWPYdarkpoi/rest/maps/mtgWPY_dark_poi/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
     // style1: `${ThreeServerApi}map-mvt-mtgWPYdarkpoi/rest/maps/mtgWPY_dark_poi/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
     mapstate: {
       container: 'map',
       // style: `${ThreeServerApi}map-mvt-mtgWPYdarkpoi/rest/maps/mtgWPY_dark_poi/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
-      style: `${ThreeServerApi}map-mvt-wuhan/rest/maps/wuhan/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
+      style: `${ThreeServerApi}map-mvt-wuhan6/rest/maps/wuhan6/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true`,
       // style:'http://192.168.12.100:8090/iserver/services/map-mvt-BaiTian/rest/maps/白天/tileFeature/vectorstyles.json?type=MapBox_GL&styleonly=true',
       attributionControl: false,
       zoom: 10,
       center: [114.3038583200, 30.6479700100],
-      maxZoom: 19,
+      maxZoom: 16,
       minZoom: 10
     },
     endTime: 8760,
@@ -67,7 +67,7 @@ export default {
       latitude: 30.6479700100,
       zoom: 11,
       minZoom: 10,
-      maxZoom: 18,
+      maxZoom: 16,
       pitch: 45
     },
     dackData: "",
@@ -75,8 +75,8 @@ export default {
     deck: false,
     startValue: null,
     endValue: null,
-    statesTime: '2017-01-01',
-    endsTime: '2017-12-31',
+    statesTime: '2019-07-01',
+    endsTime: '2019-07-31',
     endOpen: false,
     //保存图层的刷新函数
     hotMapObj: "",
@@ -89,7 +89,8 @@ export default {
     groupData: '',
     witchData: false,
     mapTab: 1,
-    timeShowState: false
+    timeShowState: false,
+    loading: false
   },
   reducers: {
     setTimeShowState(state, { payload: timeShowState }) {
@@ -268,8 +269,18 @@ export default {
       state.intersectionMapObj = intersectionMapObj;
       return { ...state };
     },
+    setMapLoading(state, { payload: loading }) {
+      state.loading = loading;
+      return { ...state };
+    },
   },
   effects: {
+    // *setMapLoading({payload: loading},{ call, put, select }){
+    //   yield put({
+    //     type: 'setMapLoading',
+    //     payload: loading
+    //   })
+    // },
     *setTimeOpen({ payload }, { call, put, select }) {
       let map = yield select(state => state.map);
       map.timeFun();
@@ -298,7 +309,7 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       hotMapData = hotMapData.data
       let hotMap = new HotMap(mapObj);
       let filterBy = hotMap.filterBy;
@@ -363,7 +374,7 @@ export default {
         type: 'clearMapLayer'
       })
       let token = localStorage.getItem('token')
-      let honeycombData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let honeycombData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       honeycombData = honeycombData.data
       let honeycomb = new Honeycomb(mapObj);
       honeycomb.addMapLay(honeycombData);
@@ -416,7 +427,7 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      let custersMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let custersMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       custersMapData = custersMapData.data;
       let custersMap = new CustersMap(mapObj);
       custersMap.addMapLay(custersMapData);
@@ -470,7 +481,13 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2017/?token=' + token + '', {});
+
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
+      console.log('loading', this.props.map.loading)
+      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
       GridMapData = GridMapData.data;
       let gridMap = new GridMap(mapObj);
       let filterBy = gridMap.filterBy;
@@ -490,6 +507,12 @@ export default {
         type: 'setTimeState',
         payload: true
       })
+
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
+      console.log('loading2', this.props.map.loading)
     },
     *getHexGridMap({ payload: mapObj }, { call, put, select }) {
       yield put({
@@ -497,7 +520,7 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2017/?token=' + token + '', {});
+      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
       GridMapData = GridMapData.data;
       let hexGridMap = new HexGridMap(mapObj);
       let filterBy = hexGridMap.filterBy;
@@ -508,7 +531,7 @@ export default {
         type: 'clearMapLayer'
       })
       let token = localStorage.getItem('token')
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setDackData',
         payload: hotMapData
@@ -585,7 +608,7 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {})
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
       data = data.areaList;
       let pavementMap = new PavementMap(mapObj);
       yield call(pavementMap.addMapLay.bind(this, data, object.value));
@@ -612,7 +635,7 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {})
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
       data = data.pointList;
       let intersectionMap = new IntersectionMap(mapObj);
       yield call(intersectionMap.addMapLay.bind(this, data, object.value));
@@ -639,7 +662,7 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {})
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
       data = data.roadList;
       let sectionHotMap = new SectionHotMap(mapObj);
       yield call(sectionHotMap.addMapLay.bind(this, data, object.value));
@@ -772,7 +795,7 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {})
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
       data = data.roadList;
       let sectionMap = new SectionMap(mapObj);
       yield call(sectionMap.addMapLay.bind(this, data, object.value));
@@ -799,7 +822,7 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {});
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
       data = data.pointList;
       let intersectionHotMap = new IntersectionHotMap(mapObj);
       yield call(intersectionHotMap.addMapLay.bind(this, data, object.value));
@@ -826,8 +849,8 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2017?token=' + token + '', {});
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       hotMapData = hotMapData.data
       let cameraMap = new CameraMap(mapObj);
       yield call(cameraMap.addMapLay.bind(this, hotMapData, object.value));
@@ -854,7 +877,7 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token');
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2017/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
       hotMapData = hotMapData.data
       let caseMap = new CaseMap(object.mapObj);
       yield call(caseMap.addMapLay.bind(this, hotMapData, object.value));
