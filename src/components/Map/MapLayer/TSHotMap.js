@@ -36,9 +36,9 @@ class TSHotMap {
           maxFeatures:10000
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
-        service.getFeaturesByIDs(sqlParam, (serviceResult) => {
+        service.getFeaturesBySQL(sqlParam, (serviceResult) => {
             console.log(serviceResult);
-            let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"];
+            let color = ["rgba(255,255,255,0)", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"];
             let features = {
                 "type": "FeatureCollection",
                 "features": []

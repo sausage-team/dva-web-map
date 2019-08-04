@@ -55,12 +55,12 @@ class LeftMenu extends React.Component {
               key="menu2"
               title={<span><Icon type="line-chart" /><span>情报分析</span></span>}
             >
-              {/* <SubMenu
+              <SubMenu
                 key="menu2menu2"
                 title={<span><span>案件管理</span></span>}
               >
                 <Menu.Item key="CaseEntry">案件导入</Menu.Item>
-              </SubMenu> */}
+              </SubMenu>
               <Menu.Item key="PavementAnalysis">路网分析</Menu.Item>
               <Menu.Item key="CameraAnalysis">泰森分析</Menu.Item>
               <SubMenu

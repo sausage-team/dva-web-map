@@ -69,7 +69,15 @@ export default {
   effects: {
     *getPavementData({payload}, { call, put, select }){    
       let token = localStorage.getItem('token');
+      yield put({
+        type: 'setLoading',
+        payload: true
+      })
       let data = yield call(getHotMap,'sm/case/queryWgfaceByYear/2018?token='+token+'',{})
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       yield put({
         type:'setPavementAnalysisData',
         payload:data

@@ -77,7 +77,15 @@ export default {
   },
   effects: {
     *getVideoData({ payload: mapObj }, { call, put, select }) {
+      yield put({
+        type: 'setLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/camera/queryCameraList?pageNum=1&pageSize=10000', {});
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       yield put({
         type: 'setSmlibtileData',
         payload: data.data
@@ -151,7 +159,6 @@ export default {
       // let upData = JSON.stringify(obj);
       cesiumObj.entities.removeAll()
       let data = yield call(Update, `sm/camera/update/${obj.indexes}`, obj);
-      console.log(data)
       if (data.code == 0) {
         yield put({
           type: 'getVideoData',

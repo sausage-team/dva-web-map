@@ -61,8 +61,9 @@ class PavementAnalysisTab extends React.Component {
       data = data._data;
       data.features = [obj];
       mapObj.getSource(setLayers).setData(data);
+      console.log(features)
       mapObj.flyTo({
-        center: [features.properties.SMSDRIE || features.properties.SMX, features.properties.SMSDRIN || features.properties.SMY],
+        center: [features.properties.SMSDRIE || features.properties.SMX || eatures.properties['经度'], features.properties.SMSDRIN || features.properties.SMY || atures.properties['纬度']],
         zoom: 16,
         speed: 0.2
       })

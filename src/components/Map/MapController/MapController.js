@@ -219,7 +219,7 @@ class MapController extends React.Component {
                         <div className={styles.center}>
                             <RadioGroup style={{ marginTop: '20px' }} defaultValue="a" size="large" onChange={this.radioChang}>
                                 <RadioButton value="a">&nbsp;&nbsp;圆&nbsp;&nbsp;</RadioButton>
-                                {/* <RadioButton value="b">网&nbsp;格</RadioButton> */}
+                                <RadioButton value="b">网&nbsp;格</RadioButton>
                                 <RadioButton value="c">蜂&nbsp;巢</RadioButton>
                             </RadioGroup>
                         </div>

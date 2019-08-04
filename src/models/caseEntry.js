@@ -77,14 +77,19 @@ export default {
   },
   effects: {
     *nomark({ payload: page }, { call, put, select }) {  // eslint-disable-line
+
+      if (!page) {
+        page = 1
+      }
       yield put({
         type: 'setLoading',
         payload: true
       })
-      if (!page) {
-        page = 1
-      }
       let markData = yield call(mark, 'sm/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=marked', {})
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       let markFor = markData.data.list;
       let markTabData = [];
       for (let i in markFor) {
@@ -107,20 +112,20 @@ export default {
         type: 'setPagination1',
         payload: pagination
       })
-      yield put({
-        type: 'setLoading',
-        payload: false
-      })
     },
     *marked({ payload: page }, { call, put, select }) {  // eslint-disable-line
+      if (!page) {
+        page = 1
+      }
       yield put({
         type: 'setLoading',
         payload: true
       })
-      if (!page) {
-        page = 1
-      }
       let markData = yield call(mark, 'sm/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=nomark', {});
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       let markFor = markData.data.list;
       let nomarkTabData = [];
       for (let i in markFor) {
@@ -143,10 +148,7 @@ export default {
         type: 'setPagination2',
         payload: pagination
       })
-      yield put({
-        type: 'setLoading',
-        payload: false
-      })
+      
     },
     *caseUpData({ payload }, { call, put, select }) {
       const caseEntry = yield select(state => state.caseEntry);

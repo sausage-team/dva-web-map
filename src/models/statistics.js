@@ -150,16 +150,21 @@ export default {
       })
     },
     *police({ payload }, { call, put, select }) {
-      debugger
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setLoading',
+        payload: true
+      })
       const data = yield call(valid, 'sm/police/queryNameList?token=' + token + '', {});
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       let policeList = []
       for (let i in data.data.policeList) {
         let obj = { label: data.data.policeList[i].policeName, value: data.data.policeList[i].policeName }
         policeList.push(obj)
       }
-      debugger
-      console.log('policeList', policeList)
       yield put({
         type: 'setPolice',
         payload: policeList
@@ -179,7 +184,15 @@ export default {
           url += '&' + i + '=' + center[i].toString()
         }
       }
+      yield put({
+        type: 'setLoading',
+        payload: true
+      })
       const data = yield call(valid, 'sm/case/queryCaseListByPage?pageNum=1&pageSize=100000&token=' + token + url + '', {});
+      yield put({
+        type: 'setLoading',
+        payload: false
+      })
       let markFor = data.data.list;
       let markTabData = [];
       for (let i in markFor) {

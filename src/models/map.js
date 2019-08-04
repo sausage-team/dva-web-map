@@ -309,7 +309,15 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       hotMapData = hotMapData.data
       let hotMap = new HotMap(mapObj);
       let filterBy = hotMap.filterBy;
@@ -374,7 +382,16 @@ export default {
         type: 'clearMapLayer'
       })
       let token = localStorage.getItem('token')
+      debugger
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let honeycombData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       honeycombData = honeycombData.data
       let honeycomb = new Honeycomb(mapObj);
       honeycomb.addMapLay(honeycombData);
@@ -427,7 +444,15 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let custersMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       custersMapData = custersMapData.data;
       let custersMap = new CustersMap(mapObj);
       custersMap.addMapLay(custersMapData);
@@ -486,8 +511,11 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      console.log('loading', this.props.map.loading)
       let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       GridMapData = GridMapData.data;
       let gridMap = new GridMap(mapObj);
       let filterBy = gridMap.filterBy;
@@ -508,11 +536,6 @@ export default {
         payload: true
       })
 
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      console.log('loading2', this.props.map.loading)
     },
     *getHexGridMap({ payload: mapObj }, { call, put, select }) {
       yield put({
@@ -520,7 +543,15 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       GridMapData = GridMapData.data;
       let hexGridMap = new HexGridMap(mapObj);
       let filterBy = hexGridMap.filterBy;
@@ -531,7 +562,15 @@ export default {
         type: 'clearMapLayer'
       })
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       yield put({
         type: 'setDackData',
         payload: hotMapData
@@ -593,7 +632,15 @@ export default {
       let token = localStorage.getItem('token')
       let url = 'sm/case/queryXyListByDate';
       url += '/' + moment(map.statesTime, 'YYYY-MM-DD').format('YYYYMMDD') + '/' + moment(map.endsTime, 'YYYY-MM-DD').format('YYYYMMDD')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, url + '?token=' + token + '', {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.data
       let specialMap = new SpecialMap(mapObj);
       yield call(specialMap.addMapLay.bind(this, data, object.value))
@@ -608,7 +655,15 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.areaList;
       let pavementMap = new PavementMap(mapObj);
       yield call(pavementMap.addMapLay.bind(this, data, object.value));
@@ -635,7 +690,15 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.pointList;
       let intersectionMap = new IntersectionMap(mapObj);
       yield call(intersectionMap.addMapLay.bind(this, data, object.value));
@@ -662,7 +725,15 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.roadList;
       let sectionHotMap = new SectionHotMap(mapObj);
       yield call(sectionHotMap.addMapLay.bind(this, data, object.value));
@@ -696,7 +767,15 @@ export default {
       for (let i in time) {
         time[i] = time[i].replace(/[-]/g, "");
       }
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, `/sm/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.data;
       let tabData = data.slice(0, 10);
       for (let i in tabData) {
@@ -749,7 +828,15 @@ export default {
       for (let i in time) {
         time[i] = time[i].replace(/[-]/g, "");
       }
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, `/sm/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.data;
       let tabData = data.slice(0, 10);
       for (let i in tabData) {
@@ -795,7 +882,15 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.roadList;
       let sectionMap = new SectionMap(mapObj);
       yield call(sectionMap.addMapLay.bind(this, data, object.value));
@@ -822,7 +917,15 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       data = data.pointList;
       let intersectionHotMap = new IntersectionHotMap(mapObj);
       yield call(intersectionHotMap.addMapLay.bind(this, data, object.value));
@@ -849,8 +952,17 @@ export default {
       })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
+      debugger
       let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
       let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       hotMapData = hotMapData.data
       let cameraMap = new CameraMap(mapObj);
       yield call(cameraMap.addMapLay.bind(this, hotMapData, object.value));
@@ -877,7 +989,15 @@ export default {
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token');
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
       let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
       hotMapData = hotMapData.data
       let caseMap = new CaseMap(object.mapObj);
       yield call(caseMap.addMapLay.bind(this, hotMapData, object.value));

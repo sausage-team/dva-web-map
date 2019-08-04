@@ -26,7 +26,7 @@ class SiderDemo extends React.Component {
       </div>)
     } else {
       return (
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout className="fff" style={{ minHeight: '100vh' }}>
          {/* <Loader fullScreen spicnning={this.props.loading.effects['layout/query']} /> */}
          <Loader fullScreen spicnning={this.props.map.loading} />
           <link rel="shortcut icon" href={favicon} />
