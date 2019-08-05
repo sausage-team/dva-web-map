@@ -83,9 +83,9 @@ export default {
       *userAddUpdate({payload}, {call, put}) {  // eslint-disable-line
         const token = localStorage.getItem('token');
         let params='token='+token;
-        let requrl='sys/user/save?'+params;
+        let requrl='xk/sys/user/save?'+params;
         if (payload.type === 'edit') {
-          requrl='sys/user/update?'+params;
+          requrl='xk/sys/user/update?'+params;
         }
         const data= yield call(userUpdate,requrl,payload.user);
         if(data.code==0){
@@ -105,7 +105,7 @@ export default {
       *deluser({payload}, {call,select,put}) {  // eslint-disable-line
          let option=yield select(state=>state.userlist);
          option=option.selRowKeys;
-         let requrl='sys/user/delete?token='+localStorage.getItem('token');
+         let requrl='xk/sys/user/delete?token='+localStorage.getItem('token');
          const result = yield call(userDelete,requrl, option);
         if (result.code ===0) {
           message.success(result.msg);
@@ -113,7 +113,7 @@ export default {
         }else{
           message.error(result.msg);
         }
-      },  
+      },
     },
     subscriptions: {
       setup({ dispatch, history }) {  // eslint-disable-line

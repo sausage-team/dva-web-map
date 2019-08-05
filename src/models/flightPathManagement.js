@@ -7,7 +7,7 @@ export default {
   state: {
     updatastate: {
       name: 'file',
-      action: apiService + 'sm/camera/excel?token=' + localStorage.getItem('token') + ''
+      action: apiService + 'xk/camera/excel?token=' + localStorage.getItem('token') + ''
     },
     updata: '',
     model: false,
@@ -81,7 +81,7 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/camera/queryCameraList?pageNum=1&pageSize=10000', {});
+      let data = yield call(getHotMap, 'xk/camera/queryCameraList?pageNum=1&pageSize=10000', {});
       yield put({
         type: 'setLoading',
         payload: false
@@ -158,7 +158,7 @@ export default {
       let cesiumObj = cesium.cesiumObj;
       // let upData = JSON.stringify(obj);
       cesiumObj.entities.removeAll()
-      let data = yield call(Update, `sm/camera/update/${obj.indexes}`, obj);
+      let data = yield call(Update, `xk/camera/update/${obj.indexes}`, obj);
       if (data.code == 0) {
         yield put({
           type: 'getVideoData',
@@ -174,7 +174,7 @@ export default {
       let cesium = yield select(state => state.cesium);
       let cesiumObj = cesium.cesiumObj;
       cesiumObj.entities.removeAll()
-      let data = yield call(Update, `sm/camera/delete/${indexes}`, "");
+      let data = yield call(Update, `xk/camera/delete/${indexes}`, "");
       if (data.code == 0) {
         yield put({
           type: 'getVideoData',

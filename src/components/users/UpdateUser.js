@@ -51,7 +51,7 @@ class UpdateUser extends React.Component {
     if(roleList!=null){
       let userRoleLogin=roleList[0];
       if(userRoleLogin.roleCode=='fenju_admin' || userRoleLogin.roleCode=='sys_admin'){//分局管理员 (可选择派出所、可选择角色)
-      
+
       }else if(userRoleLogin.roleCode=='pcs_admin'){//派出所管理员
         pcsIsDisable=true;
         roleIsDisable=true;
@@ -60,11 +60,11 @@ class UpdateUser extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
+        xk: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
+        xk: { span: 16 },
       },
     };
     const prefixSelector = getFieldDecorator('prefix', {
@@ -137,7 +137,7 @@ class UpdateUser extends React.Component {
          {...formItemLayout}
          label="角色"
          hasFeedback>
-        {getFieldDecorator('roleId', 
+        {getFieldDecorator('roleId',
           {
             initialValue:roleIdDefault,
             rules: [{ required: true, message: '请选择系统角色!' },],

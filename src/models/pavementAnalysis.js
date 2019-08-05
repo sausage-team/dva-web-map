@@ -67,13 +67,13 @@ export default {
     },
   },
   effects: {
-    *getPavementData({payload}, { call, put, select }){    
+    *getPavementData({payload}, { call, put, select }){
       let token = localStorage.getItem('token');
       yield put({
         type: 'setLoading',
         payload: true
       })
-      let data = yield call(getHotMap,'sm/case/queryWgfaceByYear/2018?token='+token+'',{})
+      let data = yield call(getHotMap,'xk/case/queryWgfaceByYear/2018?token='+token+'',{})
       yield put({
         type: 'setLoading',
         payload: false
@@ -84,10 +84,10 @@ export default {
       })
     },
     *setUp({payload}, { call, put, select }){
-      let state = yield select(state => state.pavementAnalysis);    
+      let state = yield select(state => state.pavementAnalysis);
       let upData = state.upData;
       upData = JSON.stringify(upData);
-      let data = yield call(Update,'sm/case/updateFormulaBySmid/'+state.upData.type+'/'+state.upData.smid+'',upData);
+      let data = yield call(Update,'xk/case/updateFormulaBySmid/'+state.upData.type+'/'+state.upData.smid+'',upData);
       if(data.code==0){
         let columns = state.columns;
         for(let i in columns){//modelData

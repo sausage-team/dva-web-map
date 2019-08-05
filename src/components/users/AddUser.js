@@ -68,7 +68,7 @@ class AddUser extends React.Component {
     if(roleList.length>0){
       let userRole=roleList[0];
       if(userRole.roleCode=='fenju_admin' || userRole.roleCode=='sys_admin'){//分局管理员 (可选择派出所、可选择角色)
-      
+
       }else if(userRole.roleCode=='pcs_admin'){//派出所管理员
         pcsDefault=pcsname;
         pcsIsDisable=true;
@@ -84,11 +84,11 @@ class AddUser extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
+        xk: { span: 8 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
+        xk: { span: 16 },
       },
     };
     const prefixSelector = getFieldDecorator('prefix', {
@@ -163,7 +163,7 @@ class AddUser extends React.Component {
          {...formItemLayout}
          label="角色"
          hasFeedback>
-        {getFieldDecorator('roleId', 
+        {getFieldDecorator('roleId',
           {
             initialValue:roleIdDefault,
             rules: [{ required: true, message: '请选择系统角色!' },],
@@ -230,7 +230,7 @@ class AddUser extends React.Component {
           )}
         </FormItem>
         <FormItem>
-        {getFieldDecorator('status', 
+        {getFieldDecorator('status',
           {
             initialValue:1,
             rules: [],
@@ -238,7 +238,7 @@ class AddUser extends React.Component {
             <Input  type="hidden" />
           )}
         </FormItem>
-        
+
       </Form>
       </Modal>
     );

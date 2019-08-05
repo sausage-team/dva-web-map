@@ -164,7 +164,7 @@ class Statistics extends React.Component {
     let value = this.props.statistics.center;
     let p={"type":"案件查询",
      "data":{
-       "派出所":value.ploiceArea,
+       "派出所":value.policeArea,
        "社区":value.countyName,
        "案件类型":value.caseType!=''?value.caseType:[],
        "具体手段":value.caseTypeMethod,
@@ -190,7 +190,7 @@ class Statistics extends React.Component {
                         <span>派出所:</span>
                     </div>
                     <div className={styles.right}>
-                        <CheckboxGroup options={this.props.statistics.police} value={this.props.statistics.center.ploiceArea} onChange={this.checkCheng.bind(this, "ploiceArea")} />
+                        <CheckboxGroup options={this.props.statistics.police} value={this.props.statistics.center.policeArea} onChange={this.checkCheng.bind(this, "policeArea")} />
                     </div>
                 </div>
                 <div className={styles.list}>

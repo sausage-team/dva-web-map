@@ -101,9 +101,9 @@ export default {
       let switchData = map.switchData;
       let data = ''
       if (switchData) {
-        data = yield call(getHotMap, `sm/3d/queryCarRoute/${policeObj.policeNo}/${policeObj.beginTime}/${policeObj.endTime}?parsePattern=${policeObj.parsePattern}`, {})
+        data = yield call(getHotMap, `xk/3d/queryCarRoute/${policeObj.policeNo}/${policeObj.beginTime}/${policeObj.endTime}?parsePattern=${policeObj.parsePattern}`, {})
       } else {
-        data = yield call(getHotMap, `sm/3d/queryPoliceRoute/${policeObj.policeNo}/${policeObj.beginTime}/${policeObj.endTime}?parsePattern=${policeObj.parsePattern}`, {})
+        data = yield call(getHotMap, `xk/3d/queryPoliceRoute/${policeObj.policeNo}/${policeObj.beginTime}/${policeObj.endTime}?parsePattern=${policeObj.parsePattern}`, {})
       }
       if (data.code == 0) {
         let routeData = data.data;

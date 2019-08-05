@@ -68,7 +68,7 @@ class ModelComponent extends React.Component {
           </div>
           <div style={{ padding: '5px 0px' }}>
             <span style={{ display: 'inline-block', width: '110px', textAlign: 'right' }}>派出所管辖：</span>
-            <Input style={{ width: '250px' }} onChange={this.handleInput.bind(this, 'ploiceArea')} defaultValue={menuConfigValue.ploiceArea} />
+            <Input style={{ width: '250px' }} onChange={this.handleInput.bind(this, 'policeArea')} defaultValue={menuConfigValue.policeArea} />
           </div>
           <div style={{ padding: '5px 0px' }}>
             <span style={{ display: 'inline-block', width: '110px', textAlign: 'right' }}>案发时间：</span>
