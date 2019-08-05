@@ -54,7 +54,6 @@ module.exports = (webpackConfig, env) => {
     webpackConfig.plugins = webpackConfig.plugins.concat([
         new HtmlWebpackPlugin({
             template: production ? `${__dirname}/src/indexPro.ejs` : `${__dirname}/src/index.ejs`,
-            // template: `${__dirname}/src/indexPro.ejs`,
             // filename: production ? 'index.html' : '../index.html',
             filename: 'index.html',
             minify: production ? {

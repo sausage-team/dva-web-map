@@ -9,7 +9,7 @@ class DataTab extends React.Component {
     super(props);
     this.pagination = {
       pageSize: 6,
-      pageSizeOptions: 6,
+      pageSizeOptions: [6],
       hideOnSinglePage: true
     }
     this.columns = [{

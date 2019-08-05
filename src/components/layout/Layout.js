@@ -37,7 +37,7 @@ class SiderDemo extends React.Component {
       </Layout>)
     } else {
       return (
-        <Layout className="ddd" style={{ minHeight: '100vh' }}>
+        <Layout style={{ minHeight: '100vh' }}>
           {/* <Loader fullScreen spicnning={this.props.loading.effects['layout/query']} /> */}
           <Loader fullScreen spicnning={this.props.map.loading} />
           <link rel="shortcut icon" href={favicon} />
@@ -48,7 +48,6 @@ class SiderDemo extends React.Component {
           <Header className="header">
             <div className={styles.logo} >
               <img src={logo} style={{ width: '40px', height: '40px', margin: 0, lineHeight: '44px', float: 'left' }} />
-              {/* <span style={{ float: 'left', marginTop: '0', fontSize: '20px', color: '#fff', marginLeft: '10px' }}>后湖社区地理信息防控平台{this.props.map.loading.toString()} </span> */}
               <span style={{ float: 'left', marginTop: '0', fontSize: '20px', color: '#fff', marginLeft: '10px' }}>后湖社区地理信息防控平台 </span>
             </div>
           </Header>

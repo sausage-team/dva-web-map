@@ -20,9 +20,10 @@ class Loader extends React.Component {
     super(props);
   }
   render() {
-    return (<div  className={classNames(styles.loader, {
-      [styles.hidden]: !this.props.map.loading,
-      [styles.fullScreen]: true,
+    return (<div className={classNames(styles.loader, {
+      // [styles.hidden]: !this.props.map.loading,
+      [styles.hidden]: !this.props.spicnning,
+      [styles.fullScreen]: this.props.fullScreen,
     })}
     >
       <div className={styles.warpper}>
