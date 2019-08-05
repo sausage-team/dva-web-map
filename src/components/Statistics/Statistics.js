@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Statistics.css';
 import { connect } from 'dva';
-import { Slider, Button, Checkbox, DatePicker, LocaleProvider } from 'antd';
+import { Slider, Button, Checkbox, DatePicker, LocaleProvider, Switch } from 'antd';
 import { routerRedux } from 'dva/router';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
@@ -37,7 +37,6 @@ class Statistics extends React.Component {
     }
     checkCheng1 = (text, checkedValues) => {
         let center = this.props.statistics.center;
-        center[text] = checkedValues
         // if(text == 'countyName'){
         //     center[text]=checkedValues.toString();
         // }else{
@@ -52,6 +51,11 @@ class Statistics extends React.Component {
         //     }
         //     center[text]=obj.toString();
         // }
+        if(text == 'mark'){
+          center[text] = checkedValues? "maked" : "nomark"
+        }else{
+          center[text] = checkedValues
+        }
         this.props.dispatch({
             type: 'statistics/setCenter',
             payload: center,
@@ -183,7 +187,7 @@ class Statistics extends React.Component {
             <div className={styles.normal}>
             <Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>
                 <div className={styles.listOne}>
-                    <h2 className={styles.hTwo}>查询统计案件</h2><Button className={styles.but} onClick={this.btnClick} type="primary" icon="search">搜&nbsp;索</Button>
+                    <h2 className={styles.hTwo}>mark</h2><Button className={styles.but} onClick={this.btnClick} type="primary" icon="search">搜&nbsp;索</Button>
                 </div>
                 <div className={styles.list}>
                     <div className={styles.left}>
@@ -193,46 +197,46 @@ class Statistics extends React.Component {
                         <CheckboxGroup options={this.props.statistics.police} value={this.props.statistics.center.policeArea} onChange={this.checkCheng.bind(this, "policeArea")} />
                     </div>
                 </div>
-                <div className={styles.list}>
+                {/* <div className={styles.list}>
                     <div className={styles.left}>
                         <span>社区:</span>
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.countyList} value={this.props.statistics.center.countyName} onChange={this.checkCheng1.bind(this, 'countyName')} />
                     </div>
-                </div>
-                <div className={styles.list}>
+                </div> */}
+                {/* <div className={styles.list}>
                     <div className={styles.left}>
                         <span>案件类型:</span>
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.caseType} value={this.props.statistics.checkCaseType} onChange={this.checkCheng2.bind(this, 'caseType')} />
                     </div>
-                </div>
-                <div className={styles.list}>
+                </div> */}
+                {/* <div className={styles.list}>
                     <div className={styles.left}>
                         <span>具体手段:</span>
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.caseTypeMethodList} value={this.props.statistics.center.caseTypeMethod} onChange={this.checkCheng1.bind(this, 'caseTypeMethod')} />
                     </div>
-                </div>
-                <div className={styles.list}>
+                </div> */}
+                {/* <div className={styles.list}>
                     <div className={styles.left}>
                         <span>发案部位类别:</span>
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.placeType} value={this.props.statistics.checkPlaceType} onChange={this.checkCheng3.bind(this, 'placeType')} />
                     </div>
-                </div>
-                <div className={styles.list}>
+                </div> */}
+                {/* <div className={styles.list}>
                     <div className={styles.left}>
                         <span>具体发案部位:</span>
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.placeTypeDetailList} value={this.props.statistics.center.placeTypeDetail} onChange={this.checkCheng1.bind(this, 'placeTypeDetail')} />
                     </div>
-                </div>
+                </div> */}
                 <div className={styles.list}>
                     <div className={styles.left}>
                         <span>案发日期:</span>
@@ -251,6 +255,14 @@ class Statistics extends React.Component {
                     </div>
                     <div className={styles.right}>
                         <CheckboxGroup options={this.props.statistics.timeType} onChange={this.checkCheng1.bind(this, 'timeStep')} />
+                    </div>
+                </div>
+                <div className={styles.list}>
+                    <div className={styles.left}>
+                        <span>是否标注:</span>
+                    </div>
+                    <div className={styles.right}>
+                       <Switch checkedChildren="是" unCheckedChildren="否" defaultChecked onChange={this.checkCheng1.bind(this,'mark')} />
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider } from 'antd';
+import { Tabs, Radio, Table, Icon, Divider, Pagination } from 'antd';
 import Draw from 'mapbox-gl-draw';
 const TabPane = Tabs.TabPane;
 class DataStatistics extends React.Component {
@@ -99,9 +99,19 @@ class DataStatistics extends React.Component {
       speed: 0.5
     })
   }
+  changePage = (pageNum)=>{
+    debugger
+    this.props.dispatch({
+      type: 'statistics/getCase',
+      payload: pageNum
+    })
+  }
   render() {
     return (
-      <Table columns={this.columns2} bordered dataSource={this.props.statistics.tabData} pagination={this.pagination} size='small' />
+      <div>
+        <Table columns={this.columns2} bordered dataSource={this.props.statistics.tabData} pagination={false}  size='small' />
+        <Pagination style={{textAlign: 'right'}} className={styles.wrapper} defaultCurrent={1} total={50} onChange={this.changePage} size='small'/>
+      </div>
     )
   }
 }

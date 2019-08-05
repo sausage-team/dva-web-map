@@ -174,7 +174,7 @@ export default {
         payload: data.data.countyList
       })
     },
-    *getCase({ payload }, { call, put, select }) {
+    *getCase({ payload: pNum }, { call, put, select }) {
       let token = localStorage.getItem('token')
       let center = yield select(state => state.statistics);
       center = center.center;
@@ -188,12 +188,13 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      const data = yield call(valid, 'xk/case/queryCaseListByPage?pageNum=1&pageSize=4&token=' + token + url + '', {});
+      let pageNum = pNum ? pNum : 1
+      const data = yield call(valid, 'xk/case/queryCaseListByPage?pageNum='+pageNum+'&pageSize=4&token=' + token + url + '', {});
       yield put({
         type: 'setLoading',
         payload: false
       })
-      let markFor = data.data.list;
+      let markFor = data.data.data;
       let markTabData = [];
       for (let i in markFor) {
         let obj = {
