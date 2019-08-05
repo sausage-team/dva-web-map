@@ -21,7 +21,7 @@ export default {
     checkCaseType: [],
     checkPlaceType: [],
     center: {
-      ploiceArea: [],
+      policeArea: [],
       countyName: [],
       caseType: '',
       caseTypeMethod: [],
@@ -121,7 +121,7 @@ export default {
   effects: {
     *query({ payload }, { call, put, select }) {
       let token = localStorage.getItem('token')
-      const data = yield call(valid, 'sys/dict/listForType?token=' + token + '', {});
+      const data = yield call(valid, 'xk/sys/dict/listForType?token=' + token + '', {});
       let caseType = [];
       for (let i in data.data.caseType) {
         let obj = { label: data.data.caseType[i].name, value: data.data.caseType[i].id };
@@ -155,7 +155,7 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      const data = yield call(valid, 'sm/police/queryNameList?token=' + token + '', {});
+      const data = yield call(valid, 'xk/police/queryNameList?token=' + token + '', {});
       yield put({
         type: 'setLoading',
         payload: false
@@ -188,7 +188,7 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      const data = yield call(valid, 'sm/case/queryCaseListByPage?pageNum=1&pageSize=100000&token=' + token + url + '', {});
+      const data = yield call(valid, 'xk/case/queryCaseListByPage?pageNum=1&pageSize=4&token=' + token + url + '', {});
       yield put({
         type: 'setLoading',
         payload: false
@@ -233,7 +233,7 @@ export default {
     *caseUpData({ payload }, { call, put, select }) {
       const caseEntry = yield select(state => state.statistics);
       const dataCenter = caseEntry.dataCenter;
-      const data = yield call(CaseUpdate, 'sm/case/update/' + dataCenter.smid + '', dataCenter);
+      const data = yield call(CaseUpdate, 'xk/case/update/' + dataCenter.smid + '', dataCenter);
       if (data.code == 0) {
         message.success(`上传成功，请及时编辑你的数据.`);
         yield put({

@@ -5,7 +5,7 @@ export default {
   state: {
     updatastate: {
       name: 'file',
-      action: 'http://182.92.2.91:8081/mtg-xlgc/sm/case/excel?token=' + localStorage.getItem('token') + ''
+      action: 'http://182.92.2.91:8081/mtg-xlgc/xk/case/excel?token=' + localStorage.getItem('token') + ''
     },
     updata: '',
     okList: '',
@@ -85,7 +85,7 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      let markData = yield call(mark, 'sm/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=marked', {})
+      let markData = yield call(mark, 'xk/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=marked', {})
       yield put({
         type: 'setLoading',
         payload: false
@@ -121,7 +121,7 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      let markData = yield call(mark, 'sm/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=nomark', {});
+      let markData = yield call(mark, 'xk/case/queryCaseListByPage?pageNum=' + page + '&pageSize=5&mark=nomark', {});
       yield put({
         type: 'setLoading',
         payload: false
@@ -148,12 +148,12 @@ export default {
         type: 'setPagination2',
         payload: pagination
       })
-      
+
     },
     *caseUpData({ payload }, { call, put, select }) {
       const caseEntry = yield select(state => state.caseEntry);
       const dataCenter = caseEntry.dataCenter;
-      const data = yield call(CaseUpdate, 'sm/case/update/' + dataCenter.smid + '', dataCenter);
+      const data = yield call(CaseUpdate, 'xk/case/update/' + dataCenter.smid + '', dataCenter);
       if (data.code == 0) {
         message.success(`上传成功，请及时编辑你的数据.`);
         yield put({
@@ -173,7 +173,7 @@ export default {
     *updataXY({ payload }, { call, put, select }) {
       const caseEntry = yield select(state => state.caseEntry);
       const updataXY = caseEntry.updataXY;
-      const data = yield call(CaseUpdate, 'sm/case/updateXy/' + caseEntry.smid + '', updataXY);
+      const data = yield call(CaseUpdate, 'xk/case/updateXy/' + caseEntry.smid + '', updataXY);
       if (data.code == 0) {
         message.success(`上传成功，请及时编辑你的数据.`);
         yield put({

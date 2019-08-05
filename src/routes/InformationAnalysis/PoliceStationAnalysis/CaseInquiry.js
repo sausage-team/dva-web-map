@@ -71,7 +71,7 @@ class CaseInquiry extends React.Component {
       let datas=JSON.parse(e.data);
       datas=datas.data;
       let center={
-        ploiceArea:datas['派出所'],
+        policeArea:datas['派出所'],
         countyName:datas['社区'],
         caseType:datas['案件类型'].length>0?datas['案件类型'][0]:[],//dan
         caseTypeMethod: datas['具体手段'],

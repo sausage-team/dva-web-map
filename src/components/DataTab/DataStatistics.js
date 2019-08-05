@@ -30,8 +30,8 @@ class DataStatistics extends React.Component {
       dataIndex: 'caseTime',
     }, {
       title: '派出所管辖',
-      key: 'ploiceArea',
-      dataIndex: 'ploiceArea',
+      key: 'policeArea',
+      dataIndex: 'policeArea',
     }, {
       title: '案件详细地址',
       key: 'caseAddress',

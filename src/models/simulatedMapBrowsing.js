@@ -25,9 +25,9 @@ export default {
       return{...state,}
     },
   },
-  effects: {//sm/3d/queryFlyRouteList
+  effects: {//xk/3d/queryFlyRouteList
     *getFlyData({ payload }, { call, put, select }) {
-      let flyData = yield call(getHotMap, 'sm/3d/queryFlyRouteList', {});
+      let flyData = yield call(getHotMap, 'xk/3d/queryFlyRouteList', {});
       console.log(flyData);
       let data=[];
       if(flyData.data[0]){

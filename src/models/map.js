@@ -313,7 +313,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -348,7 +348,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let hotMapTwoData = yield call(getHotMap, `sm/3d/queryBuildingXy/${num}`, {});
+      let hotMapTwoData = yield call(getHotMap, `xk/3d/queryBuildingXy/${num}`, {});
       hotMapTwoData = hotMapTwoData.data;
       let hotMap = new HotMapTwo(mapObj);
       yield call(hotMap.addMapLay, hotMapTwoData);
@@ -367,7 +367,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let hotMapTwoData = yield call(getHotMap, `sm/3d/queryBuildingPersonXy/${num}`, {});
+      let hotMapTwoData = yield call(getHotMap, `xk/3d/queryBuildingPersonXy/${num}`, {});
       //let hotMapTwoData = data0;
       hotMapTwoData = hotMapTwoData.data;
       let hotMap = new HotMapTwo(mapObj);
@@ -387,7 +387,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let honeycombData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let honeycombData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -410,7 +410,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let hotMapTwoData = yield call(getHotMap, `sm/3d/queryBuildingXy/${num}`, {});
+      let hotMapTwoData = yield call(getHotMap, `xk/3d/queryBuildingXy/${num}`, {});
       hotMapTwoData = hotMapTwoData.data;
       let honeycombTwo = new HoneycombTwo(mapObj);
       yield call(honeycombTwo.addMapLay, hotMapTwoData);
@@ -429,7 +429,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let hotMapTwoData = yield call(getHotMap, `sm/3d/queryBuildingPersonXy/${num}`, {});
+      let hotMapTwoData = yield call(getHotMap, `xk/3d/queryBuildingPersonXy/${num}`, {});
       hotMapTwoData = hotMapTwoData.data;
       let honeycombTwo = new HoneycombTwo(mapObj);
       yield call(honeycombTwo.addMapLay, hotMapTwoData);
@@ -448,7 +448,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let custersMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let custersMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -471,7 +471,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let custersMapData = yield call(getHotMap, `sm/3d/queryBuildingXy/${num}`, {});
+      let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingXy/${num}`, {});
       custersMapData = custersMapData.data;
       let custersMapTwo = new CustersMapTwo(mapObj);
       custersMapTwo.addMapLay(custersMapData);
@@ -490,7 +490,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let custersMapData = yield call(getHotMap, `sm/3d/queryBuildingPersonXy/${num}`, {});
+      let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingPersonXy/${num}`, {});
       //let custersMapData = data0
       custersMapData = custersMapData.data;
       let custersMapTwo = new CustersMapTwo(mapObj);
@@ -511,7 +511,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
+      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -547,7 +547,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let GridMapData = yield call(getHotMap, '/sm/case/queryWgListByYear/2019/?token=' + token + '', {});
+      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -566,7 +566,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -590,7 +590,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let custersMapData = yield call(getHotMap, `sm/3d/queryBuildingXy/${num}`, {});
+      let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingXy/${num}`, {});
       custersMapData = custersMapData.data;
       yield put({
         type: 'setDackData',
@@ -611,7 +611,7 @@ export default {
       if (mapDataState) {
         num = 1
       }
-      let custersMapData = yield call(getHotMap, `sm/3d/queryBuildingPersonXy/${num}`, {});
+      let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingPersonXy/${num}`, {});
       //let custersMapData = data0
       custersMapData = custersMapData.data;
       yield put({
@@ -630,7 +630,7 @@ export default {
       let map = yield select(state => state.map);
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      let url = 'sm/case/queryXyListByDate';
+      let url = 'xk/case/queryXyListByDate';
       url += '/' + moment(map.statesTime, 'YYYY-MM-DD').format('YYYYMMDD') + '/' + moment(map.endsTime, 'YYYY-MM-DD').format('YYYYMMDD')
       yield put({
         type: 'setMapLoading',
@@ -659,7 +659,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -694,7 +694,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -729,7 +729,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -771,7 +771,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, `/sm/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      let data = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -832,7 +832,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, `/sm/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      let data = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -886,7 +886,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {})
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -921,7 +921,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -957,8 +957,8 @@ export default {
         payload: true
       })
       debugger
-      let data = yield call(getHotMap, 'sm/case/queryWgfaceByYear/2019?token=' + token + '', {});
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -993,7 +993,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let hotMapData = yield call(getHotMap, 'sm/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false

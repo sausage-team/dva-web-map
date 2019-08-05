@@ -16,10 +16,10 @@ export default {
     },
   },
   effects: {
-    *login({ payload }, { call, put,select}) { 
+    *login({ payload }, { call, put,select}) {
       let option = yield select(state => state.users);
       option =option.login;
-      const data  = yield call(login,'sys/login',option);
+      const data  = yield call(login,'xk/sys/login',option);
       if(data.code==0){
         localStorage.setItem('token',data.token);
         localStorage.setItem('user',JSON.stringify(data.user));

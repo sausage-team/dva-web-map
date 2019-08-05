@@ -179,7 +179,7 @@ export default {
         key: '-',
         children: []
       }]
-      let PoliceListData = yield call(getHotMap, 'sm/3d/queryPoliceList/'+num+'', {});
+      let PoliceListData = yield call(getHotMap, 'xk/3d/queryPoliceList/'+num+'', {});
       let dataList = [];
       if (PoliceListData.code == 0) {
         let data = PoliceListData.data;
@@ -212,7 +212,7 @@ export default {
         let locData= arr[i].split('警员');
         outArr.push(locData[1])
       }
-      let PoliceListData = yield call(getHotMap, 'sm/3d/queryPoliceLocation/'+outArr.toString()+'', {});
+      let PoliceListData = yield call(getHotMap, 'xk/3d/queryPoliceLocation/'+outArr.toString()+'', {});
       if(PoliceListData.code == 0){
         let data = PoliceListData.data;
         let obj = {
@@ -258,7 +258,7 @@ export default {
     //     let locData= arr[i].split('警员');
     //     outArr.push(locData[1])
     //   }
-    //   let PoliceListData = yield call(getHotMap, 'sm/3d/queryPoliceLocation/'+outArr.toString()+'', {});
+    //   let PoliceListData = yield call(getHotMap, 'xk/3d/queryPoliceLocation/'+outArr.toString()+'', {});
     //   console.log(PoliceListData)
     //   if(PoliceListData.code == 0){
     //     let data = PoliceListData.data;

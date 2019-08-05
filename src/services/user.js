@@ -4,19 +4,19 @@ export function userList(options) {
     let option = {
         method: 'GET'
     }
-    return request(apiService + 'sys/user/list?'+options, option);
+    return request(apiService + 'xk/sys/user/list?'+options, option);
 }
 export function userRoleList(options) {
     let option = {
         method: 'GET'
     }
-    return request(apiService + 'sys/role/list?'+options, option);
+    return request(apiService + 'xk/sys/role/list?'+options, option);
 }
 export function policeList(options) {
     let option = {
         method: 'GET'
     }
-    return request(apiService + 'sm/police/queryNameList?'+options, option);
+    return request(apiService + 'xk/police/queryNameList?'+options, option);
 }
 export function userUpdate(urlRight,options) {
     let option = {
@@ -88,14 +88,14 @@ export function shequDataDetail(smid, options) {
     let option = {
         method: 'GET'
     }
-    return request(apiService +'sm/police/queryCountyInfo/'+smid+'?token='+localStorage.getItem('token'), option);
+    return request(apiService +'xk/police/queryCountyInfo/'+smid+'?token='+localStorage.getItem('token'), option);
 }
 //格网面详情数据
 export function gewangDataDetail(name) {
     let option = {
         method: 'GET'
     }
-    return request(apiService+'sm/police/queryCountryInfo/'+name+'?token='+localStorage.getItem('token'), option);
+    return request(apiService+'xk/police/queryCountryInfo/'+name+'?token='+localStorage.getItem('token'), option);
 }
 export function Update(urlRight, options) {
     console.log(options)
