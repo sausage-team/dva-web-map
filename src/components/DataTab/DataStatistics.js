@@ -44,7 +44,7 @@ class DataStatistics extends React.Component {
       title: '定位',
       key: 'smid',
       dataIndex: 'smid',
-      render: (text, record) => <Icon type="pushpin" style={{ fontSize: 16, color: '#08c', margin: "auto", cursor: "pointer" }} onClick={this.setPoint.bind(this, text, record)} />
+      render: (text, record) => this.props.statistics.center.mark=='marked'? <Icon type="pushpin" style={{ fontSize: 16, color: '#08c', margin: "auto", cursor: "pointer" }} onClick={this.setPoint.bind(this, text, record)} /> :null
     }];
   }
   //编辑数据
@@ -100,7 +100,6 @@ class DataStatistics extends React.Component {
     })
   }
   changePage = (pageNum)=>{
-    debugger
     this.props.dispatch({
       type: 'statistics/getCase',
       payload: pageNum
@@ -110,7 +109,7 @@ class DataStatistics extends React.Component {
     return (
       <div>
         <Table columns={this.columns2} bordered dataSource={this.props.statistics.tabData} pagination={false}  size='small' />
-        <Pagination style={{textAlign: 'right'}} className={styles.wrapper} defaultCurrent={1} total={50} onChange={this.changePage} size='small'/>
+        <Pagination style={{textAlign: 'right'}} className={styles.wrapper} defaultCurrent={1} defaultPageSize={4} total={this.props.statistics.total} onChange={this.changePage} size='small'/>
       </div>
     )
   }

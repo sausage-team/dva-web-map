@@ -94,6 +94,10 @@ class CaseInquiry extends React.Component {
   butClick = () => {
     let map = this.props.map.mapObj;
     this.props.dispatch({
+      type: 'statistics/setCenter',
+      payload: {...this.props.statistics.center,mark:'marked'}
+    })
+    this.props.dispatch({
       type: 'statistics/setStatisticsShow',
       payload: true
     })

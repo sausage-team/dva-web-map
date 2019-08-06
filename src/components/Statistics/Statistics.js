@@ -182,12 +182,11 @@ class Statistics extends React.Component {
     document.getElementById('J_bridge').contentWindow.postMessage(p,bdpConfig);
   }
     render() {
-      console.log('this.props.statistics----',this.props.statistics)
         return (
             <div className={styles.normal}>
             <Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>
                 <div className={styles.listOne}>
-                    <h2 className={styles.hTwo}>mark</h2><Button className={styles.but} onClick={this.btnClick} type="primary" icon="search">搜&nbsp;索</Button>
+                    <h2 className={styles.hTwo}>查询统计案件</h2><Button className={styles.but} onClick={this.btnClick} type="primary" icon="search">搜&nbsp;索</Button>
                 </div>
                 <div className={styles.list}>
                     <div className={styles.left}>

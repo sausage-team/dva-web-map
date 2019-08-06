@@ -33,6 +33,7 @@ export default {
       mark: 'marked'
     },
     tabData: "",
+    total:0,
     tabDataShow: false,
     visible: false,
     dataCenter: {},
@@ -41,6 +42,10 @@ export default {
     echartslayer: '',
   },
   reducers: {
+    setTotal(state, { payload: total }) {
+      state.total = total;
+      return { ...state };
+    },
     setEchartslayer(state, { payload: echartslayer }) {
       state.echartslayer = echartslayer;
       return { ...state };
@@ -194,6 +199,10 @@ export default {
         type: 'setLoading',
         payload: false
       })
+      yield put({
+        type: 'setTotal',
+        payload: data.data.total_count || 0
+      });
       let markFor = data.data.data;
       let markTabData = [];
       for (let i in markFor) {
