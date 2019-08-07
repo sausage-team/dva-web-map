@@ -78,22 +78,27 @@ export default {
   effects: {
     *getVideoData({ payload: mapObj }, { call, put, select }) {
       yield put({
-        type: 'setLoading',
+        type: 'map/setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap, 'xk/camera/queryCameraList?pageNum=1&pageSize=10000', {});
+      let data = yield call(getHotMap, 'xk/camera/queryCameraList?pageNum=-1', {});
+      debugger
       yield put({
-        type: 'setLoading',
+        type: 'map/setMapLoading',
         payload: false
+      })
+      yield put({
+        type: 'pavementAnalysis/setColumns',
+        payload: data.data.data
       })
       yield put({
         type: 'setSmlibtileData',
         payload: data.data
       })
-      yield put({
-        type: 'threeDemo',
-        payload: data.data
-      })
+      // yield put({
+      //   type: 'threeDemo',
+      //   payload: data.data
+      // })
     },
     *threeDemo({ payload: data }, { call, put, select }) {
       let cesium = yield select(state => state.cesium);

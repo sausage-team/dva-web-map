@@ -70,8 +70,8 @@ class LeftMenu extends React.Component {
                 <Menu.Item key="CaseInquiry">案件查询统计</Menu.Item>
                 <Menu.Item key="PoliceAreaQuery">辖区查询</Menu.Item>
                 <Menu.Item key="NuclearDensityAnalysis">案件分析</Menu.Item>
-                {/* <Menu.Item key="CameraManagement">建筑物态势分析</Menu.Item>
-                <Menu.Item key="PersonnelManagement">人口态势分析</Menu.Item> */}
+                {/* <Menu.Item key="CameraManagement">建筑物态势分析</Menu.Item> */}
+                {/* <Menu.Item key="PersonnelManagement">人口态势分析</Menu.Item> */}
               </SubMenu>           
               {/* <Menu.Item key="AreaSpecialMap">区域专题图</Menu.Item> */}
             </SubMenu>
@@ -82,18 +82,19 @@ class LeftMenu extends React.Component {
               <Menu.Item key="RangeQuery">社区查询</Menu.Item>
               <Menu.Item key="CaseManagement">案件防控</Menu.Item>
             </SubMenu> */}
-            {/* <SubMenu
+            <SubMenu
               key="menu4"
-              title={<span><Icon type="api" /><span>三维指挥调度</span></span>}
+              title={<span><Icon type="api" /><span>指挥调度</span></span>}
             >
-              <Menu.Item key="SimulatedMapBrowsing">场景浏览</Menu.Item> */}
+              {/* <Menu.Item key="SimulatedMapBrowsing">场景浏览</Menu.Item> */}
               {/* <Menu.Item key="ThreeCameraManagement">人员定位</Menu.Item>
               <Menu.Item key="TrajectoryBrowsing">车辆定位</Menu.Item>
               <Menu.Item key="PersonnelTrajectory">轨迹浏览</Menu.Item> */}
               {/* <Menu.Item key="PersonnelTrajectory">车辆轨迹回放</Menu.Item> */}
-              {/* <Menu.Item key="FlightPathManagement">摄像头管理</Menu.Item> */}
+              <Menu.Item key="FlightPathManagement">摄像头管理</Menu.Item>
+              <Menu.Item key="FlightManagement">摄像头管理new</Menu.Item>
               {/* <Menu.Item key="CaseLocationTagging">两实管理</Menu.Item> */}
-            {/* </SubMenu> */}
+            </SubMenu>
             {/* <SubMenu
               key="menu5"
               title={<span><Icon type="user" /><span>信息管理</span></span>}

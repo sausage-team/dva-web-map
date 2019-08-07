@@ -37,7 +37,8 @@ class CameraMap {
     geojson.features = arr;
     return geojson;
   }
-  addMapLay(data, value) {
+  addMapLay(data) {
+    debugger
     this.data = data;
     let IDs = [];
     for (let i = 1; i <= 143; i++) {
@@ -55,77 +56,79 @@ class CameraMap {
     });
     let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
     service.getFeaturesBySQL(sqlParam, (serviceResult) => {
-      console.log(serviceResult)
-      this.map.addLayer({
-        "id": "CameraMap",
-        "type": "symbol",
-        "source": {
-          type: "geojson",
-          data: this.MapLayData(this.data),
-        },
-        "minzoom": 12,
-        "filter": ["in", "class", "canal", "river"],
-        "layout": {
-          "text-field": "{name_en}",
-          "text-font": ["DIN Offc Pro Italic", "Arial Unicode MS Regular"],
-          "symbol-placement": "line",
-          "text-pitch-alignment": "viewport",
-          "text-max-angle": 30,
-          "text-size": {
-            "base": 1,
-            "stops": [[13, 12], [18, 16]]
+      if(data){
+        this.map.addLayer({
+          "id": "CameraMap",
+          "type": "symbol",
+          "source": {
+            type: "geojson",
+            data: this.MapLayData(this.data),
+          },
+          "minzoom": 12,
+          "filter": ["in", "class", "canal", "river"],
+          "layout": {
+            "text-field": "{name_en}",
+            "text-font": ["DIN Offc Pro Italic", "Arial Unicode MS Regular"],
+            "symbol-placement": "line",
+            "text-pitch-alignment": "viewport",
+            "text-max-angle": 30,
+            "text-size": {
+              "base": 1,
+              "stops": [[13, 12], [18, 16]]
+            }
+          },
+          "paint": {
+            "text-halo-width": 0,
+            "text-halo-blur": 0,
+            "text-color": "#78888a"
           }
-        },
-        "paint": {
-          "text-halo-width": 0,
-          "text-halo-blur": 0,
-          "text-color": "#78888a"
-        }
-      });
-      this.map.addLayer({
-        "id": "CameraMapHeat",
-        "type": "heatmap",
-        "source": {
-          type: "geojson",
-          data: this.MapLayData(this.data),
-        },
-        "maxzoom": 16,
-        "paint": {
-          "heatmap-weight": {
-            "property": "mag",
-            "type": "exponential",
-            "stops": [
-              [0, 0],
-              [6, 1]
-            ]
+        });
+        this.map.addLayer({
+          "id": "CameraMapHeat",
+          "type": "heatmap",
+          "source": {
+            type: "geojson",
+            data: this.MapLayData(this.data),
           },
-          "heatmap-intensity": 1,
-          "heatmap-color": [
-            "interpolate",
-            ["linear"],
-            ["heatmap-density"],
-            0, "rgba(33,102,172,0)",
-            0.2, "rgb(103,169,207)",
-            0.4, "rgb(209,229,240)",
-            0.6, "rgb(253,219,199)",
-            0.8, "rgb(239,138,98)",
-            1, "rgb(178,24,43)"
-          ],
-          "heatmap-radius": {
-            "stops": [
-              [4, 5],
-              [9, 30]
-            ]
-          },
-          "heatmap-opacity": {
-            "default": 1,
-            "stops": [
-              [10, 0.9],
-              [22, 0.4]
-            ]
-          },
-        }
-      }, 'CameraMap');
+          "maxzoom": 16,
+          "paint": {
+            "heatmap-weight": {
+              "property": "mag",
+              "type": "exponential",
+              "stops": [
+                [0, 0],
+                [6, 1]
+              ]
+            },
+            "heatmap-intensity": 1,
+            "heatmap-color": [
+              "interpolate",
+              ["linear"],
+              ["heatmap-density"],
+              0, "rgba(33,102,172,0)",
+              0.2, "rgb(103,169,207)",
+              0.4, "rgb(209,229,240)",
+              0.6, "rgb(253,219,199)",
+              0.8, "rgb(239,138,98)",
+              1, "rgb(178,24,43)"
+            ],
+            "heatmap-radius": {
+              "stops": [
+                [4, 5],
+                [9, 30]
+              ]
+            },
+            "heatmap-opacity": {
+              "default": 1,
+              "stops": [
+                [10, 0.9],
+                [22, 0.4]
+              ]
+            },
+          }
+        }, 'CameraMap');
+      }
+
 
       this.map.addLayer({
         "id": "CameraMapPoint",
@@ -135,7 +138,7 @@ class CameraMap {
           data: serviceResult.result.features
         },
         "paint": {
-          "circle-radius": 3,
+          "circle-radius": 4,
           "circle-color": 'orange',
           "circle-stroke-color": "#000",
           "circle-stroke-width": 1,

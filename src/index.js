@@ -7,10 +7,12 @@ import 'babel-polyfill';
 // 1. Initialize
 const app = dva({
 	...createLoading(),
-	//history: createHistory(),
-	onError(error) {
+  //history: createHistory(),
+  onAction: [],
+	onError:(error)=> {
 		message.error(error.message)
-	}, initialState: {
+  }, 
+  initialState: {
 	},
 });
 

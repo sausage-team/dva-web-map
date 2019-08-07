@@ -41,6 +41,7 @@ class PavementAnalysis extends React.Component {
         })
     }
     clickFun = (mapObj, getLayers, setLayers, e) => {
+      debugger
         let bbox = [e.point.x, e.point.y];
         let features = mapObj.queryRenderedFeatures(bbox, { layers: [getLayers] });
         let obj = {};

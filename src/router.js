@@ -76,6 +76,10 @@ function RouterConfig({ history, app }) {
     app,
     component: () => import('./routes/ThreeDimensionalSituation/FlightPathManagement'),
   })
+  const FlightManagement = dynamic({
+    app,
+    component: () => import('./routes/ThreeDimensionalSituation/FlightManagement'),
+  })
   const TrajectoryBrowsing = dynamic({
     app,
     component: () => import('./routes/ThreeDimensionalSituation/TrajectoryBrowsing'),
@@ -110,6 +114,7 @@ function RouterConfig({ history, app }) {
           <Route exact path="/ThreeCameraManagement" exact component={ThreeCameraManagement} />
           <Route exact path="/CameraAnalysis" exact component={CameraAnalysis} />
           <Route exact path="/FlightPathManagement" exact component={FlightPathManagement} />
+          <Route exact path="/FlightManagement" exact component={FlightManagement} />
           <Route exact path="/TrajectoryBrowsing" exact component={TrajectoryBrowsing} />
           <Route exact path="/CameraManagement" exact component={CameraManagement} />
           <Route exact path="/PersonnelManagement" exact component={PersonnelManagement} />

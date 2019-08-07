@@ -78,6 +78,7 @@ export default {
     statesTime: '2019-07-01',
     endsTime: '2019-07-31',
     endOpen: false,
+    hotMapData:null,
     //保存图层的刷新函数
     hotMapObj: "",
     custersMapObj: "",
@@ -93,6 +94,10 @@ export default {
     loading: false
   },
   reducers: {
+    setHotMapData(state, { payload: hotMapData }) {
+      state.hotMapData = hotMapData;
+      return { ...state, };
+    },
     setTimeShowState(state, { payload: timeShowState }) {
       state.timeShowState = timeShowState;
       return { ...state, };
@@ -304,27 +309,46 @@ export default {
       }
     },
     *getHotMapData({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+            // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      hotMapData = hotMapData.data
+     
+      let hotMapData 
+      if(map.hotMapData){
+        hotMapData = map.hotMapData
+      }else{
+        yield put({
+          type: 'setMapLoading',
+          payload: true
+        })
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        hotMapData = res.data
+        yield put({
+          type: 'setMapLoading',
+          payload: false
+        })
+        yield put({
+          type: 'setHotMapData',
+          payload: hotMapData
+        })
+      }
+      
       let hotMap = new HotMap(mapObj);
       let filterBy = hotMap.filterBy;
       hotMap.addMapLay(hotMapData);
+      
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: hotMap
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: hotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:hotMap
+        }
       })
       yield put({
         type: 'setHotMap',
@@ -339,9 +363,9 @@ export default {
       })
     },
     *getHotMapTwo({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -352,15 +376,22 @@ export default {
       hotMapTwoData = hotMapTwoData.data;
       let hotMap = new HotMapTwo(mapObj);
       yield call(hotMap.addMapLay, hotMapTwoData);
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: hotMap
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: hotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:hotMap
+        }
       })
     },
     *getHotMapThree({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -372,38 +403,80 @@ export default {
       hotMapTwoData = hotMapTwoData.data;
       let hotMap = new HotMapTwo(mapObj);
       yield call(hotMap.addMapLay, hotMapTwoData);
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: hotMap
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: hotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:hotMap
+        }
       })
     },
     *getHoneycomb({ payload: mapObj }, { call, put, select }) {
       yield put({
-        type: 'clearMapLayer'
+        type: 'clearWithAndMapLayer'
       })
       let token = localStorage.getItem('token')
       debugger
+
+      let honeycombData
+      // let {hotMapData} = yield select(state => state.map);
+      // if(hotMapData){
+      //   honeycombData = hotMapData
+      // }else{
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: true
+      //   })
+      //   let res = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: false
+      //   })
+      //   honeycombData = res.data
+      //   yield put({
+      //     type: 'setHotMapData',
+      //     payload: honeycombData
+      //   })
+      // }
       yield put({
         type: 'setMapLoading',
         payload: true
       })
-      let honeycombData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let res = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
       })
-      honeycombData = honeycombData.data
+      honeycombData = res.data
+      // yield put({
+      //   type: 'setHotMapData',
+      //   payload: honeycombData
+      // })
+      debugger
+      // yield put({
+      //   type: 'clearWithAndMapLayer',
+      //   payload:{
+      //     type:'setHotMapObj',
+      //     map:honeycomb
+      //   }
+      // })
       let honeycomb = new Honeycomb(mapObj);
       honeycomb.addMapLay(honeycombData);
+      debugger
       yield put({
         type: 'setHotMapObj',
         payload: honeycomb
       })
+
     },
     *getHoneycombTwo({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -414,15 +487,22 @@ export default {
       hotMapTwoData = hotMapTwoData.data;
       let honeycombTwo = new HoneycombTwo(mapObj);
       yield call(honeycombTwo.addMapLay, hotMapTwoData);
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: honeycombTwo
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: honeycombTwo
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:honeycombTwo
+        }
       })
     },
     *getHoneycombThree({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -433,38 +513,63 @@ export default {
       hotMapTwoData = hotMapTwoData.data;
       let honeycombTwo = new HoneycombTwo(mapObj);
       yield call(honeycombTwo.addMapLay, hotMapTwoData);
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: honeycombTwo
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: honeycombTwo
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:honeycombTwo
+        }
       })
     },
     *custersMapDate({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let custersMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      custersMapData = custersMapData.data;
+      let custersMapData 
+      debugger
+      if(map.hotMapData){
+        custersMapData = map.hotMapData
+      }else{
+        yield put({
+          type: 'setMapLoading',
+          payload: true
+        })
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        custersMapData = res.data
+        yield put({
+          type: 'setMapLoading',
+          payload: false
+        })
+        yield put({
+          type: 'setHotMapData',
+          payload: custersMapData
+        })
+      }
+      debugger
       let custersMap = new CustersMap(mapObj);
       custersMap.addMapLay(custersMapData);
+      // yield put({
+      //   type: 'setCustersMapObj',
+      //   payload: custersMap
+      // })
       yield put({
-        type: 'setCustersMapObj',
-        payload: custersMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setCustersMapObj',
+          map:custersMap
+        }
       })
     },
     *getCustersMapTwo({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -475,15 +580,22 @@ export default {
       custersMapData = custersMapData.data;
       let custersMapTwo = new CustersMapTwo(mapObj);
       custersMapTwo.addMapLay(custersMapData);
+      // yield put({
+      //   type: 'setCustersMapObj',
+      //   payload: custersMapTwo
+      // })
       yield put({
-        type: 'setCustersMapObj',
-        payload: custersMapTwo
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setCustersMapObj',
+          map:custersMapTwo
+        }
       })
     },
     *getCustersMapThree({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -495,18 +607,25 @@ export default {
       custersMapData = custersMapData.data;
       let custersMapTwo = new CustersMapTwo(mapObj);
       custersMapTwo.addMapLay(custersMapData);
+      // yield put({
+      //   type: 'setCustersMapObj',
+      //   payload: custersMapTwo
+      // })
       yield put({
-        type: 'setCustersMapObj',
-        payload: custersMapTwo
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setCustersMapObj',
+          map:custersMapTwo
+        }
       })
     },
     *GridMapDate({ payload: mapObj }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
-
+      
       yield put({
         type: 'setMapLoading',
         payload: true
@@ -520,9 +639,17 @@ export default {
       let gridMap = new GridMap(mapObj);
       let filterBy = gridMap.filterBy;
       gridMap.addMapLay(GridMapData);
+      // yield put({
+      //   type: 'setGridMapObj',
+      //   payload: gridMap
+      // })
+      debugger
       yield put({
-        type: 'setGridMapObj',
-        payload: gridMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setGridMapObj',
+          map:gridMap
+        }
       })
       yield put({
         type: 'setGridMap',
@@ -539,7 +666,7 @@ export default {
     },
     *getHexGridMap({ payload: mapObj }, { call, put, select }) {
       yield put({
-        type: 'clearMapLayer'
+        type: 'clearWithAndMapLayer'
       })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
@@ -558,22 +685,39 @@ export default {
       hexGridMap.addMapLay(GridMapData);
     },
     *getDackData({ payload }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let token = localStorage.getItem('token')
+      let hotMapData 
+      if(map.hotMapData){
+        hotMapData = map.hotMapData
+      }else{
+        yield put({
+          type: 'setMapLoading',
+          payload: true
+        })
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        hotMapData = res.data
+        yield put({
+          type: 'setMapLoading',
+          payload: false
+        })
+        yield put({
+          type: 'setHotMapData',
+          payload: hotMapData
+        })
+      }
+      // yield put({
+      //   type: 'setDackData',
+      //   payload: hotMapData
+      // })
       yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      yield put({
-        type: 'setDackData',
-        payload: hotMapData
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setDackData',
+          map:hotMapData
+        }
       })
       yield put({
         type: 'setDeck',
@@ -581,9 +725,9 @@ export default {
       })
     },
     *getDackMapTwo({ payload }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -592,9 +736,16 @@ export default {
       }
       let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingXy/${num}`, {});
       custersMapData = custersMapData.data;
+      // yield put({
+      //   type: 'setDackData',
+      //   payload: custersMapData
+      // })
       yield put({
-        type: 'setDackData',
-        payload: custersMapData
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setDackData',
+          map:custersMapData
+        }
       })
       yield put({
         type: 'setDeck',
@@ -602,9 +753,9 @@ export default {
       })
     },
     *getDackMapThree({ payload }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let cameraManagement = yield select(state => state.cameraManagement);
       let mapDataState = cameraManagement.mapDataState;
       let num = 0;
@@ -614,9 +765,16 @@ export default {
       let custersMapData = yield call(getHotMap, `xk/3d/queryBuildingPersonXy/${num}`, {});
       //let custersMapData = data0
       custersMapData = custersMapData.data;
+      // yield put({
+      //   type: 'setDackData',
+      //   payload: custersMapData
+      // })
       yield put({
-        type: 'setDackData',
-        payload: custersMapData
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setDackData',
+          map:custersMapData
+        }
       })
       yield put({
         type: 'setDeck',
@@ -624,9 +782,9 @@ export default {
       })
     },
     *getSpecialMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let map = yield select(state => state.map);
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
@@ -644,34 +802,49 @@ export default {
       data = data.data
       let specialMap = new SpecialMap(mapObj);
       yield call(specialMap.addMapLay.bind(this, data, object.value))
+      // yield put({
+      //   type: 'setSpecialMapObj',
+      //   payload: specialMap
+      // })
       yield put({
-        type: 'setSpecialMapObj',
-        payload: specialMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setSpecialMapObj',
+          map:specialMap
+        }
       })
     },
     *getPavementMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      data = data.areaList;
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: true
+      // })
+      // let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/area/2019?token=' + token + '', {})
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: false
+      // })
+      // data = data.areaList;
+      let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
+      
+      let data = pavementAnalysisData.areaList;
       let pavementMap = new PavementMap(mapObj);
       yield call(pavementMap.addMapLay.bind(this, data, object.value));
       let filterBy = pavementMap.filterBy;
       yield put({
-        type: 'setPavementMapObj',
-        payload: pavementMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setPavementMapObj',
+          map:pavementMap
+        }
       })
+      // yield put({
+      //   type: 'setPavementMapObj',
+      //   payload: pavementMap
+      // })
       yield put({
         type: 'setPavementMap',
         payload: filterBy
@@ -685,27 +858,37 @@ export default {
       })
     },
     *getIntersectionMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      data = data.pointList;
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: true
+      // })
+      // let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/point/2019?token=' + token + '', {})
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: false
+      // })
+      // data = data.pointList;
+      let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
+      let data = pavementAnalysisData.pointList;
+
       let intersectionMap = new IntersectionMap(mapObj);
       yield call(intersectionMap.addMapLay.bind(this, data, object.value));
       let filterBy = intersectionMap.filterBy;
+      // yield put({
+      //   type: 'setIntersectionMapObj',
+      //   payload: intersectionMap
+      // })
       yield put({
-        type: 'setIntersectionMapObj',
-        payload: intersectionMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setIntersectionMapObj',
+          map:intersectionMap
+        }
       })
       yield put({
         type: 'setIntersectionMap',
@@ -720,27 +903,37 @@ export default {
       })
     },
     *getSectionHotMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      data = data.roadList;
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: true
+      // })
+      // let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/line/2019?token=' + token + '', {})
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: false
+      // })
+      // data = data.roadList;
+      let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
+      let data = pavementAnalysisData.roadList;
+
       let sectionHotMap = new SectionHotMap(mapObj);
       yield call(sectionHotMap.addMapLay.bind(this, data, object.value));
       let filterBy = sectionHotMap.filterBy;
+      // yield put({
+      //   type: 'setIntersectionMapObj',
+      //   payload: sectionHotMap
+      // })
       yield put({
-        type: 'setIntersectionMapObj',
-        payload: sectionHotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setIntersectionMapObj',
+          map:sectionHotMap
+        }
       })
       yield put({
         type: 'setIntersectionMap',
@@ -755,9 +948,9 @@ export default {
       })
     },
     *getTSMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       yield put({
         type: 'cameraAnalysis/setLoading',
         payload: true
@@ -798,9 +991,16 @@ export default {
       }
       let tSMap = new TSMap(mapObj);
       yield call(tSMap.addMapLay.bind(this, data, object.value));
+      // yield put({
+      //   type: 'setIntersectionMapObj',
+      //   payload: tSMap
+      // })
       yield put({
-        type: 'setIntersectionMapObj',
-        payload: tSMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setIntersectionMapObj',
+          map:tSMap
+        }
       })
       yield put({
         type: 'cameraAnalysis/setColumns',
@@ -816,9 +1016,9 @@ export default {
       })
     },
     *getTSHotMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       yield put({
         type: 'cameraAnalysis/setLoading',
         payload: true
@@ -859,9 +1059,16 @@ export default {
       }
       let tSHotMap = new TSHotMap(mapObj);
       yield call(tSHotMap.addMapLay.bind(this, data, object.value));
+      // yield put({
+      //   type: 'setIntersectionMapObj',
+      //   payload: tSHotMap
+      // })
       yield put({
-        type: 'setIntersectionMapObj',
-        payload: tSHotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setIntersectionMapObj',
+          map:tSHotMap
+        }
       })
       yield put({
         type: 'cameraAnalysis/setColumns',
@@ -877,27 +1084,37 @@ export default {
       })
     },
     *getSectionMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {})
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      data = data.roadList;
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: true
+      // })
+      // let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/line/2019?token=' + token + '', {})
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: false
+      // })
+      // data = data.roadList;
+      let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
+      let data = pavementAnalysisData.roadList;
+
       let sectionMap = new SectionMap(mapObj);
       yield call(sectionMap.addMapLay.bind(this, data, object.value));
       let filterBy = sectionMap.filterBy;
+      // yield put({
+      //   type: 'setIntersectionMapObj',
+      //   payload: sectionMap
+      // })
       yield put({
-        type: 'setIntersectionMapObj',
-        payload: sectionMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setIntersectionMapObj',
+          map:sectionMap
+        }
       })
       yield put({
         type: 'setIntersectionMap',
@@ -912,27 +1129,37 @@ export default {
       })
     },
     *getIntersectionHotMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      data = data.pointList;
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: true
+      // })
+      // let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/point/2019?token=' + token + '', {});
+      // yield put({
+      //   type: 'setMapLoading',
+      //   payload: false
+      // })
+      // data = data.pointList;
+      let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
+      let data = pavementAnalysisData.pointList;
+
       let intersectionHotMap = new IntersectionHotMap(mapObj);
       yield call(intersectionHotMap.addMapLay.bind(this, data, object.value));
       let filterBy = intersectionHotMap.filterBy;
+      // yield put({
+      //   type: 'setSectionMapObj',
+      //   payload: intersectionHotMap
+      // })
       yield put({
-        type: 'setSectionMapObj',
-        payload: intersectionHotMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setSectionMapObj',
+          map:intersectionHotMap
+        }
       })
       yield put({
         type: 'setSectionMap',
@@ -946,30 +1173,53 @@ export default {
         payload: true
       })
     },
+    *getCameraPoint({ payload: mapObj }, { call, put, select }) {
+
+      let hotMapData = []
+      let cameraMap = new CameraMap(mapObj);
+      yield call(cameraMap.addMapLay.bind(this));
+
+    },
     *getCameraMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      debugger
-      let data = yield call(getHotMap, 'xk/case/queryWgfaceByYear/2019?token=' + token + '', {});
-      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      hotMapData = hotMapData.data
+      let map = yield select(state => state.map);  
+      let hotMapData = []
+      if(map.hotMapData){
+        hotMapData = map.hotMapData
+      }else{
+        yield put({
+          type: 'setMapLoading',
+          payload: true
+        })
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        hotMapData = res.data
+        yield put({
+          type: 'setMapLoading',
+          payload: false
+        })
+        yield put({
+          type: 'setHotMapData',
+          payload: hotMapData
+        })
+      }
       let cameraMap = new CameraMap(mapObj);
       yield call(cameraMap.addMapLay.bind(this, hotMapData, object.value));
       let filterBy = cameraMap.filterBy;
+      // yield put({
+      //   type: 'setSectionMapObj',
+      //   payload: cameraMap
+      // })
+
       yield put({
-        type: 'setSectionMapObj',
-        payload: cameraMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setSectionMapObj',
+          map:cameraMap
+        }
       })
       yield put({
         type: 'setSectionMap',
@@ -984,27 +1234,44 @@ export default {
       })
     },
     *getCaseMap({ payload: object }, { call, put, select }) {
-      yield put({
-        type: 'clearMapLayer'
-      })
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token');
-      yield put({
-        type: 'setMapLoading',
-        payload: true
-      })
-      let hotMapData = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-      yield put({
-        type: 'setMapLoading',
-        payload: false
-      })
-      hotMapData = hotMapData.data
+
+      let hotMapData 
+      if(map.hotMapData){
+        hotMapData = map.hotMapData
+      }else{
+        yield put({
+          type: 'setMapLoading',
+          payload: true
+        })
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        hotMapData = res.data
+        yield put({
+          type: 'setMapLoading',
+          payload: false
+        })
+        yield put({
+          type: 'setHotMapData',
+          payload: hotMapData
+        })
+      }
       let caseMap = new CaseMap(object.mapObj);
       yield call(caseMap.addMapLay.bind(this, hotMapData, object.value));
       let filterBy = caseMap.filterBy;
+      // yield put({
+      //   type: 'setHotMapObj',
+      //   payload: caseMap
+      // })
       yield put({
-        type: 'setHotMapObj',
-        payload: caseMap
+        type: 'clearWithAndMapLayer',
+        payload:{
+          type:'setHotMapObj',
+          map:caseMap
+        }
       })
       yield put({
         type: 'setHotMap',
@@ -1020,7 +1287,7 @@ export default {
     },
     *getKernelMap({ payload: object }, { call, put, select }) {
       yield put({
-        type: 'clearMapLayer'
+        type: 'clearWithAndMapLayer'
       })
       let map = yield select(state => state.map);
       let caseMap = new KernelMap(object.mapObj, '');
@@ -1031,7 +1298,7 @@ export default {
       yield call(areaMap.addMapLay);
     },
     //所有图层的删除方法
-    *clearMapLayer({ payload }, { call, put, select }) {
+    *clearWithAndMapLayer({ payload:object }, { call, put, select }) {
       let map = yield select(state => state.map);
       if (map.pavementMapObj) {
         map.pavementMapObj.removeMapLay();
@@ -1094,6 +1361,13 @@ export default {
           payload: ''
         })
       }
+      if(object){
+        yield put({
+          type: object.type,
+          payload: object.map
+        })
+      }
+
       yield put({
         type: 'setWitchData',
         payload: false

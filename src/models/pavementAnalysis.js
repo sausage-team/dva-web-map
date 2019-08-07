@@ -26,6 +26,7 @@ export default {
       return { ...state, };
     },
     setColumns(state, { payload: columns }) {
+      debugger
       state.columns = columns;
       return { ...state, };
     },
@@ -73,9 +74,17 @@ export default {
         type: 'setLoading',
         payload: true
       })
-      let data = yield call(getHotMap,'xk/case/queryWgfaceByYear/2018?token='+token+'',{})
+      yield put({
+        type: 'map/setMapLoading',
+        payload: true
+      })
+      let data = yield call(getHotMap,'xk/case/queryWgfaceByYear/2019?token='+token+'',{})
       yield put({
         type: 'setLoading',
+        payload: false
+      })
+      yield put({
+        type: 'map/setMapLoading',
         payload: false
       })
       yield put({
