@@ -137,7 +137,6 @@ class PavementMap {
         });
     }
     filterBy(time) {
-      debugger
         let filters = ["all", [">=", "time", time - 730], ["<=", "time", time]]
         if (this.map.getLayer("PavementMap")) {
             this.map.setFilter('PavementMap', filters);
