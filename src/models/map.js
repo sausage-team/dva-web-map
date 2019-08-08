@@ -794,8 +794,6 @@ export default {
       let token = localStorage.getItem('token')
       let url = 'xk/case/queryXyListByDate';
       url += '/' + moment(map.statesTime, 'YYYY-MM-DD').format('YYYYMMDD') + '/' + moment(map.endsTime, 'YYYY-MM-DD').format('YYYYMMDD')
-
-      // url +=`/${moment().year()}0101/${moment().format("YYYYMMDD")}`
       yield put({
         type: 'setMapLoading',
         payload: true

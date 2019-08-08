@@ -75,7 +75,7 @@ class PavementMap {
                             }
                             let obj = {
                                 'type': 'Feature',
-                                'properties': { ...serviceResult.result.features.features[i].properties, ...{ num: data[j][z].num, time: data[j][z].time, color: color[1], geometry: serviceResult.result.features.features[i].geometry } },
+                                'properties': { ...serviceResult.result.features.features[i].properties, ...{ num: data[j][z].num, time: data[j][z].time, color: color[o], geometry: serviceResult.result.features.features[i].geometry } },
                                 'geometry': {
                                     'type': "MultiPolygon",
                                     //数据
