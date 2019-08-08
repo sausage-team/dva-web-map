@@ -14,7 +14,6 @@ class PavementMap {
 
     }
     addMapLay(data, value) {
-
         let IDs = [];
         for (let i = 1; i <= 64; i++) {
             IDs.push(i)
@@ -62,6 +61,7 @@ class PavementMap {
                 }
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
+
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
                             let o = 0;
                             if (data[j][z].num <= num[0][1]) {
@@ -75,7 +75,7 @@ class PavementMap {
                             }
                             let obj = {
                                 'type': 'Feature',
-                                'properties': { ...serviceResult.result.features.features[i].properties, ...{ num: data[j][z].num, time: data[j][z].time, color: color[o], geometry: serviceResult.result.features.features[i].geometry } },
+                                'properties': { ...serviceResult.result.features.features[i].properties, ...{ num: data[j][z].num, time: data[j][z].time, color: color[1], geometry: serviceResult.result.features.features[i].geometry } },
                                 'geometry': {
                                     'type': "MultiPolygon",
                                     //数据
@@ -87,6 +87,7 @@ class PavementMap {
                     }
                 }
             }
+
             this.map.addLayer({
                 "id": "PavementMap",
                 "type": "fill",

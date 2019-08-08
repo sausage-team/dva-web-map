@@ -16,7 +16,6 @@ class SectionHotMap {
 
     }
     addMapLay(data, value) {
-
         let IDs = [];
         for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
@@ -81,7 +80,7 @@ class SectionHotMap {
             }
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                size: 5,
+                size: 8,
                 gradient: {
                     '0.5': 'blue',
                     '0.6': 'cyan',
@@ -93,7 +92,7 @@ class SectionHotMap {
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
                 globalCompositeOperation: 'lighter',
                 shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 6,
+                lineWidth: 10,
                 shadowBlur: 40,
                 draw: 'heatmap'
             }
@@ -106,7 +105,7 @@ class SectionHotMap {
             let dataSet = new DataSet(mapvData);
             let mapVLayer = new mapboxgl.supermap.MapvLayer(this.map, dataSet, options);
             this.mapVLayer = mapVLayer;
-            //this.filterBy(0);
+            // this.filterBy(0);
         });
     }
     filterBy(time) {

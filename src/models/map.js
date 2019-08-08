@@ -639,7 +639,6 @@ export default {
       //   type: 'setGridMapObj',
       //   payload: gridMap
       // })
-      debugger
       yield put({
         type: 'clearWithAndMapLayer',
         payload:{
@@ -811,7 +810,6 @@ export default {
       })
     },
     *getPavementMap({ payload: object }, { call, put, select }) {
-      
       let mapObj = object.mapObj;
       let token = localStorage.getItem('token')
       // yield put({
@@ -845,9 +843,14 @@ export default {
         type: 'setPavementMap',
         payload: filterBy
       })
+      
       yield put({
         type: 'setTimeOpen'
       })
+      // yield put({
+      //   type: 'pavementAnalysis/setSliderShow',
+      //   payload: true
+      // })
       yield put({
         type: 'setTimeState',
         payload: true
@@ -914,9 +917,9 @@ export default {
       //   payload: false
       // })
       // data = data.roadList;
+
       let {pavementAnalysisData} = yield select(_=>_.pavementAnalysis) 
       let data = pavementAnalysisData.roadList;
-
       let sectionHotMap = new SectionHotMap(mapObj);
       yield call(sectionHotMap.addMapLay.bind(this, data, object.value));
       let filterBy = sectionHotMap.filterBy;
@@ -1205,7 +1208,6 @@ export default {
           payload: hotMapData
         })
       }
-      debugger
       let cameraMap = new CameraMap(mapObj);
       yield call(cameraMap.addMapLay.bind(this, hotMapData, object.value));
       let filterBy = cameraMap.filterBy;
@@ -1361,13 +1363,11 @@ export default {
           payload: ''
         })
       }
-      if(object){
-        yield put({
-          type: object.type,
-          payload: object.map
-        })
-      }
 
+      yield put({
+        type: 'setTimeShowState',
+        payload: false
+      })
       yield put({
         type: 'setWitchData',
         payload: false
@@ -1393,10 +1393,12 @@ export default {
           type: 'shutTimeOpen'
         })
       }
-      yield put({
-        type: 'setTimeShowState',
-        payload: false
-      })
+      if(object){
+        yield put({
+          type: object.type,
+          payload: object.map
+        })
+      }
     },
   },
   subscriptions: {

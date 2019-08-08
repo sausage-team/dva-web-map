@@ -21,7 +21,6 @@ class SliderDiv extends React.Component {
     console.log(2)
   }
   butClick= ()=>{
-    debugger
     if(this.props.map.timeState){
       this.props.dispatch({
         type:'map/shutTimeOpen'

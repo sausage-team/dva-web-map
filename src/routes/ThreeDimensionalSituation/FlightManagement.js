@@ -239,7 +239,6 @@ class FlightManagement extends React.Component {
           <FlightPathRadio />
         </div>
         <FligheModel />
-        {this.props.flightPathManagement.flightTabState.toString()}
         {this.props.flightPathManagement.flightTabState ? <div className={styles.FlightTab}>
           <FlightTab />
         </div> : ''}
