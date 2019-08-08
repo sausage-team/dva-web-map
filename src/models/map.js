@@ -9,6 +9,7 @@ import SectionMap from '../components/Map/MapLayer/SectionMap';
 import IntersectionMap from '../components/Map/MapLayer/IntersectionMap';
 import IntersectionHotMap from '../components/Map/MapLayer/IntersectionHotMap';
 import CameraMap from '../components/Map/MapLayer/CameraMap';
+import CameraPointMap from '../components/Map/MapLayer/CameraPointMap';
 import CaseMap from '../components/Map/MapLayer/CaseMap';
 import Honeycomb from '../components/Map/MapLayer/Honeycomb';
 import HoneycombTwo from '../components/Map/MapLayer/HoneycombTwo';
@@ -420,7 +421,6 @@ export default {
         type: 'clearWithAndMapLayer'
       })
       let token = localStorage.getItem('token')
-      debugger
 
       let honeycombData
       // let {hotMapData} = yield select(state => state.map);
@@ -456,7 +456,6 @@ export default {
       //   type: 'setHotMapData',
       //   payload: honeycombData
       // })
-      debugger
       // yield put({
       //   type: 'clearWithAndMapLayer',
       //   payload:{
@@ -466,7 +465,6 @@ export default {
       // })
       let honeycomb = new Honeycomb(mapObj);
       honeycomb.addMapLay(honeycombData);
-      debugger
       yield put({
         type: 'setHotMapObj',
         payload: honeycomb
@@ -532,7 +530,6 @@ export default {
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
       let custersMapData 
-      debugger
       if(map.hotMapData){
         custersMapData = map.hotMapData
       }else{
@@ -551,7 +548,6 @@ export default {
           payload: custersMapData
         })
       }
-      debugger
       let custersMap = new CustersMap(mapObj);
       custersMap.addMapLay(custersMapData);
       // yield put({
@@ -1173,11 +1169,14 @@ export default {
         payload: true
       })
     },
-    *getCameraPoint({ payload: mapObj }, { call, put, select }) {
-
-      let hotMapData = []
-      let cameraMap = new CameraMap(mapObj);
-      yield call(cameraMap.addMapLay.bind(this));
+    *getCameraPoint({ payload: data }, { call, put, select }) {
+      // yield put({
+      //   type: 'clearWithAndMapLayer'
+      // })
+      let map = yield select(state => state.map); 
+      let cameraPointMap = new CameraPointMap(map.mapObj);
+      // yield call(cameraPointMap.addMapLay.bind(this));
+      cameraPointMap.addMapLay.bind(this,data)();
 
     },
     *getCameraMap({ payload: object }, { call, put, select }) {
@@ -1206,6 +1205,7 @@ export default {
           payload: hotMapData
         })
       }
+      debugger
       let cameraMap = new CameraMap(mapObj);
       yield call(cameraMap.addMapLay.bind(this, hotMapData, object.value));
       let filterBy = cameraMap.filterBy;

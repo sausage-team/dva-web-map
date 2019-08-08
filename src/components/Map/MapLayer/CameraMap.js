@@ -38,7 +38,6 @@ class CameraMap {
     return geojson;
   }
   addMapLay(data) {
-    debugger
     this.data = data;
     let IDs = [];
     for (let i = 1; i <= 143; i++) {
@@ -128,7 +127,6 @@ class CameraMap {
           }
         }, 'CameraMap');
       }
-
 
       this.map.addLayer({
         "id": "CameraMapPoint",

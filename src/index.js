@@ -10,7 +10,7 @@ const app = dva({
   //history: createHistory(),
   onAction: [],
 	onError:(error)=> {
-		message.error(error.message)
+		console.error(error.message)
   }, 
   initialState: {
 	},

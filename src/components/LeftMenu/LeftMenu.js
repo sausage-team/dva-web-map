@@ -91,8 +91,8 @@ class LeftMenu extends React.Component {
               <Menu.Item key="TrajectoryBrowsing">车辆定位</Menu.Item>
               <Menu.Item key="PersonnelTrajectory">轨迹浏览</Menu.Item> */}
               {/* <Menu.Item key="PersonnelTrajectory">车辆轨迹回放</Menu.Item> */}
-              <Menu.Item key="FlightPathManagement">摄像头管理</Menu.Item>
-              <Menu.Item key="FlightManagement">摄像头管理new</Menu.Item>
+              {/* <Menu.Item key="FlightPathManagement">摄像头管理</Menu.Item> */}
+              <Menu.Item key="FlightManagement">摄像头管理</Menu.Item>
               {/* <Menu.Item key="CaseLocationTagging">两实管理</Menu.Item> */}
             </SubMenu>
             {/* <SubMenu

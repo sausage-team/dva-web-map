@@ -9,7 +9,6 @@ class SpecialRadio extends React.Component {
         super(props);
     }
     changeFun = (e) => {
-      debugger
         let mapObj = this.props.map.mapObj
         if (this.props.map.mapTab == 1) {
             let columns = [];
@@ -107,7 +106,6 @@ class SpecialRadio extends React.Component {
                     })
                     break;
                 case '4':
-                   debugger
                     for (let i in this.props.pavementAnalysis.pavementAnalysisData.cameraList) {
                         let obj = {
                             key: this.props.pavementAnalysis.pavementAnalysisData.cameraList[i].smid,

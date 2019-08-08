@@ -34,7 +34,7 @@ class Mapbox extends React.Component {
     map.on('load', () => {
       map.flyTo({
         center: [114.3038583200, 30.6479700100],
-        zoom: 11,
+        zoom: 12,
         speed: 0.2
       })
     })
