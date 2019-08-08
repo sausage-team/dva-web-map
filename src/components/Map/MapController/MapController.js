@@ -14,6 +14,9 @@ const RadioGroup = Radio.Group;
 class MapController extends React.Component {
     constructor(props) {
         super(props);
+        this.startDate = `${moment().year()}-01-01`
+        // this.endDate = `${moment().year()}-${moment().month()+1}-${moment().date()}`
+        this.endDate = moment().format("YYYY-MM-DD")
     }
     disabledStartDate = (startValue) => {
         const endValue = this.props.map.endValue;
@@ -71,14 +74,14 @@ class MapController extends React.Component {
                     type: 'map/getSpecialMap',
                     payload: { value: 1, mapObj: this.props.map.mapReactObj }
                 })
-                this.goToViewport(10, 0);
+                this.goToViewport(12, 0);
                 break;
             case '2':
                 this.props.dispatch({
                     type: 'map/getHotMapData',
                     payload: this.props.map.mapReactObj
                 })
-                this.goToViewport(10, 0, 114.3038583200, 30.6479700100);
+                this.goToViewport(12, 0, 114.3038583200, 30.6479700100);
                 break;
             case '3':
                 switch (this.props.map.groupData || 'a') {
@@ -87,7 +90,7 @@ class MapController extends React.Component {
                             type: 'map/custersMapDate', 
                             payload: this.props.map.mapReactObj
                         })
-                        this.goToViewport(13, 0, 114.3038583200, 30.6479700100)
+                        this.goToViewport(12, 0, 114.3038583200, 30.6479700100)
                         break;
                     case 'b':
                         this.props.dispatch({
@@ -101,13 +104,13 @@ class MapController extends React.Component {
                             type: 'map/getHoneycomb',
                             payload: this.props.map.mapReactObj
                         })
-                        this.goToViewport(13, 0, 114.3038583200, 30.6479700100)
+                        this.goToViewport(12, 0, 114.3038583200, 30.6479700100)
                         break;
                 }
                 break;
             case '4':
                 this.props.dispatch({ type: 'map/getDackData' })
-                this.goToViewport(11.5, 60, 114.3038583200, 30.6479700100);
+                this.goToViewport(12, 60, 114.3038583200, 30.6479700100);
                 break;
         }
     }
@@ -182,7 +185,7 @@ class MapController extends React.Component {
                             <DatePicker
                                 disabledDate={this.disabledStartDate}
                                 format="YYYY-MM-DD"
-                                defaultValue={moment('2018-01-01', 'YYYY-MM-DD')}
+                                defaultValue={moment(this.startDate, 'YYYY-MM-DD')}
                                 placeholder="开始时间"
                                 onChange={this.onStartChange}
                                 onOpenChange={this.handleStartOpenChange}
@@ -193,7 +196,7 @@ class MapController extends React.Component {
                             <DatePicker
                                 disabledDate={this.disabledEndDate}
                                 format="YYYY-MM-DD"
-                                defaultValue={moment('2018-12-31', 'YYYY-MM-DD')}
+                                defaultValue={moment(this.endDate, 'YYYY-MM-DD')}
                                 placeholder="结束时间"
                                 onChange={this.onEndChange}
                                 open={endOpen}

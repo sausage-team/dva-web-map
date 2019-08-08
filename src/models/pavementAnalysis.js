@@ -1,5 +1,6 @@
 import {getHotMap,Update} from '../services/user';
 import { message, Button } from 'antd';
+import moment from 'moment';
 export default {
   namespace: 'pavementAnalysis',
   state: {
@@ -77,7 +78,7 @@ export default {
         type: 'map/setMapLoading',
         payload: true
       })
-      let data = yield call(getHotMap,'xk/case/queryWgfaceByYear/2019?token='+token+'',{})
+      let data = yield call(getHotMap,'xk/case/queryWgfaceByYear/'+moment().year()+'?token='+token+'',{})
       yield put({
         type: 'setLoading',
         payload: false

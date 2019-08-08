@@ -13,7 +13,6 @@ import CameraPointMap from '../components/Map/MapLayer/CameraPointMap';
 import CaseMap from '../components/Map/MapLayer/CaseMap';
 import Honeycomb from '../components/Map/MapLayer/Honeycomb';
 import HoneycombTwo from '../components/Map/MapLayer/HoneycombTwo';
-import moment from 'moment';
 import SectionHotMap from '../components/Map/MapLayer/SectionHotMap';
 import AreaMap from '../components/Map/MapLayer/AreaMap';
 import TSMap from '../components/Map/MapLayer/TSMap';
@@ -22,6 +21,7 @@ import KernelMap from '../components/Map/MapLayer/KernelMap';
 import HotMapTwo from '../components/Map/MapLayer/HotMapTwo';
 import CustersMapTwo from '../components/Map/MapLayer/CustersMapTwo';
 import { ThreeServerApi } from '../services/config';
+import moment from 'moment';
 // import data0 from '../../public/0.json'
 export default {
   namespace: 'map',
@@ -76,8 +76,8 @@ export default {
     deck: false,
     startValue: null,
     endValue: null,
-    statesTime: '2019-07-01',
-    endsTime: '2019-07-31',
+    statesTime: ``,
+    endsTime: ``,
     endOpen: false,
     hotMapData:null,
     //保存图层的刷新函数
@@ -324,7 +324,8 @@ export default {
           type: 'setMapLoading',
           payload: true
         })
-        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
         hotMapData = res.data
         yield put({
           type: 'setMapLoading',
@@ -446,7 +447,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let res = yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+      let res = yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -537,7 +538,7 @@ export default {
           type: 'setMapLoading',
           payload: true
         })
-        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
         custersMapData = res.data
         yield put({
           type: 'setMapLoading',
@@ -626,7 +627,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/2019/?token=' + token + '', {});
+      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/'+moment().year()+'/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -669,7 +670,7 @@ export default {
         type: 'setMapLoading',
         payload: true
       })
-      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/2019/?token=' + token + '', {});
+      let GridMapData = yield call(getHotMap, '/xk/case/queryWgListByYear/'+moment().year()+'/?token=' + token + '', {});
       yield put({
         type: 'setMapLoading',
         payload: false
@@ -680,40 +681,48 @@ export default {
       hexGridMap.addMapLay(GridMapData);
     },
     *getDackData({ payload }, { call, put, select }) {
-      // yield put({
-      //   type: 'clearWithAndMapLayer'
-      // })
+      yield put({
+        type: 'clearWithAndMapLayer'
+      })
+      let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
       let hotMapData 
-      if(map.hotMapData){
-        hotMapData = map.hotMapData
-      }else{
-        yield put({
-          type: 'setMapLoading',
-          payload: true
-        })
-        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
-        hotMapData = res.data
-        yield put({
-          type: 'setMapLoading',
-          payload: false
-        })
-        yield put({
-          type: 'setHotMapData',
-          payload: hotMapData
-        })
-      }
-      // yield put({
-      //   type: 'setDackData',
-      //   payload: hotMapData
-      // })
+      // debugger
+      // if(map.hotMapData){
+      //   hotMapData = map.hotMapData
+      // }else{
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: true
+      //   })
+        // hotMapData= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: false
+      //   })
+      // }
       yield put({
-        type: 'clearWithAndMapLayer',
-        payload:{
-          type:'setDackData',
-          map:hotMapData
-        }
+        type: 'setMapLoading',
+        payload: true
       })
+      hotMapData= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
+      yield put({
+        type: 'setDackData',
+        payload: hotMapData
+      })
+      // debugger
+      // yield put({
+      //   type: 'clearWithAndMapLayer',
+      //   payload:{
+      //     type:'setDackData',
+      //     map:hotMapData
+      //   }
+      // })
+      // debugger
       yield put({
         type: 'setDeck',
         payload: true
@@ -785,6 +794,8 @@ export default {
       let token = localStorage.getItem('token')
       let url = 'xk/case/queryXyListByDate';
       url += '/' + moment(map.statesTime, 'YYYY-MM-DD').format('YYYYMMDD') + '/' + moment(map.endsTime, 'YYYY-MM-DD').format('YYYYMMDD')
+
+      // url +=`/${moment().year()}0101/${moment().format("YYYYMMDD")}`
       yield put({
         type: 'setMapLoading',
         payload: true
@@ -1197,7 +1208,7 @@ export default {
           type: 'setMapLoading',
           payload: true
         })
-        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
         hotMapData = res.data
         yield put({
           type: 'setMapLoading',
@@ -1250,7 +1261,7 @@ export default {
           type: 'setMapLoading',
           payload: true
         })
-        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/2019/?token=' + token + '', {});
+        let res= yield call(getHotMap, 'xk/case/queryXyListByYear/'+moment().year()+'/?token=' + token + '', {});
         hotMapData = res.data
         yield put({
           type: 'setMapLoading',
