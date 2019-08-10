@@ -36,9 +36,9 @@ class PavementAnalysis extends React.Component {
             //点击摄像头的交互
             mapObj.on('click', 'CameraMapPoint', this.clickFun.bind(this, mapObj, 'CameraMapPoint', 'addCameraMapPoint'));
         })
-        this.props.dispatch({
-            type: 'pavementAnalysis/getPavementData'
-        })
+        // this.props.dispatch({
+        //     type: 'pavementAnalysis/getPavementData'
+        // })
     }
     clickFun = (mapObj, getLayers, setLayers, e) => {
         let bbox = [e.point.x, e.point.y];

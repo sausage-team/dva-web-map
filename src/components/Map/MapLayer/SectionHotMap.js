@@ -16,6 +16,7 @@ class SectionHotMap {
 
     }
     addMapLay(data, value) {
+      debugger
         let IDs = [];
         for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
@@ -29,6 +30,8 @@ class SectionHotMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
+          debugger
+          console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",
                 "features": []
@@ -63,6 +66,7 @@ class SectionHotMap {
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
+                          console.log('features',serviceResult.result.features.features[i])
                             let obj = {
                                 'properties': { time: data[j][z].time },
                                 'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
@@ -80,7 +84,7 @@ class SectionHotMap {
             }
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                size: 8,
+                size: 20,
                 gradient: {
                     '0.5': 'blue',
                     '0.6': 'cyan',
@@ -92,7 +96,7 @@ class SectionHotMap {
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
                 globalCompositeOperation: 'lighter',
                 shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 10,
+                lineWidth: 30,
                 shadowBlur: 40,
                 draw: 'heatmap'
             }
@@ -118,7 +122,7 @@ class SectionHotMap {
                 }
             }
             var options = {
-                size: 5,
+                size: 20,
                 gradient: {
                     '0.5': 'blue',
                     '0.6': 'cyan',
@@ -130,11 +134,11 @@ class SectionHotMap {
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
                 globalCompositeOperation: 'lighter',
                 shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 6,
+                lineWidth: 30,
                 shadowBlur: 40
             }
             let dataSet = new DataSet(mapvData);
-            this.mapVLayer.update({ data: dataSet, options: options })
+            this.mapVLayer && this.mapVLayer.update({ data: dataSet, options: options })
         }
     }
     removeMapLay() {

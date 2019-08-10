@@ -30,13 +30,13 @@ class SpecialRadio extends React.Component {
             })
             switch (e.target.value) {
                 case '1':
-                    for (let i in this.props.pavementAnalysis.pavementAnalysisData.areaCount) {
-                        let obj = {
-                            key: this.props.pavementAnalysis.pavementAnalysisData.areaCount[i].smid,
-                            ...this.props.pavementAnalysis.pavementAnalysisData.areaCount[i]
-                        }
-                        columns.push(obj)
-                    }
+                    // for (let i in this.props.pavementAnalysis.pavementAnalysisData.areaCount) {
+                    //     let obj = {
+                    //         key: this.props.pavementAnalysis.pavementAnalysisData.areaCount[i].smid,
+                    //         ...this.props.pavementAnalysis.pavementAnalysisData.areaCount[i]
+                    //     }
+                    //     columns.push(obj)
+                    // }
                     mapObj.flyTo({
                         center: [114.3038583200, 30.6479700100],
                         zoom: 11.5,
@@ -50,21 +50,21 @@ class SpecialRadio extends React.Component {
                     })
                     break;
                 case '2':
-                    for (let i in this.props.pavementAnalysis.pavementAnalysisData.roadCount) {
-                        if (this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list) {
-                            for (let j in this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list) {
-                                this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j] = {
-                                    ...{ key: this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j].smid },
-                                    ...this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j]
-                                }
-                            }
-                        }
-                        let obj = {
-                            key: this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].smid,
-                            ...this.props.pavementAnalysis.pavementAnalysisData.roadCount[i]
-                        }
-                        columns.push(obj)
-                    }
+                    // for (let i in this.props.pavementAnalysis.pavementAnalysisData.roadCount) {
+                    //     if (this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list) {
+                    //         for (let j in this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list) {
+                    //             this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j] = {
+                    //                 ...{ key: this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j].smid },
+                    //                 ...this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].list[j]
+                    //             }
+                    //         }
+                    //     }
+                    //     let obj = {
+                    //         key: this.props.pavementAnalysis.pavementAnalysisData.roadCount[i].smid,
+                    //         ...this.props.pavementAnalysis.pavementAnalysisData.roadCount[i]
+                    //     }
+                    //     columns.push(obj)
+                    // }
                     mapObj.flyTo({
                         center: [114.3038583200, 30.6479700100],
                         zoom: 11.5,
@@ -78,21 +78,21 @@ class SpecialRadio extends React.Component {
                     })
                     break;
                 case '3':
-                    for (let i in this.props.pavementAnalysis.pavementAnalysisData.pointCount) {
-                        if (this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list) {
-                            for (let j in this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list) {
-                                this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j] = {
-                                    ...{ key: this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j].smid },
-                                    ...this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j]
-                                }
-                            }
-                        }
-                        let obj = {
-                            key: this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].smid,
-                            ...this.props.pavementAnalysis.pavementAnalysisData.pointCount[i]
-                        }
-                        columns.push(obj)
-                    }
+                    // for (let i in this.props.pavementAnalysis.pavementAnalysisData.pointCount) {
+                    //     if (this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list) {
+                    //         for (let j in this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list) {
+                    //             this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j] = {
+                    //                 ...{ key: this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j].smid },
+                    //                 ...this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].list[j]
+                    //             }
+                    //         }
+                    //     }
+                    //     let obj = {
+                    //         key: this.props.pavementAnalysis.pavementAnalysisData.pointCount[i].smid,
+                    //         ...this.props.pavementAnalysis.pavementAnalysisData.pointCount[i]
+                    //     }
+                    //     columns.push(obj)
+                    // }
                     mapObj.flyTo({
                         center: [114.3038583200, 30.6479700100],
                         zoom: 11.5,
@@ -106,13 +106,13 @@ class SpecialRadio extends React.Component {
                     })
                     break;
                 case '4':
-                    for (let i in this.props.pavementAnalysis.pavementAnalysisData.cameraList) {
-                        let obj = {
-                            key: this.props.pavementAnalysis.pavementAnalysisData.cameraList[i].smid,
-                            ...this.props.pavementAnalysis.pavementAnalysisData.cameraList[i]
-                        }
-                        columns.push(obj)
-                    }
+                    // for (let i in this.props.pavementAnalysis.pavementAnalysisData.cameraList) {
+                    //     let obj = {
+                    //         key: this.props.pavementAnalysis.pavementAnalysisData.cameraList[i].smid,
+                    //         ...this.props.pavementAnalysis.pavementAnalysisData.cameraList[i]
+                    //     }
+                    //     columns.push(obj)
+                    // }
                     mapObj.flyTo({
                         center: [114.3038583200, 30.6479700100],
                         zoom: 11.5,
@@ -130,10 +130,10 @@ class SpecialRadio extends React.Component {
                     })
                     break;
             }
-            this.props.dispatch({
-                type: 'pavementAnalysis/setColumns',
-                payload: columns
-            })
+            // this.props.dispatch({
+            //     type: 'pavementAnalysis/setColumns',
+            //     payload: columns
+            // })
             this.props.dispatch({
                 type: 'pavementAnalysis/setMapLayer',
                 payload: e.target.value

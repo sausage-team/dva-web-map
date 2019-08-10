@@ -28,6 +28,8 @@ class SectionMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
+          debugger
+          console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",
                 "features": []
@@ -63,6 +65,7 @@ class SectionMap {
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
+                          console.log('features',serviceResult.result.features.features[i])
                             let o = 0;
                             if (data[j][z].num <= num[0][1]) {
                                 o = 1;

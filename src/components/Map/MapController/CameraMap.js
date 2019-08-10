@@ -8,7 +8,13 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 class CameraMap extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
+      let startDate = `${moment().year()}-01-01`
+      let endDate = moment().format('YYYY-MM-DD')
+      this.props.dispatch({
+        type: 'cameraAnalysis/setTime',
+        payload: [startDate,endDate]
+      })
     }
     changeFun = (date, dateString) => {
         console.log(date, dateString);

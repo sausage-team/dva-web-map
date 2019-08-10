@@ -34,7 +34,7 @@ class IntersectionHotMap {
                 "features": []
             }
             // let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
-            let color = ["rgba(255,255,255,0)", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
+            let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             for (let j in data) {
                 let x = j * 730;
                 let num = [];
@@ -89,6 +89,7 @@ class IntersectionHotMap {
                     }
                 }
             }
+            console.log('features',features)
             this.map.addLayer({
                 "id": "waterway-label",
                 "type": "symbol",
