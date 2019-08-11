@@ -7,7 +7,7 @@ class cameraAnalysisTab extends React.Component {
     super(props);
     this.pagination = {
       pageSize: 4,
-      pageSizeOptions: [4],
+      pageSizeOptions: ['4'],
       hideOnSinglePage: true
     }
     this.columns = [{

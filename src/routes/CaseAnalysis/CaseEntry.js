@@ -8,6 +8,7 @@ import UpData from '../../components/Updata/Updata';
 import DataTab from '../../components/DataTab/DataTab'
 import Model from '../../components/Model/Model';
 import MapPublic from '../../components/Map/MapController/MapPublic'
+import { apiService } from '../../services/config'
 import { Button,Icon } from 'antd';
 require('echarts');
 require('@supermap/iclient-mapboxgl');
@@ -109,8 +110,10 @@ class CaseEntry extends React.Component {
             <Button shape="circle" icon="appstore" onClick={this.offClickFun} />}
         </div>
         <div className={styles.updata}>
-          <UpData />
-          <a href="">
+          <div className={styles.upload}>
+            <UpData/>
+          </div>
+          <a href={apiService+'xk/case/exportCaseDemo'} className={styles.download}>
             <Button type="primary" >
               <Icon type="download" />下载模板
             </Button>

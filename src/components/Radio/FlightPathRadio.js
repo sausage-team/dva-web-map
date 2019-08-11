@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Radio.css';
 import { connect } from 'dva';
+import { apiService } from '../../services/config'
 import { Radio, Icon, Upload, message } from 'antd';
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -104,10 +105,11 @@ class FlightPathRadio extends React.Component {
         const status = info.file.status;
         if (status === 'done') {
             if (info.file.response) {
-              debugger
                 if (info.file.response.code!=0) {
                     message.error(`上传失败${info.file.response.data[0]}.`);
                     return;
+                }else{
+                  message.success(`上传成功`);
                 }
             }
             this.props.dispatch({
@@ -142,6 +144,11 @@ class FlightPathRadio extends React.Component {
                 </RadioButton>
                 {/* <RadioButton value="4"><Icon type="fork" />删除</RadioButton> */}
                 {/* <RadioButton value="5"><Icon type="eye-o" />可视域分析</RadioButton> */}
+                <RadioButton  value="5">
+                  <a value="5" href={apiService+'xk/camera/download'}>
+                    <Icon type="download" />下载模板
+                  </a> 
+                </RadioButton>
             </RadioGroup>
         );
     }
