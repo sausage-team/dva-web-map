@@ -8,7 +8,7 @@ import UpData from '../../components/Updata/Updata';
 import DataTab from '../../components/DataTab/DataTab'
 import Model from '../../components/Model/Model';
 import MapPublic from '../../components/Map/MapController/MapPublic'
-import { Button } from 'antd';
+import { Button,Icon } from 'antd';
 require('echarts');
 require('@supermap/iclient-mapboxgl');
 import EchartsLayer from '../../components/Map/MapLayer/ScatterPlotDemo'
@@ -110,6 +110,11 @@ class CaseEntry extends React.Component {
         </div>
         <div className={styles.updata}>
           <UpData />
+          <a href="">
+            <Button type="primary" >
+              <Icon type="download" />下载模板
+            </Button>
+          </a>
         </div>
         <Mapbox />
         {this.props.caseEntry.model ? <div className={styles.tab}>

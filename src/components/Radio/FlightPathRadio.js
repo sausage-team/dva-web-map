@@ -104,7 +104,8 @@ class FlightPathRadio extends React.Component {
         const status = info.file.status;
         if (status === 'done') {
             if (info.file.response) {
-                if (info.file.response.data[0]) {
+              debugger
+                if (info.file.response.code!=0) {
                     message.error(`上传失败${info.file.response.data[0]}.`);
                     return;
                 }

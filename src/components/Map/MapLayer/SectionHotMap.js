@@ -64,7 +64,6 @@ class SectionHotMap {
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
-                          console.log('features',serviceResult.result.features.features[i])
                             let obj = {
                                 'properties': { time: data[j][z].time },
                                 'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
@@ -75,6 +74,7 @@ class SectionHotMap {
                                 }
                             }
                             features.features.push(obj);
+        
                             this.data = features.features
                         }
                     }
@@ -82,7 +82,7 @@ class SectionHotMap {
             }
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                size: 20,
+                // size: 20,
                 gradient: {
                     '0.5': 'blue',
                     '0.6': 'cyan',
@@ -90,8 +90,11 @@ class SectionHotMap {
                     '0.8': 'yellow',
                     '0.9': 'red'
                 },
-                max: 20,
+                // max: 20,
+                // maxSize: 400,
+                // minSize: 1,
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
+                strength:0.8,
                 globalCompositeOperation: 'lighter',
                 shadowColor: 'rgba(250, 255, 0, 1)',
                 lineWidth: 30,
@@ -105,6 +108,8 @@ class SectionHotMap {
                 }
             }
             let dataSet = new DataSet(mapvData);
+            debugger
+            console.log('mapvData',mapvData)
             let mapVLayer = new mapboxgl.supermap.MapvLayer(this.map, dataSet, options);
             this.mapVLayer = mapVLayer;
             // this.filterBy(0);
@@ -120,7 +125,7 @@ class SectionHotMap {
                 }
             }
             var options = {
-                size: 20,
+                // size: 20,
                 gradient: {
                     '0.5': 'blue',
                     '0.6': 'cyan',
@@ -128,8 +133,11 @@ class SectionHotMap {
                     '0.8': 'yellow',
                     '0.9': 'red'
                 },
-                max: 20,
+                // max: 20,
+                // maxSize: 400,
+                // minSize: 1,
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
+                strength:0.8,
                 globalCompositeOperation: 'lighter',
                 shadowColor: 'rgba(250, 255, 0, 1)',
                 lineWidth: 30,
