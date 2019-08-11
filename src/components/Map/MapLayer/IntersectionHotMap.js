@@ -33,7 +33,7 @@ class IntersectionHotMap {
                 "type": "FeatureCollection",
                 "features": []
             }
-            // let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
+            // let color = ["rgba(255,255,255,0)", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"];
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             for (let j in data) {
                 let x = j * 730;
@@ -84,38 +84,41 @@ class IntersectionHotMap {
                                     'coordinates': serviceResult.result.features.features[i].geometry.coordinates
                                 }
                             }
+                            if(o==0){
+                              console.log('obj0',obj)
+                            }
                             features.features.push(obj);
                         }
                     }
                 }
             }
             console.log('features',features)
-            this.map.addLayer({
-                "id": "waterway-label",
-                "type": "symbol",
-                "source": {
-                    type: "geojson",
-                    data: features
-                },
-                "minzoom": 18,
-                "filter": ["in", "class", "canal", "river"],
-                "layout": {
-                    "text-field": "{name_en}",
-                    "text-font": ["DIN Offc Pro Italic", "Arial Unicode MS Regular"],
-                    "symbol-placement": "line",
-                    "text-pitch-alignment": "viewport",
-                    "text-max-angle": 30,
-                    "text-size": {
-                        "base": 1,
-                        "stops": [[13, 12], [18, 16]]
-                    }
-                },
-                "paint": {
-                    "text-halo-width": 0,
-                    "text-halo-blur": 0,
-                    "text-color": "#78888a"
-                }
-            });
+            // this.map.addLayer({
+            //     "id": "waterway-label",
+            //     "type": "symbol",
+            //     "source": {
+            //         type: "geojson",
+            //         data: features
+            //     },
+            //     "minzoom": 18,
+            //     // "filter": ["in", "class", "canal", "river"],
+            //     // "layout": {
+            //     //     "text-field": "{name_en}",
+            //     //     "text-font": ["DIN Offc Pro Italic", "Arial Unicode MS Regular"],
+            //     //     "symbol-placement": "line",
+            //     //     "text-pitch-alignment": "viewport",
+            //     //     "text-max-angle": 30,
+            //     //     "text-size": {
+            //     //         "base": 1,
+            //     //         "stops": [[13, 12], [18, 16]]
+            //     //     }
+            //     // },
+            //     "paint": {
+            //         "text-halo-width": 0,
+            //         "text-halo-blur": 0,
+            //         "text-color": "#78888a"
+            //     }
+            // });
             this.map.addLayer({
                 "id": "heat",
                 "type": "heatmap",
@@ -123,38 +126,51 @@ class IntersectionHotMap {
                     type: "geojson",
                     data: features
                 },
-                "maxzoom": 15,
+                // "maxzoom": 15,
                 "paint": {
                     //Increase the heatmap weight based on frequency and property magnitude
                     "heatmap-weight": {
-                        "property": "num",
+                        // "property": "num",
+                        "property": "index",
                         "type": "exponential",
                         "stops": [
-                            [0, 0],
-                            [8, 1]
-                        ]
-                    },
-                    "heatmap-intensity": {
-                        "stops": [
+                            // [0, 0],
+                            // [8, 1]
                             [0, 1],
-                            [18, 0]
+                            [5, 5]
                         ]
                     },
+                    // "heatmap-intensity": {
+                    //     "stops": [
+                    //         [0, 1],
+                    //         [18, 0]
+                    //     ]
+                    // },
                     "heatmap-color": [
                         "interpolate",
                         ["linear"],
                         ["heatmap-density"],
-                        0, color[0],
-                        0.2, color[1],
-                        0.4, color[2],
-                        0.6, color[3],
+                        // 0, color[0],
+                        // 0.2, color[1],
+                        // 0.4, color[2],
+                        // 0.6, color[3],
+                        // 0.8, color[4],
+                        // 1, color[5]
+                        0, 'rgba(255,255,255,0)',
+                        0.2, color[0],
+                        0.35, color[1],
+                        0.5, color[2],
+                        0.65, color[3],
                         0.8, color[4],
                         1, color[5]
                     ],
                     "heatmap-radius": {
                         "stops": [
-                            [4, 5],
-                            [9, 30]
+                            // [4, 5],
+                            // [9, 30]
+                            [0, 25],
+                            [5, 30],
+                            [15, 35]
                         ]
                     },
                     "heatmap-opacity": {
@@ -162,10 +178,13 @@ class IntersectionHotMap {
                         "stops": [
                             [7, 0.9],
                             [15, 0.4]
+                            // [7, 1],
+                            // [15, 0.8]
                         ]
                     },
                 }
-            }, 'waterway-label');
+            // }, 'waterway-label');
+            });
             this.map.addLayer({
                 "id": "point",
                 "type": "circle",
@@ -199,7 +218,8 @@ class IntersectionHotMap {
                         ]
                     }
                 }
-            }, 'waterway-label');
+            // }, 'waterway-label');
+            });
             this.filterBy(0);
         });
     }

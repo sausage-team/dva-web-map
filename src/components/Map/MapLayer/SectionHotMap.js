@@ -16,7 +16,6 @@ class SectionHotMap {
 
     }
     addMapLay(data, value) {
-      debugger
         let IDs = [];
         for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
@@ -30,7 +29,6 @@ class SectionHotMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
-          debugger
           console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",

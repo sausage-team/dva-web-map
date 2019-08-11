@@ -28,7 +28,6 @@ class SectionMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
-          debugger
           console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",

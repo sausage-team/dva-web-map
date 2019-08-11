@@ -12,7 +12,6 @@ class HotMap {
     this.instantiationDefaultRun();
   }
   MapLayData(data) {
-    debugger
     let arr = [];
     const geojson = {
       "type": "FeatureCollection",
