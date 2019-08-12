@@ -1,11 +1,12 @@
 import { mark, CaseUpdate } from '../services/user'
 import { Upload, Icon, message, Button } from 'antd';
+import { apiService } from '../services/config'
 export default {
   namespace: 'caseEntry',
   state: {
     updatastate: {
       name: 'file',
-      action: 'http://182.92.2.91:8081/mtg-xlgc/xk/case/excel?token=' + localStorage.getItem('token') + ''
+      action:  apiService + 'xk/case/excel?token=' + localStorage.getItem('token') + ''
     },
     updata: '',
     okList: '',
