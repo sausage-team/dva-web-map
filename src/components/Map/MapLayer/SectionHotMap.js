@@ -66,7 +66,9 @@ class SectionHotMap {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
                             let obj = {
                                 'properties': { time: data[j][z].time },
-                                'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
+                                // 'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
+                                'count': parseInt(data[j][z].num),
+                                // 'count': 30 * Math.random(),
                                 'geometry': {
                                     'type': "LineString",
                                     //数据
@@ -80,26 +82,30 @@ class SectionHotMap {
                     }
                 }
             }
+            console.log('features.features',features.features)
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                // size: 20,
+                max: 300,
+                // strokeStyle: 'rgba(255, 255, 255, 1)',
+                lineWidth: 5,
+                shadowColor: 'rgba(255, 255, 255, 1)',
+                shadowBlur: 20,
+                draw: 'intensity',
+                // size: 5,
                 gradient: {
-                    '0.5': 'blue',
-                    '0.6': 'cyan',
-                    '0.7': 'lime',
-                    '0.8': 'yellow',
-                    '0.9': 'red'
+                  '0': 'blue',
+                  '0.1': 'cyan',
+                  '0.3': 'lime',
+                  '0.5': 'yellow',
+                  '1': 'red'
                 },
                 // max: 20,
                 // maxSize: 400,
                 // minSize: 1,
-                //strokeStyle: "rgba(255, 50, 50, 0.3)",
-                strength:0.8,
-                globalCompositeOperation: 'lighter',
-                shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 30,
-                shadowBlur: 40,
-                draw: 'heatmap'
+                // strength:0.8,
+                // globalCompositeOperation: 'lighter',
+                // shadowColor: 'rgba(250, 255, 0, 1)',
+                // shadowBlur: 40,
             }
             let mapvData = []
             for (const key in this.data) {
@@ -123,23 +129,28 @@ class SectionHotMap {
                 }
             }
             var options = {
-                // size: 20,
+
+                lineWidth: 5,
+                max: 300,
+                shadowColor: 'rgba(255, 255, 255, 1)',
+                shadowBlur: 20,
+                draw: 'intensity',
+                // size: 5,
                 gradient: {
-                    '0.5': 'blue',
-                    '0.6': 'cyan',
-                    '0.7': 'lime',
-                    '0.8': 'yellow',
-                    '0.9': 'red'
-                },
+                  '0': 'blue',
+                  '0.1': 'cyan',
+                  '0.3': 'lime',
+                  '0.5': 'yellow',
+                  '1': 'red'
+              },
                 // max: 20,
                 // maxSize: 400,
                 // minSize: 1,
                 //strokeStyle: "rgba(255, 50, 50, 0.3)",
-                strength:0.8,
-                globalCompositeOperation: 'lighter',
-                shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 30,
-                shadowBlur: 40
+                // strength:0.8,
+                // globalCompositeOperation: 'lighter',
+                // shadowColor: 'rgba(250, 255, 0, 1)',
+                // shadowBlur: 40
             }
             let dataSet = new DataSet(mapvData);
             this.mapVLayer && this.mapVLayer.update({ data: dataSet, options: options })
