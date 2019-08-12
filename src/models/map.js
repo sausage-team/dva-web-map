@@ -93,7 +93,8 @@ export default {
     witchData: false,
     mapTab: 1,
     timeShowState: false,
-    loading: false
+    loading: false,
+    mapCategory: 1,
   },
   reducers: {
     setHotMapData(state, { payload: hotMapData }) {
@@ -282,6 +283,10 @@ export default {
     },
     setMapLoading(state, { payload: loading }) {
       state.loading = loading;
+      return { ...state };
+    },
+    setMapCategory(state, { payload: mapCategory }) {
+      state.mapCategory = mapCategory;
       return { ...state };
     },
   },

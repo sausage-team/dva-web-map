@@ -54,7 +54,7 @@ class RadioTab extends React.Component {
     }
     render() {
         return (
-            <RadioGroup defaultValue="1" size="large" onChange={this.changeFun}>
+            <RadioGroup defaultValue="1" onChange={this.changeFun}>
                 <RadioButton value="1">分段专题图</RadioButton>
                 <RadioButton value="2">热力图</RadioButton>
             </RadioGroup>

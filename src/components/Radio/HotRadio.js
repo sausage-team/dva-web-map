@@ -60,7 +60,7 @@ class HotRadio extends React.Component {
     }
     render() {
         return (
-            <RadioGroup size="large" onChange={this.changeFun}>
+            <RadioGroup onChange={this.changeFun}>
                 <RadioButton value="2"><Icon type="swap" />路段</RadioButton>
                 <RadioButton value="3"><Icon type="fork" />路口</RadioButton>
                 {/* <RadioButton value="4"><Icon type="eye-o" />摄像头</RadioButton> */}

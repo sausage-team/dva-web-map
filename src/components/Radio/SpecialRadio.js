@@ -150,7 +150,7 @@ class SpecialRadio extends React.Component {
     }
     render() {
         return (
-            <RadioGroup size="large" onChange={this.changeFun}>
+            <RadioGroup onChange={this.changeFun}>
                 <RadioButton value="1"><Icon type="scan" />路面</RadioButton>
                 <RadioButton value="2"><Icon type="swap" />路段</RadioButton>
                 <RadioButton value="3"><Icon type="fork" />路口</RadioButton>

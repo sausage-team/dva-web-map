@@ -108,8 +108,6 @@ class SectionHotMap {
                 }
             }
             let dataSet = new DataSet(mapvData);
-            debugger
-            console.log('mapvData',mapvData)
             let mapVLayer = new mapboxgl.supermap.MapvLayer(this.map, dataSet, options);
             this.mapVLayer = mapVLayer;
             // this.filterBy(0);
