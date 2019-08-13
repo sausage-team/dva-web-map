@@ -47,7 +47,7 @@ class PavementAnalysisTab extends React.Component {
     if (features) {
       let obj = {};
       for (let i in features._data.features) {
-        if (features._data.features[i].properties.ID == text) {
+        if (features._data.features[i].properties.SMID == text) {
           features = features._data.features[i];
           break;
         }
@@ -63,7 +63,7 @@ class PavementAnalysisTab extends React.Component {
       mapObj.getSource(setLayers).setData(data);
       console.log(features)
       mapObj.flyTo({
-        center: [features.properties.SMSDRIE || features.properties.SMX || eatures.properties['经度'], features.properties.SMSDRIN || features.properties.SMY || atures.properties['纬度']],
+        center: [features.properties.SMSDRIE || features.properties.SMX || features.properties['经度'], features.properties.SMSDRIN || features.properties.SMY || features.properties['纬度']],
         zoom: 16,
         speed: 0.2
       })

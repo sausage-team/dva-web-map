@@ -87,7 +87,6 @@ class PavementMap {
                     }
                 }
             }
-
             this.map.addLayer({
                 "id": "PavementMap",
                 "type": "fill",

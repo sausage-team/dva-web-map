@@ -987,9 +987,9 @@ export default {
       })
     },
     *getTSMap({ payload: object }, { call, put, select }) {
-      // yield put({
-      //   type: 'clearWithAndMapLayer'
-      // })
+      yield put({
+        type: 'clearWithAndMapLayer'
+      })
       yield put({
         type: 'cameraAnalysis/setLoading',
         payload: true
@@ -1000,27 +1000,40 @@ export default {
         time[i] = time[i].replace(/[-]/g, "");
       }
       
-      let map = yield select(_=>_.map) 
+      // let map = yield select(_=>_.map) 
       let TSData
-      if(map.TSData){
-        TSData = map.TSData
-      }else{
-        yield put({
-          type: 'setMapLoading',
-          payload: true
-        })
-        let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
-        yield put({
-          type: 'setMapLoading',
-          payload: false
-        })
-        TSData = res.data;
-        yield put({
-          type: 'setTSData',
-          payload: TSData
-        })
-      }
-
+      // if(map.TSData){
+      //   TSData = map.TSData
+      // }else{
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: true
+      //   })
+      //   let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: false
+      //   })
+      //   TSData = res.data;
+      //   yield put({
+      //     type: 'setTSData',
+      //     payload: TSData
+      //   })
+      // }
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
+      let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
+      TSData = res.data;
+      yield put({
+        type: 'setTSData',
+        payload: TSData
+      })
       let tabData = TSData.slice(0, 10);
       for (let i in tabData) {
         let str = '';
@@ -1042,17 +1055,17 @@ export default {
       }
       let tSMap = new TSMap(mapObj);
       yield call(tSMap.addMapLay.bind(this, TSData, object.value));
-      // yield put({
-      //   type: 'setIntersectionMapObj',
-      //   payload: tSMap
-      // })
       yield put({
-        type: 'clearWithAndMapLayer',
-        payload:{
-          type:'setIntersectionMapObj',
-          map:tSMap
-        }
+        type: 'setIntersectionMapObj',
+        payload: tSMap
       })
+      // yield put({
+      //   type: 'clearWithAndMapLayer',
+      //   payload:{
+      //     type:'setIntersectionMapObj',
+      //     map:tSMap
+      //   }
+      // })
       yield put({
         type: 'cameraAnalysis/setColumns',
         payload: tabData
@@ -1067,9 +1080,9 @@ export default {
       })
     },
     *getTSHotMap({ payload: object }, { call, put, select }) {
-      // yield put({
-      //   type: 'clearWithAndMapLayer'
-      // })
+      yield put({
+        type: 'clearWithAndMapLayer'
+      })
       yield put({
         type: 'cameraAnalysis/setLoading',
         payload: true
@@ -1079,36 +1092,41 @@ export default {
       for (let i in time) {
         time[i] = time[i].replace(/[-]/g, "");
       }
-      // yield put({
-      //   type: 'setMapLoading',
-      //   payload: true
-      // })
-      // let data = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
-      // yield put({
-      //   type: 'setMapLoading',
-      //   payload: false
-      // })
-      // data = data.data;
-      let map = yield select(_=>_.map) 
+
+      // let map = yield select(_=>_.map) 
       let TSData
-      if(map.TSData){
-        TSData = map.TSData
-      }else{
-        yield put({
-          type: 'setMapLoading',
-          payload: true
-        })
-        let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
-        yield put({
-          type: 'setMapLoading',
-          payload: false
-        })
-        TSData = res.data;
-        yield put({
-          type: 'setTSData',
-          payload: TSData
-        })
-      }
+      // if(map.TSData){
+      //   TSData = map.TSData
+      // }else{
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: true
+      //   })
+      //   let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      //   yield put({
+      //     type: 'setMapLoading',
+      //     payload: false
+      //   })
+      //   TSData = res.data;
+      //   yield put({
+      //     type: 'setTSData',
+      //     payload: TSData
+      //   })
+      // }
+      yield put({
+        type: 'setMapLoading',
+        payload: true
+      })
+      let res = yield call(getHotMap, `/xk/camera/queryCasesByDate/${time[0]}/${time[1]}?cameraNumLimit=-1`, {})
+      yield put({
+        type: 'setMapLoading',
+        payload: false
+      })
+      TSData = res.data;
+      yield put({
+        type: 'setTSData',
+        payload: TSData
+      })
       let tabData = TSData.slice(0, 10);
       for (let i in tabData) {
         let str = '';
@@ -1130,17 +1148,17 @@ export default {
       }
       let tSHotMap = new TSHotMap(mapObj);
       yield call(tSHotMap.addMapLay.bind(this, TSData, object.value));
-      // yield put({
-      //   type: 'setIntersectionMapObj',
-      //   payload: tSHotMap
-      // })
       yield put({
-        type: 'clearWithAndMapLayer',
-        payload:{
-          type:'setIntersectionMapObj',
-          map:tSHotMap
-        }
+        type: 'setIntersectionMapObj',
+        payload: tSHotMap
       })
+      // yield put({
+      //   type: 'clearWithAndMapLayer',
+      //   payload:{
+      //     type:'setIntersectionMapObj',
+      //     map:tSHotMap
+      //   }
+      // })
       yield put({
         type: 'cameraAnalysis/setColumns',
         payload: tabData

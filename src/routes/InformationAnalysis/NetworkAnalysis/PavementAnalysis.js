@@ -66,7 +66,7 @@ class PavementAnalysis extends React.Component {
         data.features = [obj];
         mapObj.getSource(setLayers).setData(data);
         for (let i in this.props.pavementAnalysis.columns) {
-            if (this.props.pavementAnalysis.columns[i].smid == features[0].properties.ID) {
+            if (this.props.pavementAnalysis.columns[i].smid == features[0].properties.SMID) {
                 this.props.dispatch({
                     type: 'map/shutTimeOpen'
                 })
