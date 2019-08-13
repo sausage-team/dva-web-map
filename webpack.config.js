@@ -87,5 +87,6 @@ module.exports = (webpackConfig, env) => {
     webpackConfig.devServer = {
         contentBase: path.join(__dirname, "dist")
     }
+    webpackConfig.externals = ['canvas']
     return webpackConfig
 }

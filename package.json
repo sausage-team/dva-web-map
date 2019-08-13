@@ -30,7 +30,7 @@
     "mapbox-gl": "^0.45.0",
     "mapbox-gl-compare": "^0.1.0",
     "mapbox-gl-draw": "^0.16.0",
-    "mapv": "^2.0.20",
+    "mapv": "^2.0.12",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-helmet": "^5.2.0",

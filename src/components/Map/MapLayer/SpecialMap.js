@@ -52,7 +52,7 @@ class SpecialMap {
             for (let i in serviceResult.result.features.features) {
                 let o = 0;
                 for (let j in data) {
-                    if (serviceResult.result.features.features[i].properties.POLICE_NUM.trim() == data[j].policeNum.trim()) {
+                    if (serviceResult.result.features.features[i].properties.ZZJG.trim() == data[j].policeNum.trim()) {
                       console.log('data[j]',data[j])
                         if (data[j].num <= num[0][1]) {
                             o = 1;

@@ -226,16 +226,16 @@ class MapController extends React.Component {
                                 <RadioButton value="c">蜂&nbsp;巢</RadioButton>
                             </RadioGroup>
                         </div>
-                        <h2 className={styles.hTwo}>时间轴</h2>
+                        {/* <h2 className={styles.hTwo}>时间轴</h2>
                         <div className={styles.center}>
                             <Switch style={{ marginTop: '20px' }} checkedChildren="显示" unCheckedChildren="关闭" checked={this.props.map.witchData} defaultChecked onChange={this.switchChenge} />
-                        </div>
+                        </div> */}
                     </TabPane>
                     <TabPane tab={<div className={styles.tab}><img src={img4} /></div>} key="4">
-                        <h2 className={styles.hTwo}>时间轴</h2>
+                        {/* <h2 className={styles.hTwo}>时间轴</h2>
                         <div className={styles.center}>
                             <Switch style={{ marginTop: '20px' }} checkedChildren="显示" unCheckedChildren="关闭" checked={this.props.map.witchData} defaultChecked onChange={this.switchChenge} />
-                        </div>
+                        </div> */}
                     </TabPane>
                 </Tabs>
             </div>

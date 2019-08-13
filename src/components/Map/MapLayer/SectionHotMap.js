@@ -85,27 +85,21 @@ class SectionHotMap {
             console.log('features.features',features.features)
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                max: 300,
-                // strokeStyle: 'rgba(255, 255, 255, 1)',
-                lineWidth: 5,
-                shadowColor: 'rgba(255, 255, 255, 1)',
-                shadowBlur: 20,
-                draw: 'intensity',
-                // size: 5,
-                gradient: {
-                  '0': 'blue',
-                  '0.1': 'cyan',
-                  '0.3': 'lime',
-                  '0.5': 'yellow',
-                  '1': 'red'
-                },
-                // max: 20,
-                // maxSize: 400,
-                // minSize: 1,
-                // strength:0.8,
-                // globalCompositeOperation: 'lighter',
-                // shadowColor: 'rgba(250, 255, 0, 1)',
-                // shadowBlur: 40,
+              size: 5,
+              gradient: {
+                  '0.5': 'blue',
+                  '0.6': 'cyan',
+                  '0.7': 'lime',
+                  '0.8': 'yellow',
+                  '0.9': 'red'
+              },
+              max: 50,
+              //strokeStyle: "rgba(255, 50, 50, 0.3)",
+              globalCompositeOperation: 'lighter',
+              shadowColor: 'rgba(250, 255, 0, 1)',
+              lineWidth: 6,
+              shadowBlur: 40,
+              draw: 'heatmap'
             }
             let mapvData = []
             for (const key in this.data) {
@@ -129,28 +123,21 @@ class SectionHotMap {
                 }
             }
             var options = {
-
-                lineWidth: 5,
-                max: 300,
-                shadowColor: 'rgba(255, 255, 255, 1)',
-                shadowBlur: 20,
-                draw: 'intensity',
-                // size: 5,
-                gradient: {
-                  '0': 'blue',
-                  '0.1': 'cyan',
-                  '0.3': 'lime',
-                  '0.5': 'yellow',
-                  '1': 'red'
+              size: 5,
+              gradient: {
+                  '0.5': 'blue',
+                  '0.6': 'cyan',
+                  '0.7': 'lime',
+                  '0.8': 'yellow',
+                  '0.9': 'red'
               },
-                // max: 20,
-                // maxSize: 400,
-                // minSize: 1,
-                //strokeStyle: "rgba(255, 50, 50, 0.3)",
-                // strength:0.8,
-                // globalCompositeOperation: 'lighter',
-                // shadowColor: 'rgba(250, 255, 0, 1)',
-                // shadowBlur: 40
+              max: 50,
+              //strokeStyle: "rgba(255, 50, 50, 0.3)",
+              globalCompositeOperation: 'lighter',
+              shadowColor: 'rgba(250, 255, 0, 1)',
+              lineWidth: 6,
+              shadowBlur: 40,
+              draw: 'heatmap'
             }
             let dataSet = new DataSet(mapvData);
             this.mapVLayer && this.mapVLayer.update({ data: dataSet, options: options })
