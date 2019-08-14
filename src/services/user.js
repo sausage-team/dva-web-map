@@ -38,7 +38,7 @@ export function userDelete(urlRight,options) {
     }
     return request(apiService + urlRight, option);
 }
-export function valid(urlRight, options) {
+export function valid(urlRight) {
     let option = {
         method: 'GET',
 
@@ -55,7 +55,7 @@ export function login(urlRight, options) {
     }
     return request(apiService + urlRight, option);
 }
-export function getHotMap(urlRight, options) {
+export function getHotMap(urlRight) {
     let option = {
         method: 'get',
         headers: {
@@ -64,7 +64,7 @@ export function getHotMap(urlRight, options) {
     }
     return request(apiService + urlRight, option);
 }
-export function mark(urlRight, options) {
+export function mark(urlRight) {
     let option = {
         method: 'get',
         headers: {
@@ -84,7 +84,7 @@ export function CaseUpdate(urlRight, options) {
     return request(apiService + urlRight+'?token='+localStorage.getItem('token'), option);
 }
 //社区防控社区面详情数据
-export function shequDataDetail(smid, options) {
+export function shequDataDetail(smid) {
     let option = {
         method: 'GET'
     }

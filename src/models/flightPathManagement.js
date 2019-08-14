@@ -1,7 +1,8 @@
 import { getHotMap, Update } from '../services/user';
 import gltf from '../../public/Venders/model.gltf';
 import gltf1 from '../../public/Venders/qingji.gltf';
-import { apiService } from '../services/config'
+import { apiService } from '../services/config';
+
 export default {
   namespace: 'flightPathManagement',
   state: {
@@ -82,7 +83,6 @@ export default {
         payload: true
       })
       let data = yield call(getHotMap, 'xk/camera/queryCameraList?pageNum=-1', {});
-      debugger
       yield put({
         type: 'map/setMapLoading',
         payload: false

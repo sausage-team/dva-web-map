@@ -183,15 +183,15 @@ class HotMap {
     if (this.map.getLayer("point")) {
       this.map.removeLayer("point");
       this.map.removeSource("point");
-    };
+    }
     if (this.map.getLayer("heat")) {
       this.map.removeLayer("heat");
       this.map.removeSource("heat");
-    };
+    }
     if (this.map.getLayer("waterway-label")) {
       this.map.removeLayer("waterway-label");
       this.map.removeSource("waterway-label");
-    };
+    }
   }
 
 }

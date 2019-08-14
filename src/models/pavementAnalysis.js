@@ -26,7 +26,6 @@ export default {
       return { ...state, };
     },
     setColumns(state, { payload: columns }) {
-      debugger
       state.columns = columns;
       return { ...state, };
     },

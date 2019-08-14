@@ -9,11 +9,9 @@ export default {
   effects: {
     *query({ payload }, { call, put, select }) {  // eslint-disable-line
       const token = localStorage.getItem('token')
-      const data = yield call(valid,'token/valid?token='+token +'', '');
-      if (data.code == 0) {
-
-      } else {
-        yield put(routerRedux.push('/login'));
+      const data = yield call(valid,'token/valid?token='+token +'', '')
+      if (data.code !== 0) {
+        yield put(routerRedux.push('/login'))
       }
     }
   },
@@ -22,4 +20,4 @@ export default {
      //dispatch({ type: 'query' })
     },
   },
-};
+}

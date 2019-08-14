@@ -3,89 +3,148 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const cesiumSource = 'Cesium';
-const cesiumWorkers = './Workers';
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-module.exports = (webpackConfig, env) => {
-  console.log('--------env--------', env)
-    const production = env === 'production'
-    // FilenameHash
-    if (webpackConfig.module) {
-        // ClassnameHash
-        webpackConfig.context = __dirname,
-            webpackConfig.entry = {
-                app: ['babel-polyfill', './src/index.js'],
-                // cesium:'./Cesium/Cesium.js'
-            };
-        webpackConfig.output = {
-            filename: '[name].js',
-            path: path.resolve(__dirname, 'dist'),
-            // Needed by Cesium for multiline strings
-        }
-        webpackConfig.amd = { toUrlUndefined: true };
-        webpackConfig.node = { fs: 'empty' };
-        webpackConfig.module.rules.map((item) => {
-            if (String(item.test) === '/\\.less$/' || String(item.test) === '/\\.css/') {
-                item.use.filter(iitem => iitem.loader === 'css')[0].options.localIdentName = '[hash:base64:5]'
-            }
-            return item
-        })
-        webpackConfig.module.rules.push({
-            test: /\.js[x]?$/,
-            include: [path.resolve(__dirname, 'node_modules/@supermap'), path.resolve(__dirname, 'node_modules/mapbox-gl-draw')],
-            exclude: /('node_modules|dist|Cesium)/,
-            use: [
-                {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015'],
-                    }
-                }
-            ],
-        })
-        // 打包报错处理：Uncaught ReferenceError: t is not defined 
-        webpackConfig.module.noParse = /(mapbox-gl)\.js$/
-    }
-    webpackConfig.plugins.push(
-        new webpack.LoaderOptionsPlugin({
-            minimize: true,
-            debug: false,
-        })
-    )
-    webpackConfig.plugins = webpackConfig.plugins.concat([
-        new HtmlWebpackPlugin({
-            template: production ? `${__dirname}/src/indexPro.ejs` : `${__dirname}/src/index.ejs`,
-            // filename: production ? 'index.html' : '../index.html',
-            filename: 'index.html',
-            minify: production ? {
-                collapseWhitespace: true,
-            } : null,
-            hash: true,
-            headScripts: production ? null : ['/roadhog.dll.js'],
-        }),
-        new CopyWebpackPlugin([
+
+const env = 'development'
+const production = env && env === 'production'
+
+module.exports = {
+	mode: env,
+	context: __dirname,
+	entry: {
+			app: ['@babel/polyfill', './src/index.jsx']
+	},
+	output: {
+			filename: '[name].js',
+			path: path.resolve(__dirname, 'dist'),
+	},
+	amd: {
+			toUrlUndefined: true
+	},
+	node: {
+			fs: 'empty'
+	},
+	module: {
+		rules: [
+			{
+        test: /\.(gltf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+			{
+				test: /\.(png|jpg|gif|ico|eot|svg|ttf|woff)$/,
+				use : [
+					{
+						loader : 'url-loader'
+					}
+				]
+			},
+			{
+				test: /\.(css)$/,
+				use: [
+					'style-loader',
+					{ 
+						loader: 'css-loader',
+						options: {
+							sourceMap: true
+						}
+					}
+				],
+				include: [
+					path.resolve(__dirname, 'src'),
+					path.resolve(__dirname, 'node_modules/mapbox-gl-compare'),
+					path.resolve(__dirname, 'node_modules/mapbox-gl')
+				]
+			},
+			{
+				test: /\.(less)$/,
+				use: [
+					'style-loader',
+					{ 
+						loader: 'css-loader',
+						options: {
+							sourceMap: true
+						}
+					},
+					{ 
+						loader: 'less-loader',
+						options: {
+							javascriptEnabled: true,
+						}
+					}
+				],
+				include: [
+					path.resolve(__dirname, 'src'),
+					path.resolve(__dirname, 'node_modules/antd'),
+					path.resolve(__dirname, 'node_modules/mapbox-gl-compare'),
+					path.resolve(__dirname, 'node_modules/mapbox-gl'),
+				]
+			},
+			{
+				test: /\.(js|jsx)$/,
+				loader: 'babel-loader',
+				options: {
+					presets: [
+            '@babel/preset-env',
             {
-                from: path.join(cesiumSource),
-                to: 'Cesium'
-            },
-        ])
-    ])
-    // Alias
-    webpackConfig.resolve.alias = {
-        components: `${__dirname}/src/components`,
-        utils: `${__dirname}/src/utils`,
-        config: `${__dirname}/src/utils/config`,
-        enums: `${__dirname}/src/utils/enums`,
-        services: `${__dirname}/src/services`,
-        models: `${__dirname}/src/models`,
-        routes: `${__dirname}/src/routes`,
-        themes: `${__dirname}/src/themes`,
-        //cesium: path.resolve(__dirname, cesiumSource),
-    }
-    // webpackConfig.babel.plugins.push(['import', {
-    //     libraryName: 'antd',
-    // }]);
-    webpackConfig.devServer = {
-        contentBase: path.join(__dirname, "dist")
-    }
-    return webpackConfig
+              plugins: [
+								'@babel/plugin-proposal-class-properties'
+              ]
+            }
+          ]
+				},
+				include: [
+					path.resolve(__dirname, 'src'),
+					path.resolve(__dirname, 'node_modules/@supermap'),
+					path.resolve(__dirname, 'node_modules/mapbox-gl-draw')
+				],
+				// exclude: /(node_modules|dist|Cesium)/
+			}
+		],
+		noParse: /(mapbox-gl)\.js$/
+	},
+	plugins: [
+		new webpack.LoaderOptionsPlugin({
+			minimize: true,
+			debug: false,
+		}),
+		new HtmlWebpackPlugin({
+			template: production ? `${__dirname}/src/indexPro.ejs` : `${__dirname}/src/index.ejs`,
+			// filename: production ? 'index.html' : '../index.html',
+			filename: 'index.html',
+			minify: production ? {
+					collapseWhitespace: true,
+			} : null,
+			hash: true,
+		}),
+		new CopyWebpackPlugin([
+			{
+				from: path.join(cesiumSource),
+				to: 'Cesium'
+			},
+		]),
+		new webpack.HotModuleReplacementPlugin()
+	],
+	resolve: {
+		alias: {
+			components: `${__dirname}/src/components`,
+			utils: `${__dirname}/src/utils`,
+			config: `${__dirname}/src/utils/config`,
+			enums: `${__dirname}/src/utils/enums`,
+			services: `${__dirname}/src/services`,
+			models: `${__dirname}/src/models`,
+			routes: `${__dirname}/src/routes`,
+			themes: `${__dirname}/src/themes`,
+		},
+		extensions: ['*', '.js', '.jsx']
+	},
+	devServer: {
+			contentBase: path.join(__dirname, "dist"),
+			compress: true,
+			port: 9000,
+			hot: true
+	}
 }

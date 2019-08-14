@@ -38,7 +38,6 @@ class CameraMap {
     return geojson;
   }
   addMapLay(data) {
-    debugger
     this.data = data;
     let IDs = [];
     for (let i = 1; i <= 143; i++) {
@@ -173,19 +172,19 @@ class CameraMap {
     if (this.map.getLayer("CameraMapPoint")) {
       this.map.removeLayer("CameraMapPoint");
       this.map.removeSource("CameraMapPoint");
-    };
+    }
     if (this.map.getLayer("CameraMapHeat")) {
       this.map.removeLayer("CameraMapHeat");
       this.map.removeSource("CameraMapHeat");
-    };
+    }
     if (this.map.getLayer("CameraMap")) {
       this.map.removeLayer("CameraMap");
       this.map.removeSource("CameraMap");
-    };
+    }
     if (this.map.getLayer("addCameraMapPoint")) {
       this.map.removeLayer("addCameraMapPoint");
       this.map.removeSource("addCameraMapPoint");
-    };
+    }
   }
 }
 export default CameraMap;

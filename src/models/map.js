@@ -420,7 +420,6 @@ export default {
         type: 'clearWithAndMapLayer'
       })
       let token = localStorage.getItem('token')
-      debugger
 
       let honeycombData
       // let {hotMapData} = yield select(state => state.map);
@@ -456,7 +455,6 @@ export default {
       //   type: 'setHotMapData',
       //   payload: honeycombData
       // })
-      debugger
       // yield put({
       //   type: 'clearWithAndMapLayer',
       //   payload:{
@@ -466,7 +464,6 @@ export default {
       // })
       let honeycomb = new Honeycomb(mapObj);
       honeycomb.addMapLay(honeycombData);
-      debugger
       yield put({
         type: 'setHotMapObj',
         payload: honeycomb
@@ -532,7 +529,6 @@ export default {
       let map = yield select(state => state.map);
       let token = localStorage.getItem('token')
       let custersMapData 
-      debugger
       if(map.hotMapData){
         custersMapData = map.hotMapData
       }else{
@@ -551,7 +547,6 @@ export default {
           payload: custersMapData
         })
       }
-      debugger
       let custersMap = new CustersMap(mapObj);
       custersMap.addMapLay(custersMapData);
       // yield put({
@@ -643,7 +638,6 @@ export default {
       //   type: 'setGridMapObj',
       //   payload: gridMap
       // })
-      debugger
       yield put({
         type: 'clearWithAndMapLayer',
         payload:{
@@ -688,6 +682,7 @@ export default {
       // yield put({
       //   type: 'clearWithAndMapLayer'
       // })
+      let map = yield select(state => state.map);  
       let token = localStorage.getItem('token')
       let hotMapData 
       if(map.hotMapData){

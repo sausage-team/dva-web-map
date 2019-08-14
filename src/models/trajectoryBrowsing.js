@@ -1,5 +1,6 @@
 import { getHotMap } from '../services/user';
-import img from '../../public/img/defalutImg.png'
+import img from '../../public/img/defalutImg.png';
+
 export default {
   namespace: 'trajectoryBrowsing',
   state: {

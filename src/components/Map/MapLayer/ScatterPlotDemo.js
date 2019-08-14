@@ -394,4 +394,3 @@ import echarts from 'echarts';
 			}
 /******/])
 });
-;

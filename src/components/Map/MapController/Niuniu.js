@@ -246,6 +246,7 @@ export function NiuniuCaptureObject() {
             }
         }
         catch (e) {
+            console.log(e)
         }
         return false;
     }
@@ -503,7 +504,7 @@ export function NiuniuCaptureObject() {
             console.log(txt);
         }
         catch (e) {
-
+            console.log(e)
         }
     }
 
@@ -582,16 +583,16 @@ export function NiuniuCaptureObject() {
         try {
             //启动客户端，或者通过websocket去发送数据   
             if (self.connectState == emConnected) {
-                var json = $.toJSON(obj);
+                let json = $.toJSON(obj);
                 self.NiuniuSocket.send('1' + encodeURIComponent(json));
             }
             else {
                 //首次启动时，不支持水印，否则会过长 
                 obj.SetWatermarkPicturePath = "";
                 //obj.SetWatermarkTextValue = "";	
-                var json = $.toJSON(obj);
+                let json = $.toJSON(obj);
                 self.WriteLog(json.length);
-                var newUrl = self.CaptureName + "://" + encodeURIComponent(json);
+                let newUrl = self.CaptureName + "://" + encodeURIComponent(json);
                 self.WriteLog(newUrl.length);
 
                 //启动客户端  
@@ -636,7 +637,7 @@ export function NiuniuCaptureObject() {
             }
             var isChrome = agent.indexOf("chrome") != -1;
             if (isChrome) {
-                if (chrome && chrome.runtime) {
+                if (window.chrome && window.chrome.runtime) {
                     return true;
                 }
             }
@@ -652,6 +653,7 @@ export function NiuniuCaptureObject() {
             return false;
         }
         catch (e) {
+            console.log(e)
         }
         return false;
     }

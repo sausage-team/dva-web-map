@@ -51,7 +51,6 @@ class Honeycomb {
   }
 
   addMapLay(data) {
-    debugger
     var options = {
       fillStyle: 'rgba(55, 50, 250, 0.8)',
       shadowColor: 'rgba(255, 250, 50, 1)',

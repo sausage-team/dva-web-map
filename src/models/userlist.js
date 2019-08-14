@@ -1,5 +1,4 @@
 import {userList,userUpdate,policeList,userDelete,userRoleList} from '../services/user'
-import queryString from 'query-string'
 import { message, Button } from 'antd';
 import { routerRedux } from 'dva/router'
 export default {
@@ -67,18 +66,16 @@ export default {
         const token = localStorage.getItem('token');
         let params='token='+token;
         const result = yield call(policeList,params);
-      if (result.code == 0) {
-        yield put({type:'queryPoliceSuccess',payload:result.data.policeList});
-      } else {
-       }
+        if (result.code == 0) {
+          yield put({type:'queryPoliceSuccess',payload:result.data.policeList});
+        }
       },*queryRole({ payload}, { call,put,select})  {
         const token = localStorage.getItem('token');
         let params='page=1&limit=1000&token='+token;
         const data = yield call(userRoleList,params);
       if (data.code == 0) {
-        yield put({type:'queryRoleSuccess',payload:data.page.list});
-       } else {
-       }
+          yield put({type:'queryRoleSuccess',payload:data.page.list});
+        }
       },
       *userAddUpdate({payload}, {call, put}) {  // eslint-disable-line
         const token = localStorage.getItem('token');
