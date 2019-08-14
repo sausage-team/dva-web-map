@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './MapController.css';
-import { Tabs, Icon, DatePicker, Button, Switch, Radio } from 'antd';
-import moment from 'moment';
-import img1 from '../../../../public/img/tubiao1.png';
+import { Tabs, Switch, Radio } from 'antd';
 import img2 from '../../../../public/img/tubiao2.png';
 import img3 from '../../../../public/img/tubiao3.png';
 import img4 from '../../../../public/img/tubiao4.png';

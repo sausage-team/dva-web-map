@@ -2,7 +2,7 @@ require('@supermap/iclient-mapboxgl');
 import { iserverBasePath } from '../../../services/config'
 import mapboxgl from 'mapbox-gl'
 class TSHotMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -10,7 +10,7 @@ class TSHotMap {
         this.filterBy = this.filterBy.bind(this);
         this.dataUrl = iserverBasePath;
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
     addMapLay(data, value) {
@@ -229,7 +229,7 @@ class TSHotMap {
             });
         });
     }
-    filterBy(time) {
+    filterBy() {
         // let filters = ["all", [">=", "time", time - 365], ["<=", "time", time + 365]]
         // this.map.setFilter('IntersectionMap', filters);
         // this.map.setFilter('count', filters);

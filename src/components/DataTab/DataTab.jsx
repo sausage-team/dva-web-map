@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider } from 'antd';
-import Draw from 'mapbox-gl-draw';
+import { Tabs, Table, Icon } from 'antd';
+// import Draw from 'mapbox-gl-draw';
 const TabPane = Tabs.TabPane;
 class DataTab extends React.Component {
   constructor(props) {
@@ -223,7 +222,7 @@ class DataTab extends React.Component {
       payload: page
     })
   }
-  rowFun = (record, index) => {
+  rowFun = () => {
   }
   //切换tab页的回调函数
   tabFun = (key) => {

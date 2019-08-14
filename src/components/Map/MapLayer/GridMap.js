@@ -1,5 +1,5 @@
 class GridMap {
-    constructor(map, dispatch) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -13,7 +13,7 @@ class GridMap {
             "type": "FeatureCollection",
             "features": []
         }
-        var endarr = [];
+        // var endarr = [];
         for (var key in data) {
             let hours = parseInt(key - 1) % 100 * 730;
             for (var j in data[key]) {

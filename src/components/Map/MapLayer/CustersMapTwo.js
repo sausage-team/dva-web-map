@@ -1,5 +1,5 @@
 class CustersMapTwo {
-    constructor(map, data, dispatch) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);

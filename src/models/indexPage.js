@@ -1,4 +1,4 @@
-import {userList} from '../services/user';
+// import {userList} from '../services/user';
 export default {
 
   namespace: 'indexPage',
@@ -14,7 +14,7 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put,select}) {  // eslint-disable-line
-      
+
     },
   },
 

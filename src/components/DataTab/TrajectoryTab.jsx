@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider } from 'antd';
+import { Table } from 'antd';
 class TrajectoryTab extends React.Component {
   constructor(props) {
     super(props);

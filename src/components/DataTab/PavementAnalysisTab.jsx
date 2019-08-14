@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider } from 'antd';
+import { Table, Icon } from 'antd';
 class PavementAnalysisTab extends React.Component {
   constructor(props) {
     super(props);
@@ -39,10 +38,10 @@ class PavementAnalysisTab extends React.Component {
     }];
   }
   //编辑数据
-  clickFun = (text, record) => {
+  clickFun = () => {
 
   }
-  clickFun = (mapObj, getLayers, setLayers, text, e) => {
+  clickFun = (mapObj, getLayers, setLayers, text) => {
     let features = mapObj.getSource(getLayers);
     if (features) {
       let obj = {};

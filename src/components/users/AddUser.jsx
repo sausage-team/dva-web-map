@@ -1,10 +1,10 @@
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,Modal } from 'antd';
+import { Form, Input, Tooltip, Icon, Select, Modal } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
+// const AutoCompleteOption = AutoComplete.Option;
 import { React } from 'react'
 import { connect } from 'dva';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 class AddUser extends React.Component {
   state = {
     confirmDirty: false,

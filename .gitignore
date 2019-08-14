@@ -23,3 +23,5 @@ yarn-error.log*
 
 #owner config files
 proxy.conf
+package-lock.json
+yarn.lock

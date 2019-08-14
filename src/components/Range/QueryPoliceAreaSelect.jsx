@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './QueryAreaSelect.css';
 import { connect } from 'dva';
-import { Select,Card,AutoComplete,Divider,Switch} from 'antd';
-import { valid } from '../../services/user';
+import { Select, AutoComplete,Divider } from 'antd';
 import {fangKong} from '../../services/config';
 const Option = Select.Option;
 import Iframe from 'react-iframe';
@@ -16,7 +15,7 @@ class QueryPoliceAreaSelect extends React.Component {
   }
   handleCqSqChange = (value) => {
     let datasets=fangKong.datasets;
-    const {pcs,cqsq,selectData,mapType} =this.props.policeArea;
+    const {pcs,cqsq } =this.props.policeArea;
     let cqsqObj=cqsq.filter(item=>item.id==value);
     if(cqsqObj.length>0){
       let twoOptions=pcs.filter(item=>item.properties[datasets.level2.filedKeyArea]==cqsqObj[0].properties[datasets.level1.filedKeyName]);
@@ -46,8 +45,8 @@ class QueryPoliceAreaSelect extends React.Component {
   }
 
   pcsChange=(value)=>{
-    let datasets=fangKong.datasets;
-    const {selectData,pcs,mapType} =this.props.policeArea;
+    // let datasets=fangKong.datasets;
+    const { pcs, mapType } =this.props.policeArea;
     let pcsObj=pcs.filter(item=>item.id==value);
     if(pcsObj.length>0){
       this.props.dispatch({
@@ -72,7 +71,7 @@ class QueryPoliceAreaSelect extends React.Component {
   }
   getMessageBDP=(e)=>{
     if (e.data) {
-      let datas=JSON.parse(e.data); 
+      let datas=JSON.parse(e.data);
       let name=datas.data['派出所名称'][0];
       if(name){
         this.onSelect(name)
@@ -138,10 +137,10 @@ componentWillUnmount(){
     let datasets=fangKong.datasets;
     const {dataSource} = this.state;
     // const {oneOptions,twoOptions} = this.props.policeArea.selectData;
-    const oneOptions = this.props.policeArea.cqsq || [];
+    // const oneOptions = this.props.policeArea.cqsq || [];
     const twoOptions = this.props.policeArea.pcs;
     const oneSelect = ''
-    
+
     // const oneSelect=oneOptions.map(item=><Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
     const twoSelect=twoOptions.map(item=><Option key={item.id}>{item.properties[datasets.level2.filedKeyName]}</Option>);
     return (

@@ -78,7 +78,7 @@ export default {
     },
   },
   effects: {
-    *getVideoData({ payload }, { call, put, select }) {
+    *getVideoData(payload, { call, put, select }) {
       yield put({
         type: 'map/setMapLoading',
         payload: true
@@ -93,13 +93,13 @@ export default {
         type: 'setSmlibtileData',
         payload: data.data.data
       })
-      let map = yield select(state => state.map); 
+      let map = yield select(state => state.map);
       let cameraPointMap = new CameraPointMap(map.mapObj);
       cameraPointMap.removeMapLay()
       cameraPointMap.addMapLay.bind(this, data.data.data)();
 
     },
-    *getVideoDatabak({ payload: mapObj }, { call, put, select }) {
+    *getVideoDatabak(payload, { call, put }) {
       yield put({
         type: 'map/setMapLoading',
         payload: true
@@ -122,31 +122,31 @@ export default {
       //   payload: data.data
       // })
     },
-    *threeDemo({ payload: data }, { call, put, select }) {
+    *threeDemo({ payload: data }, { select }) {
       let cesium = yield select(state => state.cesium);
       let cesiumObj = cesium.cesiumObj;
-      function getColorBlendMode(colorBlendMode) {
-        return Cesium.ColorBlendMode[colorBlendMode.toUpperCase()];
-      }
+      // function getColorBlendMode(colorBlendMode) {
+      //   return Cesium.ColorBlendMode[colorBlendMode.toUpperCase()];
+      // }
 
-      function getColor(colorName, alpha) {
-        var color = Cesium.Color['Red'.toUpperCase()];
-        return Cesium.Color.fromAlpha(Cesium.Color['Red'.toUpperCase()], parseFloat(1));
-      }
-      var viewModel = {
-        color: 'Red',
-        colors: ['White', 'Red', 'Green', 'Blue', 'Yellow', 'Gray'],
-        alpha: 1.0,
-        colorBlendMode: 'Highlight',
-        colorBlendModes: ['Highlight', 'Replace', 'Mix'],
-        colorBlendAmount: 0.5,
-        colorBlendAmountEnabled: false,
-        silhouetteColor: 'Red',
-        silhouetteColors: ['Red', 'Green', 'Blue', 'Yellow', 'Gray'],
-        silhouetteAlpha: 1.0,
-        silhouetteSize: 2.0
-      };
-      console.log(data.list)
+      // function getColor(colorName, alpha) {
+      //   var color = Cesium.Color['Red'.toUpperCase()];
+      //   return Cesium.Color.fromAlpha(Cesium.Color['Red'.toUpperCase()], parseFloat(1));
+      // }
+      // var viewModel = {
+      //   color: 'Red',
+      //   colors: ['White', 'Red', 'Green', 'Blue', 'Yellow', 'Gray'],
+      //   alpha: 1.0,
+      //   colorBlendMode: 'Highlight',
+      //   colorBlendModes: ['Highlight', 'Replace', 'Mix'],
+      //   colorBlendAmount: 0.5,
+      //   colorBlendAmountEnabled: false,
+      //   silhouetteColor: 'Red',
+      //   silhouetteColors: ['Red', 'Green', 'Blue', 'Yellow', 'Gray'],
+      //   silhouetteAlpha: 1.0,
+      //   silhouetteSize: 2.0
+      // };
+      // console.log(data.list)
       for (let i in data.list) {
         let position = Cesium.Cartesian3.fromDegrees(data.list[i].smx, data.list[i].smy, data.list[i].smh);
         let heading = Cesium.Math.toRadians(data.list[i].azimuth);
@@ -158,7 +158,8 @@ export default {
         if (data.list[i].cameraType == '枪机') {
           modelobj = gltf1;
         }
-        let entity = cesiumObj.entities.add({
+        // let entity =
+        cesiumObj.entities.add({
           name: data.list[i].indexes,
           position: position,
           orientation: orientation,
@@ -177,10 +178,10 @@ export default {
       }
       // cesiumObj.trackedEntity = entity;
     },
-    *caseUpData({ payload: obj }, { call, put, select }) {
+    // *caseUpData({ payload: obj }, { call, put, select }) {
 
-    },
-    *setUp({ payload: obj }, { call, put, select }) {
+    // },
+    *setUp({ payload: obj }, { call, put }) {
       // let cesium = yield select(state => state.cesium);
       // let cesiumObj = cesium.cesiumObj;
       // let upData = JSON.stringify(obj);
@@ -197,7 +198,7 @@ export default {
         })
       }
     },
-    *delet({ payload: smid }, { call, put, select }) {
+    *delet({ payload: smid }, { call, put }) {
       // let cesium = yield select(state => state.cesium);
       // let cesiumObj = cesium.cesiumObj;
       // cesiumObj.entities.removeAll()

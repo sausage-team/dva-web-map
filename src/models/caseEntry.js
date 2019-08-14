@@ -1,5 +1,5 @@
 import { mark, CaseUpdate } from '../services/user'
-import { Upload, Icon, message, Button } from 'antd';
+import { message } from 'antd';
 import { apiService } from '../services/config'
 export default {
   namespace: 'caseEntry',
@@ -151,7 +151,7 @@ export default {
       })
 
     },
-    *caseUpData({ payload }, { call, put, select }) {
+    *caseUpData(payload, { call, put, select }) {
       const caseEntry = yield select(state => state.caseEntry);
       const dataCenter = caseEntry.dataCenter;
       const data = yield call(CaseUpdate, 'xk/case/update/' + dataCenter.smid + '', dataCenter);
@@ -171,7 +171,7 @@ export default {
         payload: false
       })
     },
-    *updataXY({ payload }, { call, put, select }) {
+    *updataXY(payload, { call, put, select }) {
       const caseEntry = yield select(state => state.caseEntry);
       const updataXY = caseEntry.updataXY;
       const data = yield call(CaseUpdate, 'xk/case/updateXy/' + caseEntry.smid + '', updataXY);

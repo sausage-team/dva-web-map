@@ -3,7 +3,7 @@
  * 动态人口地图热力图显示
  */
 class HotMap {
-  constructor(map, data, dispatch) {
+  constructor(map) {
     this.map = map;
     this.data = null;
     this.addMapLay = this.addMapLay.bind(this);

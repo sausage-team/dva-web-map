@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './SheQuDataInfo.css';
 import { connect } from 'dva';
-import { Select,Card,AutoComplete,Divider  } from 'antd';
+import { Divider  } from 'antd';
 class PoliceAreaDataInfo extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const {selSQqueryData,selGeometry}=this.props.policeArea;
+    const { selGeometry }=this.props.policeArea;
     let noRegistryNum=parseInt(selGeometry.properties['全区暂住人口数'])
     ,registryNum=parseInt(selGeometry.properties['全区户籍人口数'])
     ,pcsregistryNum=parseInt(selGeometry.properties['属地派出所户籍人口数'])
@@ -17,7 +17,7 @@ class PoliceAreaDataInfo extends React.Component {
     let noRegistryNumLv=Math.round(pcsNoregistryNum/noRegistryNum*100)/100
     ,registryLv=Math.round(pcsregistryNum/registryNum*100)/100
     ,sqLv=Math.round(sqNum/pscsqNum*100)/100;
-    
+
     let jingliNumAll=parseInt(selGeometry.properties['全区派出所警力数'])
     ,pcsJingliNum=parseInt(selGeometry.properties['派出所警力数'])
     ,sqJingliNumAll=parseInt(selGeometry.properties['全区社区警力数'])

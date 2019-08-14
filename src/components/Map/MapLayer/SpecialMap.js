@@ -2,14 +2,14 @@ require('@supermap/iclient-mapboxgl');
 import mapboxgl from 'mapbox-gl';
 import { iserverBasePath } from '../../../services/config'
 class SpecialMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
         this.removeMapLay = this.removeMapLay.bind(this);
         this.dataUrl = iserverBasePath;
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
     addMapLay(data, value) {
@@ -46,7 +46,7 @@ class SpecialMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesBySQL(sqlParam, (serviceResult) => {
-            let features = [];
+            // let features = [];
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             // console.log(data,serviceResult.result.features.features)
             for (let i in serviceResult.result.features.features) {

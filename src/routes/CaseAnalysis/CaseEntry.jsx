@@ -1,16 +1,13 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router'
 import styles from './CaseEntry.css';
 import Mapbox from '../../components/Map/Mapbox/Mapbox';
-import Slider from '../../components/Slider/Slider';
 import UpData from '../../components/Updata/Updata';
 import DataTab from '../../components/DataTab/DataTab'
 import Model from '../../components/Model/Model';
 import MapPublic from '../../components/Map/MapController/MapPublic'
 import { apiService } from '../../services/config'
 import { Button,Icon } from 'antd';
-import * as SuperMap from '@supermap/iclient-mapboxgl'
 import EchartsLayer from '../../components/Map/MapLayer/ScatterPlotDemo'
 class CaseEntry extends React.Component {
 
@@ -65,7 +62,7 @@ class CaseEntry extends React.Component {
     })
   }
   //标点坐标的回调
-  drawfun = (e) => {
+  drawfun = () => {
     // console.log(e)
     // let dataCenter = this.props.caseEntry.dataCenter;
     // dataCenter.smx = e.features[0].geometry.coordinates[0];

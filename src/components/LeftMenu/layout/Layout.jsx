@@ -3,17 +3,16 @@ import styles from './Layout.css';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet'
 import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout } from 'antd';
 import Loader from '../Loader/Loader';
 import favicon from '../../assets/favicon.ico';
 import logo from '../../assets/logo.png'
 import LeftMenu from '../LeftMenu/LeftMenu'
 import { withRouter } from 'dva/router'
-const { Header, Content, Footer } = Layout;
-const SubMenu = Menu.SubMenu;
+const { Header, Content } = Layout;
 
 class SiderDemo extends React.Component {
-  constructor(props,{location}) {
+  constructor(props) {
     super(props);
   }
   render() {

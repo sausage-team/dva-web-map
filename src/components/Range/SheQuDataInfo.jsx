@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SheQuDataInfo.css';
 import { connect } from 'dva';
-import { Select,Card,AutoComplete,Divider  } from 'antd';
+import { Divider  } from 'antd';
 class SheQuDataInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ class SheQuDataInfo extends React.Component {
     ,registryLv=Math.round(registryNum/registryNumAll*100)/100,caseNumLv=0;
     if(selSQqueryData!=''){
       caseNumLv=Math.round(selSQqueryData.caseNum/selSQqueryData.caseNumAll*100)/100;
-    }        
+    }
     return (
       <div className={styles.mainIndex}>
         <div className={styles.title}>

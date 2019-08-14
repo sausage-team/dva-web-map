@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Model.css'
 import { connect } from 'dva';
-import { Modal,Input,Radio,Table,Button} from 'antd';
+import { Modal,Input,Table,Button} from 'antd';
 class PavementModel extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class PavementModel extends React.Component {
           payload:false
       })
   }
-  clickFun=(e)=>{
+  clickFun=()=>{
     if(this.props.pavementAnalysis.buttonValue=="编辑"){
       this.props.dispatch({
         type:"pavementAnalysis/setDisabled",

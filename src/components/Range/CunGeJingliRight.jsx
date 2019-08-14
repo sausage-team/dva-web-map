@@ -2,18 +2,18 @@ import React from 'react';
 import styles from './CunGeJingliRight.css';
 import { connect } from 'dva';
 import {userAvABaseUrl} from '../../services/config'
-import { Select,Card,AutoComplete,Divider  } from 'antd';
+import { Divider  } from 'antd';
 import defultImage from '../../../public/img/defalutImg.png';
-function isHasImg(pathImg){  
-  var ImgObj=new Image();  
-  ImgObj.src= pathImg;  
-   if(ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0))  
-   {  
-     return true;  
-   } else {  
-     return false;  
-  }  
-} 
+// function isHasImg(pathImg){
+//   var ImgObj=new Image();
+//   ImgObj.src= pathImg;
+//    if(ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0))
+//    {
+//      return true;
+//    } else {
+//      return false;
+//   }
+// }
 
 class CunGeJingliRight extends React.Component {
   constructor(props) {

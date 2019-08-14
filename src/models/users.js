@@ -1,5 +1,5 @@
 import {login} from '../services/user'
-import { message, Button } from 'antd';
+import { message } from 'antd';
 import { routerRedux } from 'dva/router'
 export default {
   namespace: 'users',
@@ -16,7 +16,7 @@ export default {
     },
   },
   effects: {
-    *login({ payload }, { call, put,select}) {
+    *login(payload, { call, put,select}) {
       let option = yield select(state => state.users);
       option =option.login;
       const data  = yield call(login,'xk/sys/login',option);

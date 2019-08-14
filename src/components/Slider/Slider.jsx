@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Slider.css';
 import { connect } from 'dva';
 import { Slider,Button } from 'antd';
-import { routerRedux } from 'dva/router';
+// import { routerRedux } from 'dva/router';
 class SliderDiv extends React.Component {
   constructor(props) {
     super(props);
@@ -115,7 +115,7 @@ class SliderDiv extends React.Component {
         },
         label: <strong>12</strong>,
       },
-    };   
+    };
     return (
       <div className = {styles.normal}>
         <Button className={styles.but} shape="circle" onClick={this.butClick}  icon={this.props.map.timeState?'pause-circle':'play-circle'} />

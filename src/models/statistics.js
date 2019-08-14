@@ -1,5 +1,5 @@
 import { valid, CaseUpdate } from '../services/user'
-import { Upload, Icon, message, Button } from 'antd';
+import { message } from 'antd';
 export default {
   namespace: 'statistics',
   state: {
@@ -124,7 +124,7 @@ export default {
     },
   },
   effects: {
-    *query({ payload }, { call, put, select }) {
+    *query(payload, { call, put }) {
       let token = localStorage.getItem('token')
       const data = yield call(valid, 'xk/sys/dict/listForType?token=' + token + '', {});
       let caseType = [];
@@ -154,7 +154,7 @@ export default {
         payload: data.data.placeTypeDetail
       })
     },
-    *police({ payload }, { call, put, select }) {
+    *police(payload, { call, put }) {
       let token = localStorage.getItem('token')
       yield put({
         type: 'setLoading',
@@ -240,7 +240,7 @@ export default {
         payload: true
       })
     },
-    *caseUpData({ payload }, { call, put, select }) {
+    *caseUpData(payload, { call, put, select }) {
       const caseEntry = yield select(state => state.statistics);
       const dataCenter = caseEntry.dataCenter;
       const data = yield call(CaseUpdate, 'xk/case/update/' + dataCenter.smid + '', dataCenter);

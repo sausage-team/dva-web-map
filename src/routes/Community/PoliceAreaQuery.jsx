@@ -1,13 +1,12 @@
 //辖区查询
 import React from 'react';
-import { connect, dispatch } from 'dva';
+import { connect } from 'dva';
 import styles from './PoliceAreaQuery.css';
 import MapBoxMap from '../../components/Range/MapboxRangePcsMap';
 import QueryPoliceAreaSelect from '../../components/Range/QueryPoliceAreaSelect';
 import PoliceAreaDataInfo from '../../components/Range/PoliceAreaDataInfo';
 import ThreeRangeMap from '../../components/Range/ThreeRangeMap';
-import { Button } from 'antd';
-import {bdpConfig,ThreeDefaultHeight} from '../../services/config';
+import {ThreeDefaultHeight} from '../../services/config';
 class PoliceAreaQuery extends React.Component {
   constructor(props) {
     super(props);

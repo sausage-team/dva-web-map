@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './CesiumPersonne.css';
 import { connect } from 'dva';
-import { Upload, Icon, message, Button, Select, Spin,Input,DatePicker,Switch} from 'antd';
-import { width } from 'window-size';
+import { Button, Input,DatePicker,Switch} from 'antd';
 class CesiumPersonne extends React.Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        
+
     }
     inputFun=(value,str)=>{
         let policeObj =this.props.personnelTrajectory.policeObj;

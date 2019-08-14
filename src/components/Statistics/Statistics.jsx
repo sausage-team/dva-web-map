@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Statistics.css';
 import { connect } from 'dva';
-import { Slider, Button, Checkbox, DatePicker, Switch } from 'antd';
-import { routerRedux } from 'dva/router';
+import { Button, Checkbox, DatePicker, Switch } from 'antd';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 moment.locale('zh-cn');

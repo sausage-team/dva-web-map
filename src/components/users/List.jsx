@@ -24,7 +24,7 @@ function list({
         dataInex: 'ips',
         title:'IP',
         // eslint-disable-next-line react/display-name
-        render:(text, record, index)=><div>{
+        render:(text, record)=><div>{
           record && record.ips ?record.ips.reduce((a,b)=>a+',  '+b):''
         }</div>
       },
@@ -33,7 +33,7 @@ function list({
         dataIndex: 'operate',
         title: '操作',
         // eslint-disable-next-line react/display-name
-        render: (text, record, indexx) => (<div>
+        render: (text, record) => (<div>
           <Row type="flex" justify="space-around">
             <Button type="primary" onClick={() => (onEdit(record))}>编辑</Button>
             <Popconfirm title='确定要删除吗？' onConfirm={() => onDelete(record.id)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CesiumMap.css';
 import { connect } from 'dva';
-import { Upload, Icon, message, Button, Select, Switch, Input, Tree } from 'antd';
+import { message, Switch, Input, Tree } from 'antd';
 const Search = Input.Search;
 const TreeNode = Tree.TreeNode;
 

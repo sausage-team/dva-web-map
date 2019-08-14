@@ -1,7 +1,7 @@
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete,Modal } from 'antd';
+import { Form, Input, Tooltip, Icon, Select, Modal } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
+// const AutoCompleteOption = AutoComplete.Option;
 import { React } from 'react'
 import { connect } from 'dva';
 
@@ -41,7 +41,7 @@ class UpdateUser extends React.Component {
     //判断 当前是否需要可编辑角色权限
     let roleListData=curItem["roleList"];
     const user=localStorage.getItem('user');
-    let {pcsname,roleList}=JSON.parse(user);
+    let { roleList }=JSON.parse(user);
     let pcsIsDisable=false;
     let roleIdDefault='';
     let roleIsDisable=false;

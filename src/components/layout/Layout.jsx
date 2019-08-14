@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Layout.css';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet'
-import { Layout, Menu, Breadcrumb, Icon, ConfigProvider} from 'antd';
+import { Layout, ConfigProvider} from 'antd';
 import Loader from '../Loader/Loader';
 import favicon from '../../assets/favicon.ico';
 import logo from '../../../public/img/guohui.png'
@@ -12,11 +12,10 @@ import zhCN from 'antd/lib/locale-provider/zh_CN';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
-const { Header, Content, Footer } = Layout;
-const SubMenu = Menu.SubMenu;
+const { Header, Content } = Layout;
 
 class SiderDemo extends React.Component {
-  constructor(props, { location }) {
+  constructor(props,) {
     super(props);
   }
   render() {

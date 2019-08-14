@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router'
 import styles from './CaseInquiry.css';
 import Mapbox from '../../../components/Map/Mapbox/Mapbox'
 // import Slider from '../../../components/Slider/Slider'

@@ -13,7 +13,7 @@ export default {
         };
       },
     },effects: {
-      *query({ payload:keywords}, { call,put,select})  {
+      *query({ payload:keywords}, { call,put })  {
         const token = localStorage.getItem('token');
         let params='page=1&limit=1000&token='+token+'&roleName='+keywords;
         const data = yield call(userRoleList,params);

@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router'
 import styles from './CameraManagement.css';
-import Mapbox from '../../components/Map/Mapbox/Mapbox';
-import Slider from '../../components/Slider/Slider';
 import MapGL from '../../components/Map/MapGL/ReactMap';
 import DackLayerTwo from '../../components/Map/DackGL/DackLayerTwo';
 import MapControllerTwo from '../../components/Map/MapController/MapControllerTwo';
@@ -14,7 +11,7 @@ class CameraManagement extends React.Component {
     componentDidMount() {
         // this.props.map.mapObj.setStyle(this.props.map.style2);
         //this.props.dispatch({ type: 'map/getDackData' })
-    } 
+    }
     render() {
         return (
             <div className={styles.mainIndex}>

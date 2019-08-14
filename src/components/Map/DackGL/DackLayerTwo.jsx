@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DeckGL, { HexagonLayer } from 'deck.gl';
 import { connect } from 'dva';
 import { pointToHexbin } from './hexagon-aggregator';
@@ -16,11 +16,11 @@ const LIGHT_SETTINGS = {
 };
 const elevationScale = { min: 1, max: 50 };
 
-const defaultProps = {
-    radius: 200,
-    upperPercentile: 100,
-    coverage: 1,
-};
+// const defaultProps = {
+//     radius: 200,
+//     upperPercentile: 100,
+//     coverage: 1,
+// };
 
 class DackLayerTwo extends React.Component {
     static get defaultColorRange() {
@@ -115,7 +115,6 @@ class DackLayerTwo extends React.Component {
     }
     //经纬度转换
     toLonLat(lon, lat, weight) {
-        var arr = [];
         var arrend = [];
         var zoom = 14;
         lon = parseFloat(lon);
@@ -175,7 +174,7 @@ class DackLayerTwo extends React.Component {
     }
 
     render() {
-        const { viewport, dackList, radius, coverage, upperPercentile } = this.props.map;
+        const { viewport, dackList } = this.props.map;
         if (!dackList) {
             return null;
         }

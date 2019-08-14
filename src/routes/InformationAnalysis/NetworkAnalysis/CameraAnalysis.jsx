@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Input, Button } from 'antd';
 import styles from './CameraAnalysis.css';
 import Mapbox from '../../../components/Map/Mapbox/Mapbox';
 import CameraMap from '../../../components/Map/MapController/CameraMap';
@@ -11,7 +10,7 @@ class CameraAnalysis extends React.Component {
         super(props);
     }
     componentDidMount() {
-        let mapObj = this.props.map.mapObj;
+        // let mapObj = this.props.map.mapObj;
         this.props.map.mapObj.setStyle(this.props.map.style1);
         this.props.dispatch({
             type: 'mapPublic/setStyleValue',

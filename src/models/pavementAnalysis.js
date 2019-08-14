@@ -1,5 +1,5 @@
 import {getHotMap,Update} from '../services/user';
-import { message, Button } from 'antd';
+import { message } from 'antd';
 import moment from 'moment';
 export default {
   namespace: 'pavementAnalysis',
@@ -68,7 +68,7 @@ export default {
     },
   },
   effects: {
-    *getPavementData({payload}, { call, put, select }){
+    *getPavementData(payload, { call, put }){
       let token = localStorage.getItem('token');
       yield put({
         type: 'setLoading',
@@ -92,7 +92,7 @@ export default {
         payload:data
       })
     },
-    *setUp({payload}, { call, put, select }){
+    *setUp(payload, { call, put, select }){
       let state = yield select(state => state.pavementAnalysis);
       let upData = state.upData;
       upData = JSON.stringify(upData);

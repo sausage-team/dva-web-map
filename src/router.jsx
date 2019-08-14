@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch, IndexRoute, routerRedux } from 'dva/router';
+import { Route, Switch, routerRedux } from 'dva/router';
 import dynamic from 'dva/dynamic';
 import Layout from './components/layout/Layout';
 
@@ -7,91 +7,91 @@ const { ConnectedRouter } = routerRedux
 function RouterConfig({ history, app }) {
   const IndexPage = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "IndexPage" */ './routes/IndexPage/IndexPage'),
+    component: () => import(/*  "IndexPage" */ './routes/IndexPage/IndexPage'),
   });
   const Users = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "Users" */ './routes/Users/Users'),
+    component: () => import(/*  "Users" */ './routes/Users/Users'),
   });
   const UserManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "UserManagement" */ './routes/SystemManagement/UserManagement'),
+    component: () => import(/*  "UserManagement" */ './routes/SystemManagement/UserManagement'),
   });
   const RoleManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "RoleManagement" */ './routes/SystemManagement/RoleManagement'),
+    component: () => import(/*  "RoleManagement" */ './routes/SystemManagement/RoleManagement'),
   });
   const RangeQuery = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "RangeQuery" */ './routes/Community/RangeQuery'),
+    component: () => import(/*  "RangeQuery" */ './routes/Community/RangeQuery'),
   });
   const PoliceAreaQuery = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "PoliceAreaQuery" */ './routes/Community/PoliceAreaQuery'),
+    component: () => import(/*  "PoliceAreaQuery" */ './routes/Community/PoliceAreaQuery'),
   });
   const SimulatedMapBrowsing = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "SimulatedMapBrowsing" */ './routes/ThreeDimensionalSituation/SimulatedMapBrowsing'),
+    component: () => import(/*  "SimulatedMapBrowsing" */ './routes/ThreeDimensionalSituation/SimulatedMapBrowsing'),
   });
   const ThreeCameraManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "ThreeCameraManagement" */ './routes/ThreeDimensionalSituation/ThreeCameraManagement'),
+    component: () => import(/*  "ThreeCameraManagement" */ './routes/ThreeDimensionalSituation/ThreeCameraManagement'),
   });
   const PavementAnalysis = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "PavementAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/PavementAnalysis'),
+    component: () => import(/*  "PavementAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/PavementAnalysis'),
   });
   const CaseEntry = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "CaseEntry" */ './routes/CaseAnalysis/CaseEntry'),
+    component: () => import(/*  "CaseEntry" */ './routes/CaseAnalysis/CaseEntry'),
   });
   const Error = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "Error" */ './routes/Error/Error'),
+    component: () => import(/*  "Error" */ './routes/Error/Error'),
   });
   const NuclearDensityAnalysis = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "NuclearDensityAnalysis" */ './routes/InformationAnalysis/PoliceStationAnalysis/NuclearDensityAnalysis'),
+    component: () => import(/*  "NuclearDensityAnalysis" */ './routes/InformationAnalysis/PoliceStationAnalysis/NuclearDensityAnalysis'),
   })
   const CaseInquiry = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "CaseInquiry" */ './routes/InformationAnalysis/PoliceStationAnalysis/CaseInquiry'),
+    component: () => import(/*  "CaseInquiry" */ './routes/InformationAnalysis/PoliceStationAnalysis/CaseInquiry'),
   })
   const CaseManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "CaseManagement" */ './routes/Community/CaseManagement'),
+    component: () => import(/*  "CaseManagement" */ './routes/Community/CaseManagement'),
   })
   const AreaSpecialMap = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "AreaSpecialMap" */ './routes/Community/AreaSpecialMap'),
+    component: () => import(/*  "AreaSpecialMap" */ './routes/Community/AreaSpecialMap'),
   })
   const PersonnelTrajectory = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "PersonnelTrajectory" */ './routes/ThreeDimensionalSituation/PersonnelTrajectory'),
+    component: () => import(/*  "PersonnelTrajectory" */ './routes/ThreeDimensionalSituation/PersonnelTrajectory'),
   })
   const CameraAnalysis = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "CameraAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/CameraAnalysis'),
+    component: () => import(/*  "CameraAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/CameraAnalysis'),
   })
   const FlightPathManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "FlightPathManagement" */  './routes/ThreeDimensionalSituation/FlightPathManagement'),
+    component: () => import(/*  "FlightPathManagement" */  './routes/ThreeDimensionalSituation/FlightPathManagement'),
   })
   const FlightManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "FlightManagement" */ './routes/ThreeDimensionalSituation/FlightManagement'),
+    component: () => import(/*  "FlightManagement" */ './routes/ThreeDimensionalSituation/FlightManagement'),
   })
   const TrajectoryBrowsing = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "TrajectoryBrowsing" */ './routes/ThreeDimensionalSituation/TrajectoryBrowsing'),
+    component: () => import(/*  "TrajectoryBrowsing" */ './routes/ThreeDimensionalSituation/TrajectoryBrowsing'),
   })
   const CameraManagement = dynamic({
     app,
-    component: () => import(/* webpackChunkName: "CameraManagement" */ './routes/Community/CameraManagement'),
+    component: () => import(/*  "CameraManagement" */ './routes/Community/CameraManagement'),
   })
   const PersonnelManagement = dynamic({
     app,
-    component:()=>import(/* webpackChunkName: "PersonnelManagement" */ './routes/InformationManagement/PersonnelManagement')
+    component:()=>import(/*  "PersonnelManagement" */ './routes/InformationManagement/PersonnelManagement')
   })
   return (
     <ConnectedRouter history={history}>

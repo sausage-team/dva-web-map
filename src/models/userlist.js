@@ -1,5 +1,5 @@
 import {userList,userUpdate,policeList,userDelete,userRoleList} from '../services/user'
-import { message, Button } from 'antd';
+import { message } from 'antd';
 import { routerRedux } from 'dva/router'
 export default {
     namespace: 'userlist',
@@ -42,7 +42,7 @@ export default {
       },
     },
     effects: {
-      *query({ payload:keywords}, { call,put,select})  {
+      *query({ payload:keywords}, { call,put})  {
         const token = localStorage.getItem('token');
         //如果为派出所管理员 只允许查询当前派出所警员
         const user=localStorage.getItem('user');
@@ -62,14 +62,14 @@ export default {
         message.error(data.msg);
        }
       },
-      *queryPolice({payload},{ call,put,select})  {
+      *queryPolice(payload, { call, put })  {
         const token = localStorage.getItem('token');
         let params='token='+token;
         const result = yield call(policeList,params);
         if (result.code == 0) {
           yield put({type:'queryPoliceSuccess',payload:result.data.policeList});
         }
-      },*queryRole({ payload}, { call,put,select})  {
+      },*queryRole(payload, { call, put })  {
         const token = localStorage.getItem('token');
         let params='page=1&limit=1000&token='+token;
         const data = yield call(userRoleList,params);

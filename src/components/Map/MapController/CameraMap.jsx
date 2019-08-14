@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './CameraMap.css';
-import { Tabs, Icon, DatePicker, Button, Switch, Radio } from 'antd';
+import { DatePicker, Radio } from 'antd';
 import moment from 'moment';
 const { RangePicker } = DatePicker;
 const RadioButton = Radio.Button;
@@ -78,7 +78,7 @@ class CameraMap extends React.Component {
     }
 
     render() {
-        const { time, mapStart } = this.props.cameraAnalysis;
+        const { time } = this.props.cameraAnalysis;
         return (
             <div className={styles.main}>
                 <RadioGroup defaultValue={time} className={styles.RadioGroup} size="default" onChange={this.change}>

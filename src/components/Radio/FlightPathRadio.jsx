@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Radio.css';
+// import styles from './Radio.css';
 import { connect } from 'dva';
 import { apiService } from '../../services/config'
 import { Radio, Icon, Upload, message } from 'antd';
@@ -45,8 +45,8 @@ class FlightPathRadio extends React.Component {
             if (dataCenter.indexes && !viewshed3D) {
                 scene.viewFlag = false;
                 let viewshed3D = new Cesium.ViewShed3D(scene);
-                let colorStr1 = viewshed3D.visibleAreaColor.toCssColorString();
-                let colorStr2 = viewshed3D.hiddenAreaColor.toCssColorString();
+                // let colorStr1 = viewshed3D.visibleAreaColor.toCssColorString();
+                // let colorStr2 = viewshed3D.hiddenAreaColor.toCssColorString();
                 this.props.dispatch({
                     type: 'flightPathManagement/setViewshed3D',
                     payload: viewshed3D
@@ -76,7 +76,7 @@ class FlightPathRadio extends React.Component {
         }
     }
     //控制是否添加完立即上传
-    beforeUpload = (file, fileList, event) => {
+    beforeUpload = (file) => {
         this.props.dispatch({
             type: 'flightPathManagement/setModel',
             payload: false
@@ -97,7 +97,7 @@ class FlightPathRadio extends React.Component {
     }
     //当上传数据发生变化时的回调函数
     upLoadCheng = (info) => {
-        let response = info.file.response;
+        // let response = info.file.response;
         const status = info.file.status;
         if (status === 'done') {
             if (info.file.response) {
@@ -130,20 +130,20 @@ class FlightPathRadio extends React.Component {
                    <div value="1" onClick={this.changeFun.bind(this,1)}>
                    <Upload {...this.props.flightPathManagement.updatastate} onChange={this.upLoadCheng} beforeUpload={this.beforeUpload} > <Icon type="upload" /> 摄像头上传</Upload>
                    </div>
-                   
+
                 </RadioButton>
                 {/* <RadioButton value="2"><Icon type="swap" />添加</RadioButton> */}
                 <RadioButton  value="3">
                   <span value="3" onClick={this.changeFun.bind(this,3)}>
                     <Icon type="fork" />查看
-                  </span> 
+                  </span>
                 </RadioButton>
                 {/* <RadioButton value="4"><Icon type="fork" />删除</RadioButton> */}
                 {/* <RadioButton value="5"><Icon type="eye-o" />可视域分析</RadioButton> */}
                 <RadioButton  value="5">
                   <a value="5" href={apiService+'xk/camera/download'}>
                     <Icon type="download" />下载模板
-                  </a> 
+                  </a>
                 </RadioButton>
             </RadioGroup>
         );

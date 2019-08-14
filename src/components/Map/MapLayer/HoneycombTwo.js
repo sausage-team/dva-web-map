@@ -2,11 +2,11 @@
 /**
  * 动态人口地图热力图显示
  */
-import mapv, { DataSet } from 'mapv';
+import { DataSet } from 'mapv';
 require('@supermap/iclient-mapboxgl');
 import mapboxgl from 'mapbox-gl';
 class HoneycombTwo {
-    constructor(map, data, dispatch) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.mapVLayer = '';

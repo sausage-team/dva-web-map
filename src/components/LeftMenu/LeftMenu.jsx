@@ -3,7 +3,7 @@ import styles from './LeftMenu.css';
 import { connect } from 'dva';
 import { Menu, Icon, Layout } from 'antd';
 import { routerRedux } from 'dva/router'
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 class LeftMenu extends React.Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class LeftMenu extends React.Component {
                 <Menu.Item key="NuclearDensityAnalysis">案件分析</Menu.Item>
                 {/* <Menu.Item key="CameraManagement">建筑物态势分析</Menu.Item> */}
                 {/* <Menu.Item key="PersonnelManagement">人口态势分析</Menu.Item> */}
-              </SubMenu>           
+              </SubMenu>
               {/* <Menu.Item key="AreaSpecialMap">区域专题图</Menu.Item> */}
             </SubMenu>
             {/* <SubMenu

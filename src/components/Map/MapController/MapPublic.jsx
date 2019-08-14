@@ -4,7 +4,6 @@ import styles from './MapPublic.css';
 import { Icon, Checkbox } from 'antd';
 import mapboxgl from 'mapbox-gl';
 import turf from 'turf';
-import html2canvas from 'html2canvas';
 import * as SuperMap from '@supermap/iclient-mapboxgl'
 // import { NiuniuCaptureObject, rgb2value, StartCapture } from './Niuniu';
 import { iserverBasePath,ThreeServerApi } from '../../../services/config'
@@ -164,7 +163,7 @@ class MapPublic extends React.Component {
             for (let i in checkedValue) {
                 switch (checkedValue[i]) {
                     case '社区面':
-                        { 
+                        {
                             let sqlParam2 = new SuperMap.GetFeaturesBySQLParameters({
                                 queryParameter: {
                                     name: "网格面"

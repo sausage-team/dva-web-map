@@ -3,7 +3,7 @@ import styles from './ReactMap.css';
 import MapGL, { FlyToInterpolator } from 'react-map-gl';
 import { connect } from 'dva';
 class ReactMap extends React.Component {
-    constructor(props, { location }) {
+    constructor(props) {
         super(props);
     }
     //全局的定时器
@@ -151,7 +151,7 @@ class ReactMap extends React.Component {
     }
     //将人口专题上的图形添加到地图上.其中包括  barChart gridChart odChart heatMap
     render() {
-        const { viewport, MAPBOX_TOKEN, data } = this.props.map;
+        const { viewport } = this.props.map;
         return (
             <div className={styles.map} id="mapContainer">
                 <MapGL

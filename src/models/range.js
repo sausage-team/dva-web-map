@@ -1,9 +1,7 @@
 import {queryIserverData} from '../services/iserver'
 import {shequDataDetail,gewangDataDetail} from '../services/user'
-import { message,Select} from 'antd';
-import { routerRedux } from 'dva/router';
 import {fangKong} from '../services/config'
-const Option = Select.Option;
+
 //社区查询
 export default {
   namespace: 'range',
@@ -41,22 +39,22 @@ export default {
     }
   },
   effects: {
-    *cqsq({ payload }, { call, put,select}) { 
+    *cqsq(payload, { call, put,select}) {
       const data  = yield call(queryIserverData,fangKong.datasets.level1.name);
       if(data!=null){
         const options = data.features;
         let selDataArray = yield select(state => state.range);
         let selData=selDataArray.selectData;
         selData['oneOptions']=options;
-        let treeData=selDataArray.treeData;
-        treeData=data.features;
+        // let treeData = selDataArray.treeData;
+        // treeData = data.features;
         yield put({type:'updateStateData',payload:{
           cqsq:data.features,
           selectData:selData
         }});
       }
     },
-    *pcs({ payload }, { call, put,select}) { 
+    *pcs(payload, { call, put,select}) {
       const data  = yield call(queryIserverData,fangKong.datasets.level2.name);
       if(data!=null){
         let options=data.features.filter(item=>item.properties[fangKong.datasets.level2.filedKeyArea]=='城区');
@@ -69,7 +67,7 @@ export default {
         }});
       }
     },
-    *shequ({ payload }, { call, put,select}) { 
+    *shequ(payload, { call, put}) {
       const data  = yield call(queryIserverData,fangKong.datasets.level3.name);
       if(data!=null){
         let search=data.features.map(item=>item.properties[fangKong.datasets.level3.filedKeyName])
@@ -87,7 +85,7 @@ export default {
         });
       }
     },
-    *sqDetail({ payload }, { call, put,select}) { 
+    *sqDetail({ payload }, { call, put }) {
       const result  = yield call(shequDataDetail,payload.id);
       if(result!=null && result.code==0){
         yield put({type:'updateStateData',payload:{
@@ -95,7 +93,7 @@ export default {
         }});
       }
     },
-    *gwDetail({ payload }, { call, put,select}) { 
+    *gwDetail({ payload }, { call, put }) {
       const result  = yield call(gewangDataDetail,payload.name);
       if(result!=null && result.code==0){
         yield put({type:'updateStateData',payload:{

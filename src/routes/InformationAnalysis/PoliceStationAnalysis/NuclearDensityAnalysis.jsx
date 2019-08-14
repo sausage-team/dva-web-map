@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router'
 import styles from './NuclearDensityAnalysis.css';
-import Mapbox from '../../../components/Map/Mapbox/Mapbox'
 import Slider from '../../../components/Slider/Slider'
 import MapGL from '../../../components/Map/MapGL/ReactMap'
 import DackLayer from '../../../components/Map/DackGL/DackLayer'

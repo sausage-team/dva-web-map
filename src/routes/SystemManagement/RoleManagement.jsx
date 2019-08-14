@@ -1,7 +1,7 @@
 import { Table,Breadcrumb} from 'antd'
 import styles from './RoleManagement.css'
 import { React } from 'react'
-import { connect, dispatch } from 'dva'
+import { connect } from 'dva'
 const columns=[
   {
       title: '序号',
@@ -15,13 +15,13 @@ const columns=[
     title: '角色名称',
     dataIndex: 'roleName',
     key: 'roleName',
-  }, 
+  },
   {
     title: '角色描述',
     dataIndex: 'remark',
     key: 'remark',
     // eslint-disable-next-line react/display-name
-    render: (text,record,index) => {
+    render: (text) => {
       return <a href="#">{text}</a>;
     }
   },
@@ -44,7 +44,7 @@ class UserRoleManagement extends React.Component {
             <Breadcrumb.Item>角色管理</Breadcrumb.Item>
             </Breadcrumb>
           </div>
-          <Table 
+          <Table
           rowKey="roleId" columns={columns} dataSource={this.props.userrole.data} />
         </div>
       );

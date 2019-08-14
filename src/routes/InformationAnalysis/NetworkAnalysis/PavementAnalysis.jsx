@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import { routerRedux } from 'dva/router'
-import { Input, Button, Radio } from 'antd'
+import { Button } from 'antd'
 import styles from './PavementAnalysis.css';
 import Mapbox from '../../../components/Map/Mapbox/Mapbox';
-import request from '../../../utils/request';
 import Slider from '../../../components/Slider/Slider'
 import RadioTab from '../../../components/Radio/Radio';
 import SpecialRadio from '../../../components/Radio/SpecialRadio';
@@ -12,9 +10,6 @@ import HotRadio from '../../../components/Radio/HotRadio';
 import PavementAnalysisTab from '../../../components/DataTab/PavementAnalysisTab';
 import PavementModel from '../../../components/Model/PavementModel';
 import MapPublic from '../../../components/Map/MapController/MapPublic'
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
-const Search = Input.Search;
 class PavementAnalysis extends React.Component {
     constructor(props) {
         super(props);

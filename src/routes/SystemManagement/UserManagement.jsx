@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect,dispatch } from 'dva';
-import { Table, Icon, Divider,Button,Dropdown,Menu,Breadcrumb,Input,Modal,message} from 'antd';
+import { connect } from 'dva';
+import { Table, Button, Breadcrumb,Input } from 'antd';
 import styles from './UserManagement.css';
 import AddUser from '../../components/users/AddUser'
 import UpdateUser from '../../components/users/UpdateUser'
@@ -42,7 +42,7 @@ class UserManagement extends React.Component {
     title: '状态',
     dataIndex: 'status',
     key: 'status',
-    render: function(text, record){
+    render: function(text){
       return text==1?'正常':'停用';
       }
   }, {
@@ -50,16 +50,16 @@ class UserManagement extends React.Component {
     dataIndex: 'userId',
     key: 'userId',
     width: 80,
-    render: (text, record)=>{    
+    render: (text, record)=>{
       return (
         <span><a href="#" onClick={()=>{(this.showUpdateLayer(record))}}>修改</a></span>
       );
     }
   }];
-  
+
 
   rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
+    onChange: (selectedRowKeys) => {
       this.props.dispatch({
             type: 'userlist/setSelectedRowKeys',
             payload: selectedRowKeys
@@ -85,9 +85,8 @@ class UserManagement extends React.Component {
       payload: key,
     });
   }
-  
+
   render() {
-    const {policeData}=this.props.userlist
     return (
       <div className={styles.mainBox}>
         <div style={{ marginBottom: 16 }}>
@@ -111,14 +110,14 @@ class UserManagement extends React.Component {
           >
             删除
           </Button>
-          <Search 
+          <Search
       placeholder="输入用户名/姓名"
       onSearch={this.querySearchList}
       style={{ width: 200 }}
       enterButton={true}
     />
         </div>
-        <Table 
+        <Table
         rowKey="userId"
          rowSelection={this.rowSelection} columns={this.columns} dataSource={this.props.userlist.data} />
          <AddUser />

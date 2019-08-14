@@ -2,7 +2,7 @@ require('@supermap/iclient-mapboxgl');
 import { iserverBasePath } from '../../../services/config'
 import mapboxgl from 'mapbox-gl'
 class KernelMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -10,10 +10,10 @@ class KernelMap {
         this.filterBy = this.filterBy.bind(this);
         this.dataUrl = iserverBasePath;
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
-    addMapLay(data, value) {
+    addMapLay() {
         let url = 'http://localhost:8090/iserver/services/spatialAnalysis-mtgdata/restjsr/spatialanalyst';
         var geoBufferAnalystParams = new SuperMap.DensityKernelAnalystParameters({
             dataset: '路网分析_道路@data',

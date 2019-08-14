@@ -1,8 +1,8 @@
 import { iserverBasePath } from '../../../services/config';
 import mapboxgl from 'mapbox-gl';
-require('@supermap/iclient-mapboxgl');
+import * as SuperMap from '@supermap/iclient-mapboxgl'
 class AreaMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -17,7 +17,7 @@ class AreaMap {
             }
         }
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
     addMapLay() {
@@ -63,7 +63,7 @@ class AreaMap {
                 backgroundRadius: [5, 5, 5, 5],        // 背景框圆角参数
             };
             for (let i in data) {
-                var provinceInfo = data[i];
+                // var provinceInfo = data[i];
                 var geo = new mapboxgl.LngLat(data[i].properties['GEOX'], data[i].properties['GEOY']);
                 var attrs = {};
                 attrs.NAME = data[i].properties['POLICE_NAME'];

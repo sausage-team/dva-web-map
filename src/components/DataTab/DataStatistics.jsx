@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider, Pagination } from 'antd';
-import Draw from 'mapbox-gl-draw';
-const TabPane = Tabs.TabPane;
+import { Table, Icon, Pagination } from 'antd';
 class DataStatistics extends React.Component {
   constructor(props) {
     super(props);

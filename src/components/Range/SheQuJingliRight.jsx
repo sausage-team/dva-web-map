@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SheQuJingliRight.css';
 import { connect } from 'dva';
-import { Select,Card,AutoComplete,Divider  } from 'antd';
+import { Divider  } from 'antd';
 import {userAvABaseUrl} from '../../services/config'
 import defultImage from '../../../public/img/defalutImg.png';
 class SheQuJingliRight extends React.Component {
@@ -56,7 +56,7 @@ class SheQuJingliRight extends React.Component {
           </div>
         )
       })
-    
+
    }
     return (
       <div className={styles.mainIndex}>

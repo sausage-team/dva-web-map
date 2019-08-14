@@ -1,6 +1,6 @@
 //社区查询
 import React from 'react';
-import { connect, dispatch } from 'dva';
+import { connect } from 'dva';
 import styles from './RangeQuery.css';
 import MapBoxMap from '../../components/Range/MapboxRangeMap';
 import QueryAreaSelect from '../../components/Range/QueryAreaSelect';
@@ -9,7 +9,6 @@ import GeWangDataInfo from '../../components/Range/GeWangDataInfo';
 import SheQuJingliRight from '../../components/Range/SheQuJingliRight'
 import CunGeJingliRight from '../../components/Range/CunGeJingliRight'
 import ThreeRangeMap from '../../components/Range/ThreeRangeMap';
-import { Button } from 'antd';
 import Iframe from 'react-iframe';
 import {bdpConfig,ThreeDefaultHeight} from '../../services/config';
 class RangeQuery extends React.Component {

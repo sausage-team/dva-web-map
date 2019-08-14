@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /*******************************************************************************
 牛牛截图的JS部分的核心流程封装在此文件中，绝大部分情况下，您不需要修改此文件中的JS内容，它已经包含了在所有浏览器上应用
-牛牛截图所需要的所有代码，您只需要去修改capturewrapper.js，将相应的函数修改成与您的UI匹配的即可 
+牛牛截图所需要的所有代码，您只需要去修改capturewrapper.js，将相应的函数修改成与您的UI匹配的即可
 *******************************************************************************/
 
 /*******************************************************************************/
-//设置截图的参数 
+//设置截图的参数
 import $ from 'jquery';
 
 // module.exports = function () {
@@ -130,13 +131,13 @@ var emWindowAware = 6;		//设置是否禁用随着DPI放大
 var emSetSaveName = 8;		//设置保存时的开始文字     免费版本无效
 var emSetMagnifierBkColor = 9; //设置放大镜的背景色，不设置则透明
 var emSetMagnifierLogoText = 10; //设置放大镜上的LOGO字符，可提示快捷键，如： 牛牛截图(CTRL + SHIFT + A)     免费版本无效
-var emSetWatermarkPictureType = 20;						//设置水印的类型 
-var emSetWatermarkPicturePath = 21;						//设置水印的路径 
-var emSetWatermarkTextType = 22;						//设置水印文字的类型 
+var emSetWatermarkPictureType = 20;						//设置水印的类型
+var emSetWatermarkPicturePath = 21;						//设置水印的路径
+var emSetWatermarkTextType = 22;						//设置水印文字的类型
 var emSetWatermarkTextValue = 23;                       //设置水印文字的字符串
-var emSetMosaicType = 24;               //指定马赛克的类型，1为矩形，2为画线 
-var emSetTooltipText = 25;               //用于设置工具栏图标的TOOLTIP文字 
-var emSetMoreInfo = 26;							//设置额外的信息，用于特殊需求 
+var emSetMosaicType = 24;               //指定马赛克的类型，1为矩形，2为画线
+var emSetTooltipText = 25;               //用于设置工具栏图标的TOOLTIP文字
+var emSetMoreInfo = 26;							//设置额外的信息，用于特殊需求
 /*******************************************************************************/
 
 
@@ -185,7 +186,7 @@ export function NiuniuCaptureObject() {
     this.ToolTipText = "";  //tipRectangle|tipCircle|tipArrow|tipBrush|tipGlitter|tipMosaic|tipText|tipUndo|tipSave|tipCancel|tipFinish|txtFinish
     this.MoreInfo = "1,100|300|600";
 
-    this.useCustomizedProtoco = true;   //是否使用浏览器自定义协议加websocket 
+    this.useCustomizedProtoco = true;   //是否使用浏览器自定义协议加websocket
 
     this.IsWaitCustomizedCallBack = false;
     this.autoConnectAfterPageLoad = true;
@@ -256,7 +257,7 @@ export function NiuniuCaptureObject() {
     }
 
     this.OnCaptureFinishedEx = function (type, x, y, width, height, info, content, localpath) {
-        //交给上层去处理截图完成后的事项 
+        //交给上层去处理截图完成后的事项
         if (self.FinishedCallback != null) {
             self.FinishedCallback(type, x, y, width, height, info, content, localpath);
         }
@@ -274,7 +275,7 @@ export function NiuniuCaptureObject() {
             return false;
         }
 
-        //此函数必需调用，传递正确的参数，且必需先于其他函数调用  
+        //此函数必需调用，传递正确的参数，且必需先于其他函数调用
         self.niuniuCapture().InitCapture(self.NiuniuAuthKey);
 
         self.niuniuCapture().InitParam(emPensize, self.PenSize);
@@ -287,7 +288,7 @@ export function NiuniuCaptureObject() {
         self.niuniuCapture().InitParam(emSetMagnifierLogoText, self.MagnifierLogoText);
         self.niuniuCapture().InitParam(emSetMosaicType, self.MosaicType);
 
-        //设置工具栏上的按钮TOOLTIP  
+        //设置工具栏上的按钮TOOLTIP
         self.niuniuCapture().InitParam(emSetTooltipText, self.ToolTipText);
 
         self.niuniuCapture().InitParam(emSetMoreInfo, self.MoreInfo);
@@ -296,7 +297,7 @@ export function NiuniuCaptureObject() {
         // niuniuCapture().InitParam(21, "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");
         //注：以上设置LOGO及保存名的接口，免费版本无效
 
-        //添加控件的事件监听 
+        //添加控件的事件监听
         self.addEvent(self.niuniuCapture(), 'CaptureFinishedEx', self.OnCaptureFinishedEx);
         //以下这个事件主要是用于兼容旧的浏览器控件的事件通知
         self.addEvent(self.niuniuCapture(), 'CaptureFinished', self.OnCaptureFinished);
@@ -309,7 +310,7 @@ export function NiuniuCaptureObject() {
 
     this.SetWatermarkPicture = function (watermarPicData) {
         self.WatermarkPicturePath = watermarPicData;
-        //设置测试的水印图片的Base64字符串，此操作应该是在页面加载中处理比较合适 
+        //设置测试的水印图片的Base64字符串，此操作应该是在页面加载中处理比较合适
         if (!self.pluginValid())
             return;
         self.niuniuCapture().InitParam(emSetWatermarkPicturePath, self.WatermarkPicturePath);
@@ -318,7 +319,7 @@ export function NiuniuCaptureObject() {
 
     this.SetWatermarkText = function (watermarkText) {
         self.WatermarkTextValue = watermarkText;
-        //设置测试的水印文字，此操作应该是在页面加载中处理比较合适 
+        //设置测试的水印文字，此操作应该是在页面加载中处理比较合适
         if (!self.pluginValid())
             return;
         //nShowType|nMinWidth|nMinHeight|nVerticalInterval|nOffset|nFontSize|nIsBold|nTextWidth|nTextHeight|colorText
@@ -344,23 +345,23 @@ export function NiuniuCaptureObject() {
     this.NewCaptureParamObject = function (defaultpath, hideCurrWindow, autoCaptureFlag, x, y, width, height) {
         var obj = new Object();
         obj.CmdType = 1;
-        obj.IsGBK = 0;				//是否是GBK编码，这样会涉及到编码转换  
-        obj.AuthKey = self.NiuniuAuthKey;  //						
+        obj.IsGBK = 0;				//是否是GBK编码，这样会涉及到编码转换
+        obj.AuthKey = self.NiuniuAuthKey;  //
         obj.Pensize = self.PenSize;		//设置画笔大小
         obj.DrawType = self.DrawType;			//设置是腾讯风格还是360风格
         obj.TrackColor = self.TrackColor;		//自动识别的边框的颜色
         obj.EditBorderColor = self.EditBorderColor;	//文本输入的边框颜色
         obj.Transparent = self.Transparent;		//工具栏的透明度
         obj.SetSaveName = self.SaveName;									//设置保存时的开始文字
-        obj.SetMagnifierLogoText = self.MagnifierLogoText;						//设置放大镜上的LOGO字符   
-        obj.SetWatermarkPictureTypeEx = self.WatermarkPictureType;						//设置水印的类型 
-        obj.SetWatermarkPicturePath = self.WatermarkPicturePath;						//设置水印的路径 
-        obj.SetWatermarkTextTypeEx = self.WatermarkTextType;							//设置水印文字的类型 
+        obj.SetMagnifierLogoText = self.MagnifierLogoText;						//设置放大镜上的LOGO字符
+        obj.SetWatermarkPictureTypeEx = self.WatermarkPictureType;						//设置水印的类型
+        obj.SetWatermarkPicturePath = self.WatermarkPicturePath;						//设置水印的路径
+        obj.SetWatermarkTextTypeEx = self.WatermarkTextType;							//设置水印文字的类型
         obj.SetWatermarkTextValue = self.WatermarkTextValue;						//设置水印文字
-        obj.MosaicType = self.MosaicType;          //设置马赛克的类型 
+        obj.MosaicType = self.MosaicType;          //设置马赛克的类型
         obj.SetToolbarText = self.ToolTipText;
         obj.MoreInfo = this.MoreInfo;
-        //以下是截图时传递的参数 
+        //以下是截图时传递的参数
         obj.DefaultPath = defaultpath;
         obj.HideCurrentWindow = hideCurrWindow;
         obj.AutoCaptureFlag = autoCaptureFlag;
@@ -454,7 +455,7 @@ export function NiuniuCaptureObject() {
                 clearTimeout(self.TimeOutID);
                 if (id == "0") {
                     self.hostPortIndex--;
-                    //表示连接成功，此时应该提示可以截图了 
+                    //表示连接成功，此时应该提示可以截图了
                     self.connectState = emConnected;
                     self.pluginLoaded();
                     self.IsEverConnected = true;
@@ -468,7 +469,7 @@ export function NiuniuCaptureObject() {
                     self.TimeIntervalID = setInterval(captureObjSelf.LoopEchoMessage, 3000);
                 }
                 if (id == "1") {
-                    //解析消息 
+                    //解析消息
                     var _aoResult = eval("(" + arg1 + ")");
                     self.ReceivedEchoBack = true;
                     if (_aoResult.command == "echo") {
@@ -499,7 +500,7 @@ export function NiuniuCaptureObject() {
     }
 
     this.WriteLog = function (txt) {
-        //写日志 
+        //写日志
         try {
             console.log(txt);
         }
@@ -509,7 +510,7 @@ export function NiuniuCaptureObject() {
     }
 
     this.OnWebSocketError = function (type) {
-        //如果不处于连接成功状态，说明不是断开连接，而是连接失败 
+        //如果不处于连接成功状态，说明不是断开连接，而是连接失败
         var isConnectedFailed = false;
         if (self.connectState != emConnected) {
             isConnectedFailed = true;
@@ -581,21 +582,21 @@ export function NiuniuCaptureObject() {
     this.DoCaptureForCustomize = function (name, hide, AutoCapture, x, y, width, height) {
         var obj = self.NewCaptureParamObject(name, hide, AutoCapture, x, y, width, height);
         try {
-            //启动客户端，或者通过websocket去发送数据   
+            //启动客户端，或者通过websocket去发送数据
             if (self.connectState == emConnected) {
                 let json = $.toJSON(obj);
                 self.NiuniuSocket.send('1' + encodeURIComponent(json));
             }
             else {
-                //首次启动时，不支持水印，否则会过长 
+                //首次启动时，不支持水印，否则会过长
                 obj.SetWatermarkPicturePath = "";
-                //obj.SetWatermarkTextValue = "";	
+                //obj.SetWatermarkTextValue = "";
                 let json = $.toJSON(obj);
                 self.WriteLog(json.length);
                 let newUrl = self.CaptureName + "://" + encodeURIComponent(json);
                 self.WriteLog(newUrl.length);
 
-                //启动客户端  
+                //启动客户端
                 $('#startCaptureFrame').attr('src', newUrl);
 
                 self.IsWaitCustomizedCallBack = true;
@@ -641,7 +642,7 @@ export function NiuniuCaptureObject() {
                     return true;
                 }
             }
-            //如果是firefox 且在50版本以上，则需要  
+            //如果是firefox 且在50版本以上，则需要
             var brow = $.browser;
             if (brow.mozilla) {
                 return true;
@@ -685,7 +686,7 @@ var captureObj = null;
 var downloadUrl = 'http://www.ggniu.cn/download/CaptureInstall.exe?';
 
 /*
-用于初始化牛牛截图控件，此函数需要在页面加载完成后立即调用 
+用于初始化牛牛截图控件，此函数需要在页面加载完成后立即调用
 在此函数中，您可以设置相关的截图的UI控制，如，画笔大小、边框颜色等等 【这部分信息在niuniucapture.js中也有默认值，直接修改默认值也可 】
 */
 export function Init() {
@@ -694,11 +695,11 @@ export function Init() {
     }
     captureObj = new NiuniuCaptureObject();
     captureObj.NiuniuAuthKey = "niuniu";
-    //此处可以设置相关参数 
+    //此处可以设置相关参数
     captureObj.TrackColor = rgb2value(255, 0, 0);
     captureObj.EditBorderColor = rgb2value(0, 0, 255);
 
-    //设置工具栏的TOOLTIP  
+    //设置工具栏的TOOLTIP
     //captureObj.ToolTipText = "tipRectangle|tipCircle|tipArrow|tipBrush|tipGlitter|tipMosaic|tipText|tipUndo|tipSave|tipCancel|tipFinish|Finish";
 
     //设置控件加载完成以及截图完成的回调函数
@@ -706,18 +707,18 @@ export function Init() {
     captureObj.PluginLoadedCallback = PluginLoadedCallback;
     captureObj.VersionCallback = VersionCallback;
 
-    //初始化控件 
+    //初始化控件
     captureObj.InitNiuniuCapture();
 }
 
 //用于返回控件的版本号
 export function VersionCallback(ver) {
     //captureObj.Version;
-    //可以在此根据最新的版本号与控件返回的版本号对比，决定是否要提示升级  
+    //可以在此根据最新的版本号与控件返回的版本号对比，决定是否要提示升级
     //alert(ver);
 }
 /*
-当控件成功加载后回调的的函数，您可以在此控制相应的UI显示  
+当控件成功加载后回调的的函数，您可以在此控制相应的UI显示
 */
 export function PluginLoadedCallback(success) {
     if (success) {
@@ -755,14 +756,14 @@ export function ReloadPlugin() {
 }
 
 /*
-截图入口函数，用于控制UI标签的显示 
+截图入口函数，用于控制UI标签的显示
 */
 export function StartCapture() {
 
     $('#imgshow').hide();
     $('#imgshow').attr('src', "./image/loading.gif?v=1");
     var captureRet = Capture();
-    //从返回值来解析显示  	
+    //从返回值来解析显示
     if (captureRet == emCaptureFailed) {
         ShowDownLoad();
     }
@@ -772,10 +773,10 @@ export function StartCapture() {
 }
 
 /*
-此函数是根据在测试页面上的不同选项来进行截图，在实际应用中，您只需要根据您实际需要的截图模式，传入相应的参数即可 
+此函数是根据在测试页面上的不同选项来进行截图，在实际应用中，您只需要根据您实际需要的截图模式，传入相应的参数即可
 */
 export function Capture() {
-    var defaultName = "1.jpg"; //此处为了防止上传的数据过大，建议使用JPG格式 
+    var defaultName = "1.jpg"; //此处为了防止上传的数据过大，建议使用JPG格式
     var hideFlag = $("#hideCurrent").attr("checked") == "checked" ? 1 : 0;
     var autoFlag = $("#captureselectSize").attr("checked") == "checked" ? 1 : 0;
     var captureRet = true;
@@ -791,7 +792,7 @@ export function Capture() {
         if (autoFlag == 3) {
             //此时如果x, y, width, height全为0，则表示预截图窗口点击“开始截图”时，手工先把区域
             //x, y, width, height全为1，则表示预截图窗口点击“开始截图”时，自动截取整个桌面
-            //其他情况，则自动截取 x, y, width, height 指定的区域  
+            //其他情况，则自动截取 x, y, width, height 指定的区域
             return captureObj.DoCapture("1.jpg", hideFlag, 3, 0, 0, 0, 0);
         }
         autoFlag = $('#fullscreen').is(':checked') ? 2 : 1;
@@ -805,7 +806,7 @@ export function Capture() {
 }
 
 /*
-此处是截图后的回调函数，用于将截图的详细信息反馈回来，你需要调整此函数，完成图像数据的传输与显示  
+此处是截图后的回调函数，用于将截图的详细信息反馈回来，你需要调整此函数，完成图像数据的传输与显示
 */
 export function OnCaptureFinishedCallback(type, x, y, width, height, info, content, localpath) {
     if (type < 0) {

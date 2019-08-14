@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Radio } from 'antd';
 import styles from './FlightPathManagement.css';
 import FlightPathRadio from '../../components/Radio/FlightPathRadio';
 import FligheModel from '../../components/Model/FlightModel';
@@ -24,9 +23,9 @@ class FlightManagement extends React.Component {
         //点击摄像头的交互
         mapObj.on('click', 'CameraMapPoint', this.clickFun.bind(this, mapObj, 'CameraMapPoint', 'addCameraMapPoint'));
     })
-    this.props.dispatch({ 
+    this.props.dispatch({
       type: 'flightPathManagement/getVideoData',
-      payload: mapObj 
+      payload: mapObj
     });
 
     // this.props.dispatch({
@@ -179,7 +178,7 @@ class FlightManagement extends React.Component {
         }
       }
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-    cesiumObj._selectedEntityChanged.addEventListener((entity, e) => {
+    cesiumObj._selectedEntityChanged.addEventListener((entity) => {
       if (!this.props.flightPathManagement.XYZData) {
         let viewshed3D = this.props.flightPathManagement.viewshed3D;
         if (entity) {

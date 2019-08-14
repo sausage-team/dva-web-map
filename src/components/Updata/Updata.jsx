@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Updata.css';
+// import styles from './Updata.css';
 import { connect } from 'dva';
 import { Upload, Icon, message, Button } from 'antd';
 class Updata extends React.Component {
@@ -7,7 +7,7 @@ class Updata extends React.Component {
     super(props);
   }
   //控制是否添加完立即上传
-  beforeUpload = (file, fileList, event) => {
+  beforeUpload = (file) => {
     this.props.dispatch({
       type: 'caseEntry/setModel',
       payload: false
@@ -28,7 +28,7 @@ class Updata extends React.Component {
   }
   //当上传数据发生变化时的回调函数
   upLoadCheng = (info) => {
-    let response = info.file.response;
+    // let response = info.file.response;
     const status = info.file.status;
     if (status === 'done') {
       this.props.dispatch({
@@ -39,7 +39,7 @@ class Updata extends React.Component {
         let updata = info.file.response;
         let okList = [];
         let errorList = [];
-        let data = [];
+        // let data = [];
         for (let i in updata.data.errorList) {
           let obj = {
             key: i,

@@ -48,9 +48,9 @@ class CesiumMap extends React.Component {
         // var promise = scene.addS3MTilesLayerByScp('http://192.168.1.116:8090/iserver/services/3D-MTG3DQXSY/rest/realspace/datas/Config/config', {
         //     name: 'Config'
         // });
-        var promise = scene.addS3MTilesLayerByScp('http://127.0.0.1:8090/iserver/services/3D-MTG3DQXSY/rest/realspace/datas/Config/config', {
-            name: 'Config'
-        });
+        // var promise = scene.addS3MTilesLayerByScp('http://127.0.0.1:8090/iserver/services/3D-MTG3DQXSY/rest/realspace/datas/Config/config', {
+        //     name: 'Config'
+        // });
         // var promise1 = scene.addS3MTilesLayerByScp('http://192.168.1.122:8090/iserver/services/3D-MTG3D1/rest/realspace/datas/Camera/config', {
         //     name: 'Camera'
         // });
@@ -67,7 +67,7 @@ class CesiumMap extends React.Component {
         // })).then(function(dataSource){
         //     cesiumView.clock.clockRange = Cesium.ClockRange.CLAMPED;
         // });
-        Cesium.when(obj1, function (layer) {
+        Cesium.when(obj1, function () {
             cesiumView.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(116.08, 39.912453300920916, 16000.8147941154),
                 orientation: {

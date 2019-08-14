@@ -1,6 +1,6 @@
 import turf from 'turf'
 class HexGridMap {
-    constructor(map, dispatch) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -9,16 +9,16 @@ class HexGridMap {
     }
     MapLayData(data) {
         this.data = data;
-        const color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
+        // const color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
         let obj = {
             "type": "FeatureCollection",
             "features": []
         }
-        var endarr = [];
+        // var endarr = [];
         for (var key in data) {
-            let hours = parseInt(key - 1) % 100 * 730;
-            var cellSide = 0.02;
-            var options = { units: 'kilometers' };
+            // let hours = parseInt(key - 1) % 100 * 730;
+            // var cellSide = 0.02;
+            // var options = { units: 'kilometers' };
             for (var j in data[key]) {
                 let line = turf.lineString(this.toLonLat(data[key][j].wgx, data[key][j].wgy));
                 let bbox = turf.bbox(line);
@@ -43,7 +43,7 @@ class HexGridMap {
         return obj;
     }
     toLonLat(x, y) {
-        var arr = [];
+        // var arr = [];
         var arrend = [];
         var zoom = 15;
         let lon = parseFloat(x);

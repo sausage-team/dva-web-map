@@ -77,11 +77,11 @@ export default {
     },
   },
   effects: {
-    *setTimeOpen({ payload }, { call, put, select }) {
+    *setTimeOpen(payload, { call, select }) {
       let map = yield select(state => state.personnelTrajectory);
       yield call(map.timeFun)
     },
-    *shutTimeOpen({ payload }, { call, put, select }) {
+    *shutTimeOpen(payload, { put, select }) {
       let map = yield select(state => state.personnelTrajectory);
       if (map.timeOut) {
         clearInterval(map.timeOut);
@@ -95,7 +95,7 @@ export default {
         })
       }
     },
-    *getPoliceRoute({ payload }, { call, put, select }) {
+    *getPoliceRoute(payload, { call, put, select }) {
       let map = yield select(state => state.personnelTrajectory);
       let policeObj = map.policeObj;
       let switchData = map.switchData;
@@ -154,10 +154,11 @@ export default {
         }
       }
     },
-    *lineMap({ payload: data }, { call, put, select }) {
+    *lineMap({ payload: data }, { select }) {
       let cesium = yield select(state => state.cesium);
       let viewer = cesium.cesiumObj;
-      var glowingLine = viewer.entities.add({
+      // var glowingLine =
+      viewer.entities.add({
         name: 'Line',
         polyline: {
           positions: Cesium.Cartesian3.fromDegreesArrayHeights(data),
@@ -169,7 +170,7 @@ export default {
         }
       });
     },
-    *pointMap({ payload: time }, { call, put, select }) {
+    *pointMap({ payload: time }, { put, select }) {
       let cesium = yield select(state => state.cesium);
       let personnelTrajectory = yield select(state => state.personnelTrajectory);
       let viewer = cesium.cesiumObj;

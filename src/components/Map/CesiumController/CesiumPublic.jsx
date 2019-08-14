@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './CesiumPublic.css';
 import { connect } from 'dva';
-import { Upload, Icon, message, Button, Select, Spin, Input, DatePicker, Switch } from 'antd';
-import { width } from 'window-size';
+import { Icon } from 'antd';
 // import { NiuniuCaptureObject, rgb2value, StartCapture } from '../MapController/Niuniu'
 class CesiumPublic extends React.Component {
     constructor(props) {

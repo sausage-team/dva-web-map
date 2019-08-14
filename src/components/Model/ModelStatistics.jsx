@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Model.css';
+// import styles from './Model.css';
 import { connect } from 'dva';
 import { Modal,Input,Radio} from 'antd';
 const { TextArea } = Input;

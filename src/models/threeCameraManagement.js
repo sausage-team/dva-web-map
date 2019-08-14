@@ -117,7 +117,7 @@ export default {
     },
   },
   effects: {
-    *getPoliceList({ payload:num }, { call, put, select }) {
+    *getPoliceList({ payload:num }, { call, put }) {
       let treeData = [{
         title: 0,
         key: '城子派出所',
@@ -206,7 +206,7 @@ export default {
         })
       }
     },
-    *getPoliceLocation({ payload:arr }, { call, put, select }) {
+    *getPoliceLocation({ payload:arr }, { call, put }) {
       let outArr = [];
       for(let i in arr){
         let locData= arr[i].split('警员');
@@ -214,7 +214,7 @@ export default {
       }
       let PoliceListData = yield call(getHotMap, 'xk/3d/queryPoliceLocation/'+outArr.toString()+'', {});
       if(PoliceListData.code == 0){
-        let data = PoliceListData.data;
+        // let data = PoliceListData.data;
         let obj = {
          //name:data[0].username,
           // y:parseFloat(data[0].latitude),
@@ -230,11 +230,12 @@ export default {
         })
       }
     },
-    *getEntities({ payload:obj }, { call, put, select }) {
+    *getEntities({ payload:obj }, { select }) {
       let cesium = yield select(state => state.cesium);
       let cesiumObj = cesium.cesiumObj;
       cesiumObj.entities.removeAll();
-     let demo= cesiumObj.entities.add({
+    //  let demo=
+     cesiumObj.entities.add({
         position : Cesium.Cartesian3.fromDegrees(obj.x, obj.y,20),
         billboard : {
           image : img,
@@ -277,7 +278,7 @@ export default {
     //     })
     //   }
     // },
-    *setTabData({ payload:arr }, { call, put, select }) {
+    *setTabData({ payload:arr }, { put, select }) {
       yield put({
         type:'setLoading',
         payload:true,

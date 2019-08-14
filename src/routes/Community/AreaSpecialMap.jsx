@@ -1,6 +1,6 @@
 //社区查询
 import React from 'react';
-import { connect, dispatch } from 'dva';
+import { connect } from 'dva';
 import styles from './AreaSpecialMap.css';
 import Mapbox from '../../components/Map/Mapbox/Mapbox';
 import MapPublic from '../../components/Map/MapController/MapPublic'
@@ -27,12 +27,12 @@ class AreaSpecialMap extends React.Component {
     }
     render() {
         return (
-            <div className={styles.mainBox}>
-                <Mapbox />
-                <div className={styles.rightTop}>
-                    <MapPublic />
-                </div>
+          <div className={styles.mainBox}>
+            <Mapbox/>
+            <div className={styles.rightTop}>
+              <MapPublic/>
             </div>
+          </div>
         );
     }
 }

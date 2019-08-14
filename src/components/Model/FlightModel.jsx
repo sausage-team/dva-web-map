@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Model.css';
+// import styles from './Model.css';
 import { connect } from 'dva';
-import { Modal,Input,Radio} from 'antd';
+import { Modal,Input } from 'antd';
 const { TextArea } = Input;
-const RadioGroup = Radio.Group;
+// const RadioGroup = Radio.Group;
 class FlightModel extends React.Component {
   constructor(props) {
     super(props);

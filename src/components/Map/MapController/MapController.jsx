@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './MapController.css';
-import { Tabs, Icon, DatePicker, Button, Switch, Radio } from 'antd';
+import { Tabs, DatePicker, Button, Switch, Radio } from 'antd';
 import moment from 'moment';
 import img1 from '../../../../public/img/tubiao1.png';
 import img2 from '../../../../public/img/tubiao2.png';
@@ -87,7 +87,7 @@ class MapController extends React.Component {
                 switch (this.props.map.groupData || 'a') {
                     case 'a':
                         this.props.dispatch({
-                            type: 'map/custersMapDate', 
+                            type: 'map/custersMapDate',
                             payload: this.props.map.mapReactObj
                         })
                         this.goToViewport(12, 0, 114.3038583200, 30.6479700100)
@@ -173,7 +173,7 @@ class MapController extends React.Component {
         })
     }
     render() {
-        const { startValue, endValue, endOpen } = this.props.map;
+        const { endOpen } = this.props.map;
         return (
             <div className={styles.main}>
                 <h2 className={styles.hTwo}>图表类型</h2>

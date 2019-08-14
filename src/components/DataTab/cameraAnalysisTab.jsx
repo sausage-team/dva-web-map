@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider } from 'antd';
+import { Table, Icon } from 'antd';
 class cameraAnalysisTab extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +32,7 @@ class cameraAnalysisTab extends React.Component {
       title: '高发时段',
       key: 'caseString',
       dataIndex: 'caseString'
-    }, 
+    },
     {
       title: '高发时段案件数',
       key: 'Num',
@@ -44,7 +43,7 @@ class cameraAnalysisTab extends React.Component {
   //   clickFun = (text, record) => {
 
   //   }
-  clickFun = (mapObj, getLayers, setLayers, text, e) => {
+  clickFun = (mapObj, getLayers, setLayers, text ) => {
     let features = mapObj.getSource(getLayers);
     if (features) {
       let obj = {};
@@ -81,7 +80,7 @@ class cameraAnalysisTab extends React.Component {
     }
   }
   //数据上图的回调
-  setPoint = (text, record) => {
+  setPoint = (text) => {
     let map = this.props.map.mapObj;
     // let upData = this.props.cameraAnalysis.upData;
     // upData.smid = text;
@@ -120,7 +119,7 @@ class cameraAnalysisTab extends React.Component {
         size='small'
         columns={this.columns}
         loading={this.props.cameraAnalysis.loading}
-        dataSource={this.props.cameraAnalysis.columns} 
+        dataSource={this.props.cameraAnalysis.columns}
         pagination={this.pagination}/>
     )
   }

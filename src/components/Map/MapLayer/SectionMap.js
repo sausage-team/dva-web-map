@@ -2,7 +2,7 @@ require('@supermap/iclient-mapboxgl');
 import mapboxgl from 'mapbox-gl'
 import { iserverBasePath } from '../../../services/config'
 class SectionMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -10,7 +10,7 @@ class SectionMap {
         this.filterBy = this.filterBy.bind(this);
         this.dataUrl = iserverBasePath;
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
     addMapLay(data, value) {

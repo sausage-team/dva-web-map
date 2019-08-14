@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SheQuDataInfo.css';
 import { connect } from 'dva';
-import { Select,Card,AutoComplete,Divider  } from 'antd';
+import { Divider  } from 'antd';
 class GeWangDataInfo extends React.Component {
   constructor(props) {
     super(props);

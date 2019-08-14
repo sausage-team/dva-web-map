@@ -1,10 +1,10 @@
-import mapv, { DataSet } from 'mapv';
+import { DataSet } from 'mapv';
 require('@supermap/iclient-mapboxgl');
 import mapboxgl from 'mapbox-gl';
 // import mapV from 'mapv';
 import { iserverBasePath } from '../../../services/config'
 class SectionHotMap {
-    constructor(map, data) {
+    constructor(map) {
         this.map = map;
         this.data = null;
         this.addMapLay = this.addMapLay.bind(this);
@@ -12,7 +12,7 @@ class SectionHotMap {
         this.filterBy = this.filterBy.bind(this);
         this.dataUrl = iserverBasePath;
     }
-    MapLayData(data) {
+    MapLayData() {
 
     }
     addMapLay(data, value) {
@@ -76,14 +76,14 @@ class SectionHotMap {
                                 }
                             }
                             features.features.push(obj);
-        
+
                             this.data = features.features
                         }
                     }
                 }
             }
             console.log('features.features',features.features)
-            let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
+            // let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
               size: 5,
               gradient: {

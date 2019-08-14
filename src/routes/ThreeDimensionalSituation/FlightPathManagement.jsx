@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Radio } from 'antd';
 import styles from './FlightPathManagement.css';
 import CesiumMap from '../../components/Map/Cesium/Cesium';
 import FlightPathRadio from '../../components/Radio/FlightPathRadio';
@@ -92,7 +91,7 @@ class FlightPathManagement extends React.Component {
         }
       }
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-    cesiumObj._selectedEntityChanged.addEventListener((entity, e) => {
+    cesiumObj._selectedEntityChanged.addEventListener((entity) => {
       if (!this.props.flightPathManagement.XYZData) {
         let viewshed3D = this.props.flightPathManagement.viewshed3D;
         if (entity) {

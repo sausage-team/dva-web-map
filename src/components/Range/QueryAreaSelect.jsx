@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './QueryAreaSelect.css';
 import { connect } from 'dva';
-import { Select, Card, AutoComplete, Divider, Switch } from 'antd';
-import { valid } from '../../services/user';
+import { Select, AutoComplete, Divider, Switch } from 'antd';
+// import { valid } from '../../services/user';
 import { fangKong,bdpConfig } from '../../services/config';
 const Option = Select.Option;
 class QueryAreaSelect extends React.Component {
@@ -71,7 +71,7 @@ class QueryAreaSelect extends React.Component {
     }
   }
   shequChange=(value)=>{
-    let datasets = fangKong.datasets;
+    // let datasets = fangKong.datasets;
     const { selectData, shequ, mapType } = this.props.range;
     let sheQuObj = shequ.filter(item => item.id == value);
     if (sheQuObj.length > 0) {
@@ -97,7 +97,7 @@ class QueryAreaSelect extends React.Component {
       })
       this.showSheQuView();
     }
-  }  
+  }
   //推送消息到BDP系统中
   postMessageBDP=(value)=>{
     let p={"type":"社区查询","data":{"社区名称":[value]}};
@@ -105,7 +105,7 @@ class QueryAreaSelect extends React.Component {
   }
   getMessageBDP=(e)=>{
     if (e.data) {
-      let datas=JSON.parse(e.data); 
+      let datas=JSON.parse(e.data);
       let name=datas.data['社区名称'][0];
       if(name){
         this.onSelect(name)
@@ -189,7 +189,7 @@ class QueryAreaSelect extends React.Component {
   render() {
     let datasets = fangKong.datasets;
     const { dataSource } = this.state;
-    const { oneOptions, twoOptions, threeOptions, searchData } = this.props.range.selectData;
+    const { oneOptions, twoOptions, threeOptions } = this.props.range.selectData;
     const oneSelect = oneOptions.map(item => <Option key={item.id}>{item.properties[datasets.level1.filedKeyName]}</Option>);
     const twoSelect = twoOptions.map(item => <Option key={item.id}>{item.properties[datasets.level2.filedKeyName]}</Option>);
     const threeSelect = threeOptions.map(item => <Option key={item.id}>{item.properties[datasets.level3.filedKeyName]}</Option>);

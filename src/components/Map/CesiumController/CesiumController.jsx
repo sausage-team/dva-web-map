@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CesiumController.css';
 import { connect } from 'dva';
-import { Upload, Icon, message, Button, Select, Spin } from 'antd';
+import { Button, Select, Spin } from 'antd';
 import { FlyRoute } from '../../../services/config';
 const Option = Select.Option;
 class CesiumController extends React.Component {
@@ -17,7 +17,7 @@ class CesiumController extends React.Component {
         let viewer = this.props.cesium.cesiumObj;
         let scene = viewer.scene;
         scene.globe.depthTestAgainstTerrain = false;
-        var camera = scene.camera;
+        // var camera = scene.camera;
         let routes = new Cesium.RouteCollection();
         routes.fromFile(url);
         //初始化飞行管理

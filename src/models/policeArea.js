@@ -28,22 +28,22 @@ export default {
     }
   },
   effects: {
-    *cqsq({ payload }, { call, put,select}) { 
+    *cqsq(payload, { call, put,select}) {
       const data  = yield call(queryIserverData,fangKong.datasets.level1.name);
       if(data!=null){
         const options = data.features;
         let selDataArray = yield select(state => state.range);
         let selData=selDataArray.selectData;
         selData['oneOptions']=options;
-        let treeData=selDataArray.treeData;
-        treeData=data.features;
+        // let treeData=selDataArray.treeData;
+        // treeData=data.features;
         yield put({type:'updateStateData',payload:{
           cqsq:data.features,
           selectData:selData
         }});
       }
     },
-    *pcs({ payload }, { call, put,select}) { 
+    *pcs(payload, { call, put,select}) {
       const data  = yield call(queryIserverData,fangKong.datasets.level2.name);
       if(data!=null){
         let options=data.features.filter(item=>item.properties[fangKong.datasets.level2.filedKeyArea]=='城区');

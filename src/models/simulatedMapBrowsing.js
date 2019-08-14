@@ -26,7 +26,7 @@ export default {
     },
   },
   effects: {//xk/3d/queryFlyRouteList
-    *getFlyData({ payload }, { call, put, select }) {
+    *getFlyData(payload, { call, put }) {
       let flyData = yield call(getHotMap, 'xk/3d/queryFlyRouteList', {});
       console.log(flyData);
       let data=[];

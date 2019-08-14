@@ -1,4 +1,4 @@
-import { getHotMap } from '../services/user';
+// import { getHotMap } from '../services/user';
 
 export default {
   namespace: 'areaSpecialMap',

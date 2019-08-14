@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './DataTab.css';
 import { connect } from 'dva';
-import { Tabs, Radio, Table, Icon, Divider,Input,Button } from 'antd';
+import { Input,Button } from 'antd';
 class FlightTab extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +51,7 @@ class FlightTab extends React.Component {
     })
   }
   render() {
-    let menuConfigValue = this.props.flightPathManagement.dataCenter;
+    // let menuConfigValue = this.props.flightPathManagement.dataCenter;
     return (
       <div>
         <div style={{ padding: '0px 0px',position:'relative' }}>
