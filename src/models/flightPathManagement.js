@@ -1,7 +1,8 @@
 import { getHotMap, Update } from '../services/user';
 import gltf from '../../public/Venders/model.gltf';
 import gltf1 from '../../public/Venders/qingji.gltf';
-import { apiService } from '../services/config';
+import { apiService } from '../services/config'
+import CameraPointMap from '../components/Map/MapLayer/CameraPointMap';
 
 export default {
   namespace: 'flightPathManagement',
@@ -77,7 +78,28 @@ export default {
     },
   },
   effects: {
-    *getVideoData({ payload: mapObj }, { call, put, select }) {
+    *getVideoData({ payload }, { call, put, select }) {
+      yield put({
+        type: 'map/setMapLoading',
+        payload: true
+      })
+      let data = yield call(getHotMap, 'xk/camera/queryCameraList?pageNum=-1', {});
+      yield put({
+        type: 'map/setMapLoading',
+        payload: false
+      })
+
+      yield put({
+        type: 'setSmlibtileData',
+        payload: data.data.data
+      })
+      let map = yield select(state => state.map); 
+      let cameraPointMap = new CameraPointMap(map.mapObj);
+      cameraPointMap.removeMapLay()
+      cameraPointMap.addMapLay.bind(this, data.data.data)();
+
+    },
+    *getVideoDatabak({ payload: mapObj }, { call, put, select }) {
       yield put({
         type: 'map/setMapLoading',
         payload: true
@@ -88,12 +110,12 @@ export default {
         payload: false
       })
       yield put({
-        type: 'pavementAnalysis/setColumns',
+        type: 'setSmlibtileData',
         payload: data.data.data
       })
       yield put({
-        type: 'setSmlibtileData',
-        payload: data.data
+        type: 'map/getCameraPoint',
+        payload: data.data.data
       })
       // yield put({
       //   type: 'threeDemo',
@@ -159,11 +181,11 @@ export default {
 
     },
     *setUp({ payload: obj }, { call, put, select }) {
-      let cesium = yield select(state => state.cesium);
-      let cesiumObj = cesium.cesiumObj;
+      // let cesium = yield select(state => state.cesium);
+      // let cesiumObj = cesium.cesiumObj;
       // let upData = JSON.stringify(obj);
-      cesiumObj.entities.removeAll()
-      let data = yield call(Update, `xk/camera/update/${obj.indexes}`, obj);
+      // cesiumObj.entities.removeAll()
+      let data = yield call(Update, `xk/camera/update/${obj.smid}`, obj);
       if (data.code == 0) {
         yield put({
           type: 'getVideoData',
@@ -175,11 +197,11 @@ export default {
         })
       }
     },
-    *delet({ payload: indexes }, { call, put, select }) {
-      let cesium = yield select(state => state.cesium);
-      let cesiumObj = cesium.cesiumObj;
-      cesiumObj.entities.removeAll()
-      let data = yield call(Update, `xk/camera/delete/${indexes}`, "");
+    *delet({ payload: smid }, { call, put, select }) {
+      // let cesium = yield select(state => state.cesium);
+      // let cesiumObj = cesium.cesiumObj;
+      // cesiumObj.entities.removeAll()
+      let data = yield call(Update, `xk/camera/delete/${smid}`, "");
       if (data.code == 0) {
         yield put({
           type: 'getVideoData',

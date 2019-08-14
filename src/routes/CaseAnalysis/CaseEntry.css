@@ -19,6 +19,13 @@
     border-radius: 5px;
     box-shadow:3px 3px 5px 0px rgba(33, 33, 33, 0.5);
   }
+  .upload{
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .download{
+    display: inline-block;
+  }
   .tab{
    width:95%;
    position: absolute;

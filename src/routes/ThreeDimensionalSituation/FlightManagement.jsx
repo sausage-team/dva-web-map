@@ -24,14 +24,15 @@ class FlightManagement extends React.Component {
         //点击摄像头的交互
         mapObj.on('click', 'CameraMapPoint', this.clickFun.bind(this, mapObj, 'CameraMapPoint', 'addCameraMapPoint'));
     })
+    this.props.dispatch({ 
+      type: 'flightPathManagement/getVideoData',
+      payload: mapObj 
+    });
+
     // this.props.dispatch({
-    //     type: 'pavementAnalysis/getPavementData'
+    //   type: 'map/getCameraPoint',
+    //   payload: mapObj
     // })
-    this.props.dispatch({ type: 'flightPathManagement/getVideoData' });
-    this.props.dispatch({
-      type: 'map/getCameraPoint',
-      payload: mapObj
-  })
   }
   clickFun = (mapObj, getLayers, setLayers, e) => {
       let bbox = [e.point.x, e.point.y];
@@ -56,8 +57,23 @@ class FlightManagement extends React.Component {
       data = data._data;
       data.features = [obj];
       mapObj.getSource(setLayers).setData(data);
-      for (let i in this.props.pavementAnalysis.columns) {
-          if (this.props.pavementAnalysis.columns[i].smid == features[0].properties.ID) {
+      let list = this.props.flightPathManagement.smlibtileData;
+      // let columns = this.props.pavementAnalysis.columns
+      for (let i in list) {
+          if (list[i].smid == features[0].properties.smid) {
+            this.props.dispatch({
+              type: 'flightPathManagement/setDataCenter',
+              payload: list[i]
+            })
+            mapObj.flyTo({
+              center: [list[i].smx, list[i].smy],
+              zoom: 15,
+              speed: 0.5
+            })
+            this.props.dispatch({
+              type: 'flightPathManagement/setFlightTabState',
+              payload: true
+            })
               // this.props.dispatch({
               //     type: 'map/shutTimeOpen'
               // })
@@ -169,18 +185,18 @@ class FlightManagement extends React.Component {
         if (entity) {
           let name = entity['_name'];
           let data = this.props.flightPathManagement.smlibtileData;
-          for (let i in data.list) {
-            if (data.list[i].indexes == name) {
+          for (let i in data) {
+            if (data[i].indexes == name) {
               this.props.dispatch({
                 type: 'flightPathManagement/setDataCenter',
-                payload: data.list[i]
+                payload: data[i]
               })
               // this.props.dispatch({
               //   type: 'flightPathManagement/setFlightTabState',
               //   payload: true
               // })
               cesiumObj.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(data.list[i].smx, data.list[i].smy, 800),
+                destination: Cesium.Cartesian3.fromDegrees(data[i].smx, data[i].smy, 800),
                 orientation: {
                   heading: Cesium.Math.toRadians(400),
                   pitch: Cesium.Math.toRadians(-90),
@@ -189,12 +205,12 @@ class FlightManagement extends React.Component {
               });
               if (!this.props.flightPathManagement.flightTabState) {
                 if (viewshed3D) {
-                  viewshed3D.viewPosition = [data.list[i].smx, data.list[i].smy, data.list[i].smh];
+                  viewshed3D.viewPosition = [data[i].smx, data[i].smy, data[i].smh];
                   viewshed3D.distance = 150;
-                  viewshed3D.horizontalFov = data.list[i].rangeAngle;
-                  viewshed3D.verticalFov = data.list[i].rangeAngle;
-                  viewshed3D.pitch = data.list[i].obliquity - 270;
-                  viewshed3D.direction = data.list[i].azimuth;
+                  viewshed3D.horizontalFov = data[i].rangeAngle;
+                  viewshed3D.verticalFov = data[i].rangeAngle;
+                  viewshed3D.pitch = data[i].obliquity - 270;
+                  viewshed3D.direction = data[i].azimuth;
                   viewshed3D.build();
                 }
               } else {

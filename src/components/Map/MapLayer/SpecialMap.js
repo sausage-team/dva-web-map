@@ -52,7 +52,8 @@ class SpecialMap {
             for (let i in serviceResult.result.features.features) {
                 let o = 0;
                 for (let j in data) {
-                    if (serviceResult.result.features.features[i].properties.POLICE_NUM == data[j].policeNum) {
+                    if (serviceResult.result.features.features[i].properties.ZZJG.trim() == data[j].policeNum.trim()) {
+                      console.log('data[j]',data[j])
                         if (data[j].num <= num[0][1]) {
                             o = 1;
                         } else if (data[j].num <= num[1][1]) {
@@ -64,7 +65,10 @@ class SpecialMap {
                         }
                         serviceResult.result.features.features[i].properties = {
                             ...serviceResult.result.features.features[i].properties,
-                            ...{ num: data[j].num }
+                            ...{
+                              num: data[j].num,
+                              name: data[j].name
+                            }
                         }
                     }
                 }
@@ -73,6 +77,7 @@ class SpecialMap {
                     ...{ color: color[o] }
                 }
             }
+            console.log('serviceResult.result.features',serviceResult.result.features)
             this.map.addLayer({
                 "id": "SpecialMap",
                 "type": "fill",
@@ -96,12 +101,12 @@ class SpecialMap {
                     "data": serviceResult.result.features
                 },
                 layout: {
-                    "text-field": "{num}",
+                    "text-field": "{name}（{num}）",
                     "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
                     "text-size": 16
                 },
                 paint: {
-                    "text-color": "#fff"
+                    "text-color": "#000"
                 }
             })
         });

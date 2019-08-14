@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Radio.css';
 import { connect } from 'dva';
+import { apiService } from '../../services/config'
 import { Radio, Icon, Upload, message } from 'antd';
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -8,8 +9,8 @@ class FlightPathRadio extends React.Component {
     constructor(props) {
         super(props);
     }
-    changeFun = (e) => {
-        let val = e.target.value;
+    changeFun = (val) => {
+        // let val = e.target.value;
         let cesiumObj = this.props.cesium.cesiumObj;
         if (val == 2) {
             this.props.dispatch({
@@ -100,9 +101,11 @@ class FlightPathRadio extends React.Component {
         const status = info.file.status;
         if (status === 'done') {
             if (info.file.response) {
-                if (info.file.response.data[0]) {
+                if (info.file.response.code!=0) {
                     message.error(`上传失败${info.file.response.data[0]}.`);
                     return;
+                }else{
+                  message.success(`上传成功`);
                 }
             }
             this.props.dispatch({
@@ -121,14 +124,27 @@ class FlightPathRadio extends React.Component {
     }
     render() {
         return (
-            <RadioGroup size="default" onChange={this.changeFun}>
+            // <RadioGroup size="default" onChange={this.changeFun}>
+            <RadioGroup size="default" >
                 <RadioButton value="1">
-                    <Upload {...this.props.flightPathManagement.updatastate} onChange={this.upLoadCheng} beforeUpload={this.beforeUpload} > <Icon type="upload" /> 摄像头上传</Upload>
+                   <div value="1" onClick={this.changeFun.bind(this,1)}>
+                   <Upload {...this.props.flightPathManagement.updatastate} onChange={this.upLoadCheng} beforeUpload={this.beforeUpload} > <Icon type="upload" /> 摄像头上传</Upload>
+                   </div>
+                   
                 </RadioButton>
-                <RadioButton value="2"><Icon type="swap" />添加</RadioButton>
-                <RadioButton value="3"><Icon type="fork" />查看</RadioButton>
+                {/* <RadioButton value="2"><Icon type="swap" />添加</RadioButton> */}
+                <RadioButton  value="3">
+                  <span value="3" onClick={this.changeFun.bind(this,3)}>
+                    <Icon type="fork" />查看
+                  </span> 
+                </RadioButton>
                 {/* <RadioButton value="4"><Icon type="fork" />删除</RadioButton> */}
-                <RadioButton value="5"><Icon type="eye-o" />可视域分析</RadioButton>
+                {/* <RadioButton value="5"><Icon type="eye-o" />可视域分析</RadioButton> */}
+                <RadioButton  value="5">
+                  <a value="5" href={apiService+'xk/camera/download'}>
+                    <Icon type="download" />下载模板
+                  </a> 
+                </RadioButton>
             </RadioGroup>
         );
     }

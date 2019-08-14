@@ -7,9 +7,22 @@ import Slider from '../../../components/Slider/Slider'
 import MapGL from '../../../components/Map/MapGL/ReactMap'
 import DackLayer from '../../../components/Map/DackGL/DackLayer'
 import MapController from '../../../components/Map/MapController/MapController'
+import moment from 'moment'
 class NuclearDensityAnalysis extends React.Component {
   constructor(props) {
     super(props);
+    // this.props.dispatch({
+    //   type: 'statistics/setDataCenter',
+    //   payload: record
+    // })
+    this.props.dispatch({
+      type: 'map/setStatesTime',
+      payload: `${moment().year()}-01-01`
+    })
+    this.props.dispatch({
+        type: 'map/setEndsTime',
+        payload: moment().format("YYYY-MM-DD")
+    })
   }
   componentDidMount() {
     //this.props.map.mapObj.setStyle(this.props.map.style2);

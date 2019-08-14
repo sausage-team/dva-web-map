@@ -16,7 +16,6 @@ class SectionHotMap {
 
     }
     addMapLay(data, value) {
-
         let IDs = [];
         for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
@@ -30,6 +29,7 @@ class SectionHotMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
+          console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",
                 "features": []
@@ -66,7 +66,9 @@ class SectionHotMap {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
                             let obj = {
                                 'properties': { time: data[j][z].time },
-                                'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
+                                // 'count': parseInt(data[j][z].num) * 10 * Math.random() || 10 * Math.random(),
+                                'count': parseInt(data[j][z].num),
+                                // 'count': 30 * Math.random(),
                                 'geometry': {
                                     'type': "LineString",
                                     //数据
@@ -74,28 +76,30 @@ class SectionHotMap {
                                 }
                             }
                             features.features.push(obj);
+        
                             this.data = features.features
                         }
                     }
                 }
             }
+            console.log('features.features',features.features)
             let color = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
             var options = {
-                size: 5,
-                gradient: {
-                    '0.5': 'blue',
-                    '0.6': 'cyan',
-                    '0.7': 'lime',
-                    '0.8': 'yellow',
-                    '0.9': 'red'
-                },
-                max: 20,
-                //strokeStyle: "rgba(255, 50, 50, 0.3)",
-                globalCompositeOperation: 'lighter',
-                shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 6,
-                shadowBlur: 40,
-                draw: 'heatmap'
+              size: 5,
+              gradient: {
+                  '0.5': 'blue',
+                  '0.6': 'cyan',
+                  '0.7': 'lime',
+                  '0.8': 'yellow',
+                  '0.9': 'red'
+              },
+              max: 50,
+              //strokeStyle: "rgba(255, 50, 50, 0.3)",
+              globalCompositeOperation: 'lighter',
+              shadowColor: 'rgba(250, 255, 0, 1)',
+              lineWidth: 6,
+              shadowBlur: 40,
+              draw: 'heatmap'
             }
             let mapvData = []
             for (const key in this.data) {
@@ -106,7 +110,7 @@ class SectionHotMap {
             let dataSet = new DataSet(mapvData);
             let mapVLayer = new mapboxgl.supermap.MapvLayer(this.map, dataSet, options);
             this.mapVLayer = mapVLayer;
-            //this.filterBy(0);
+            // this.filterBy(0);
         });
     }
     filterBy(time) {
@@ -119,23 +123,24 @@ class SectionHotMap {
                 }
             }
             var options = {
-                size: 5,
-                gradient: {
-                    '0.5': 'blue',
-                    '0.6': 'cyan',
-                    '0.7': 'lime',
-                    '0.8': 'yellow',
-                    '0.9': 'red'
-                },
-                max: 20,
-                //strokeStyle: "rgba(255, 50, 50, 0.3)",
-                globalCompositeOperation: 'lighter',
-                shadowColor: 'rgba(250, 255, 0, 1)',
-                lineWidth: 6,
-                shadowBlur: 40
+              size: 5,
+              gradient: {
+                  '0.5': 'blue',
+                  '0.6': 'cyan',
+                  '0.7': 'lime',
+                  '0.8': 'yellow',
+                  '0.9': 'red'
+              },
+              max: 50,
+              //strokeStyle: "rgba(255, 50, 50, 0.3)",
+              globalCompositeOperation: 'lighter',
+              shadowColor: 'rgba(250, 255, 0, 1)',
+              lineWidth: 6,
+              shadowBlur: 40,
+              draw: 'heatmap'
             }
             let dataSet = new DataSet(mapvData);
-            this.mapVLayer.update({ data: dataSet, options: options })
+            this.mapVLayer && this.mapVLayer.update({ data: dataSet, options: options })
         }
     }
     removeMapLay() {

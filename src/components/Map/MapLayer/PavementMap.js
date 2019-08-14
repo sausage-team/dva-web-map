@@ -14,7 +14,6 @@ class PavementMap {
 
     }
     addMapLay(data, value) {
-
         let IDs = [];
         for (let i = 1; i <= 64; i++) {
             IDs.push(i)
@@ -62,6 +61,7 @@ class PavementMap {
                 }
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
+
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
                             let o = 0;
                             if (data[j][z].num <= num[0][1]) {

@@ -76,7 +76,7 @@ class DackLayer extends React.Component{
   }
   // add Histogramlayer  柱状图
   addHistogramLayer(data) {
-    // console.log(data)
+    console.log(data)
     data = data.data
     let colorTable = ["#038E3E", "#24FF00", "#FFFF00", "#FF7800", "#FF0000", "#76043C"]
     const newData = [];
@@ -94,6 +94,7 @@ class DackLayer extends React.Component{
     }
     newData.push(Data);
     newData.push(colorArr);
+    console.log('newData',newData)
     this.props.dispatch({
       type: 'map/setDackList',
       payload: newData
@@ -179,6 +180,7 @@ class DackLayer extends React.Component{
     if (!dackList) {
       return null;
     }
+    console.log('dackList',dackList)
     const layers = [
       new HexagonLayer({
         id: 'hexagon-layer',      //  Canvas ID允许CSS中的样式定制。

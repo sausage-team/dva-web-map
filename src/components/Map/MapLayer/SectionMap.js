@@ -14,7 +14,7 @@ class SectionMap {
 
     }
     addMapLay(data, value) {
-
+        console.log('mysqlData',data)
         let IDs = [];
         for (let i = 1; i <= data[0].length; i++) {
             IDs.push(i)
@@ -28,7 +28,7 @@ class SectionMap {
         });
         let service = new mapboxgl.supermap.FeatureService(this.dataUrl);
         service.getFeaturesByIDs(idsParam, (serviceResult) => {
-            console.log(serviceResult)
+          console.log('serviceResult',serviceResult)
             let features = {
                 "type": "FeatureCollection",
                 "features": []
@@ -64,6 +64,7 @@ class SectionMap {
                 for (let z in data[j]) {
                     for (let i in serviceResult.result.features.features) {
                         if (serviceResult.result.features.features[i].properties.SMID == data[j][z].smid) {
+                          console.log('features',serviceResult.result.features.features[i])
                             let o = 0;
                             if (data[j][z].num <= num[0][1]) {
                                 o = 1;

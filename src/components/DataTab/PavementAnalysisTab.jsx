@@ -47,7 +47,7 @@ class PavementAnalysisTab extends React.Component {
     if (features) {
       let obj = {};
       for (let i in features._data.features) {
-        if (features._data.features[i].properties.ID == text) {
+        if (features._data.features[i].properties.SMID == text) {
           features = features._data.features[i];
           break;
         }

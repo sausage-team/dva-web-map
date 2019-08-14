@@ -4,9 +4,16 @@
     overflow:hidden ;
     position: relative;
   }
+  .category{
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    overflow: hidden;
+    z-index: 10;
+  }
   .tab{
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 25px;
     overflow: hidden;
     z-index: 10;
@@ -51,7 +58,7 @@
     margin: 0;
     width: 400px;
     height:500px;
-    z-index: 10;
+    z-index: 9;
   }
   .but{
     overflow: hidden;

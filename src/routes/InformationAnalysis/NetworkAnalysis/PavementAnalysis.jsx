@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { routerRedux } from 'dva/router'
-import { Input, Button } from 'antd'
+import { Input, Button, Radio } from 'antd'
 import styles from './PavementAnalysis.css';
 import Mapbox from '../../../components/Map/Mapbox/Mapbox';
 import request from '../../../utils/request';
@@ -12,6 +12,8 @@ import HotRadio from '../../../components/Radio/HotRadio';
 import PavementAnalysisTab from '../../../components/DataTab/PavementAnalysisTab';
 import PavementModel from '../../../components/Model/PavementModel';
 import MapPublic from '../../../components/Map/MapController/MapPublic'
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 const Search = Input.Search;
 class PavementAnalysis extends React.Component {
     constructor(props) {
@@ -36,9 +38,9 @@ class PavementAnalysis extends React.Component {
             //点击摄像头的交互
             mapObj.on('click', 'CameraMapPoint', this.clickFun.bind(this, mapObj, 'CameraMapPoint', 'addCameraMapPoint'));
         })
-        this.props.dispatch({
-            type: 'pavementAnalysis/getPavementData'
-        })
+        // this.props.dispatch({
+        //     type: 'pavementAnalysis/getPavementData'
+        // })
     }
     clickFun = (mapObj, getLayers, setLayers, e) => {
         let bbox = [e.point.x, e.point.y];
@@ -64,7 +66,7 @@ class PavementAnalysis extends React.Component {
         data.features = [obj];
         mapObj.getSource(setLayers).setData(data);
         for (let i in this.props.pavementAnalysis.columns) {
-            if (this.props.pavementAnalysis.columns[i].smid == features[0].properties.ID) {
+            if (this.props.pavementAnalysis.columns[i].smid == features[0].properties.SMID) {
                 this.props.dispatch({
                     type: 'map/shutTimeOpen'
                 })
@@ -142,9 +144,22 @@ class PavementAnalysis extends React.Component {
             return '摄像头';
         }
     }
+
+    changeFun = (e) =>{
+      this.props.dispatch({
+        type: 'map/setMapCategory',
+        payload: e.target.value
+    })
+    }
     render() {
         return (
             <div id="mainIndex" className={styles.mainIndex}>
+                {/* <div className={styles.category}>
+                  <RadioGroup defaultValue="1"  onChange={this.changeFun}>
+                    <RadioButton value="1">年度概览</RadioButton>
+                    <RadioButton value="2">自定义分析</RadioButton>
+                  </RadioGroup>
+                </div> */}
                 <div className={styles.tab}>
                     <RadioTab />
                 </div>

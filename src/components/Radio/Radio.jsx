@@ -22,7 +22,7 @@ class RadioTab extends React.Component {
             let mapObj = this.props.map.mapObj;
             mapObj.flyTo({
                 center: [114.3038583200, 30.6479700100],
-                zoom: 11.5,
+                zoom: 12,
                 speed: 0.5,
                 bearing:0,
                 pitch: 0
@@ -54,7 +54,7 @@ class RadioTab extends React.Component {
     }
     render() {
         return (
-            <RadioGroup defaultValue="1" size="large" onChange={this.changeFun}>
+            <RadioGroup defaultValue="1" onChange={this.changeFun}>
                 <RadioButton value="1">分段专题图</RadioButton>
                 <RadioButton value="2">热力图</RadioButton>
             </RadioGroup>

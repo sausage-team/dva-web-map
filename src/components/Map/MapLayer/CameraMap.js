@@ -128,7 +128,6 @@ class CameraMap {
         }, 'CameraMap');
       }
 
-
       this.map.addLayer({
         "id": "CameraMapPoint",
         "type": "circle",

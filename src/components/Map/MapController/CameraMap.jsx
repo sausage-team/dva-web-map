@@ -8,7 +8,13 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 class CameraMap extends React.Component {
     constructor(props) {
-        super(props);
+      super(props);
+      let startDate = `${moment().year()}-01-01`
+      let endDate = moment().format('YYYY-MM-DD')
+      this.props.dispatch({
+        type: 'cameraAnalysis/setTime',
+        payload: [startDate,endDate]
+      })
     }
     changeFun = (date, dateString) => {
         console.log(date, dateString);
@@ -42,7 +48,7 @@ class CameraMap extends React.Component {
                 })
                 mapObj.flyTo({
                     center: [114.3038583200, 30.6479700100],
-                    zoom: 11,
+                    zoom: 12,
                     speed: 0.3,
                     bearing: 0,
                     pitch: 0
@@ -50,7 +56,7 @@ class CameraMap extends React.Component {
             } else {
                 mapObj.flyTo({
                     center: [114.3038583200, 30.6479700100],
-                    zoom: 11,
+                    zoom: 12,
                     speed: 0.3,
                     bearing: 0,
                     pitch: 0
