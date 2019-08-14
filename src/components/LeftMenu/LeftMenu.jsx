@@ -50,15 +50,13 @@ class LeftMenu extends React.Component {
           collapsible
           collapsed={this.props.leftMenu.collapsed}
           onCollapse={this.onCollapse}>
-          <Menu className={styles.normal} theme="dark" openKeys={this.props.leftMenu.openKeys} mode="inline" defaultOpenKeys={['menu2']} onSelect={this.selectFun} inlineCollapsed={false} onOpenChange={this.onOpenChange}>
+          <Menu className={styles.normal} theme="dark" openKeys={this.props.leftMenu.openKeys} mode="inline" defaultOpenKeys={['menu2']} onSelect={this.selectFun} onOpenChange={this.onOpenChange}>
             <SubMenu
               key="menu2"
-              title={<span><Icon type="line-chart" /><span>情报分析</span></span>}
-            >
+              title={<span><Icon type="line-chart" /><span>情报分析</span></span>}>
               <SubMenu
                 key="menu2menu2"
-                title={<span><span>案件管理</span></span>}
-              >
+                title={<span><span>案件管理</span></span>}>
                 <Menu.Item key="CaseEntry">案件导入</Menu.Item>
               </SubMenu>
               <Menu.Item key="PavementAnalysis">路网分析</Menu.Item>

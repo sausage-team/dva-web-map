@@ -1,18 +1,18 @@
 .mainIndex{
-    width: 100%;
-    height: calc(100vh - 64px);
-    overflow:hidden ;
-    position: relative
-  }
-  .slider{
-    position: absolute;
-    bottom: 20px;
-    width: 70%;
-    left: 15%;
-    z-index: 10;
-  }
-  .updata{
-    position: absolute;
-    top:29px;
-    left: 36px;
-  }
+  width: 100%;
+  height: calc(100vh - 64px);
+  overflow:hidden ;
+  position: relative
+}
+.slider{
+  position: absolute;
+  bottom: 20px;
+  width: 70%;
+  left: 15%;
+  z-index: 10;
+}
+.updata{
+  position: absolute;
+  top:29px;
+  left: 36px;
+}

@@ -10,8 +10,7 @@ import Model from '../../components/Model/Model';
 import MapPublic from '../../components/Map/MapController/MapPublic'
 import { apiService } from '../../services/config'
 import { Button,Icon } from 'antd';
-require('echarts');
-require('@supermap/iclient-mapboxgl');
+import * as SuperMap from '@supermap/iclient-mapboxgl'
 import EchartsLayer from '../../components/Map/MapLayer/ScatterPlotDemo'
 class CaseEntry extends React.Component {
 

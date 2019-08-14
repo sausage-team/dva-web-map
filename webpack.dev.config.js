@@ -1,24 +1,23 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const webpack = require('webpack')
-const cesiumSource = 'Cesium';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack');
 
-const env = 'development'
-const production = env && env === 'production'
+const cesiumSource = 'Cesium';
+const env = 'development';
+const production = env && env === 'production';
 
 module.exports = {
 	mode: env,
-	context: __dirname,
+	devtool: 'inline-source-map',
 	entry: {
 			app: ['@babel/polyfill', './src/index.jsx']
 	},
 	output: {
 			filename: '[name].js',
 			path: path.resolve(__dirname, 'dist'),
-	},
-	amd: {
-			toUrlUndefined: true
+			libraryTarget: 'umd'
 	},
 	node: {
 			fs: 'empty'
@@ -43,30 +42,19 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(css)$/,
+				test: /\.(css|less)$/,
 				use: [
-					'style-loader',
+					{
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: env === 'development',
+            },
+          },
 					{ 
 						loader: 'css-loader',
 						options: {
-							sourceMap: true
-						}
-					}
-				],
-				include: [
-					path.resolve(__dirname, 'src'),
-					path.resolve(__dirname, 'node_modules/mapbox-gl-compare'),
-					path.resolve(__dirname, 'node_modules/mapbox-gl')
-				]
-			},
-			{
-				test: /\.(less)$/,
-				use: [
-					'style-loader',
-					{ 
-						loader: 'css-loader',
-						options: {
-							sourceMap: true
+							// sourceMap: true,
+							modules: false
 						}
 					},
 					{ 
@@ -77,10 +65,34 @@ module.exports = {
 					}
 				],
 				include: [
-					path.resolve(__dirname, 'src'),
 					path.resolve(__dirname, 'node_modules/antd'),
 					path.resolve(__dirname, 'node_modules/mapbox-gl-compare'),
 					path.resolve(__dirname, 'node_modules/mapbox-gl'),
+				]
+			},
+			{
+				test: /\.(css|less)$/,
+				use: [
+					'style-loader',
+					{ 
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							modules: {
+								mode: 'local',
+            		localIdentName: '[path][name]__[local]--[hash:base64:5]',
+							}
+						}
+					},
+					{ 
+						loader: 'less-loader',
+						options: {
+							javascriptEnabled: true,
+						}
+					}
+				],
+				include: [
+					path.resolve(__dirname, 'src')
 				]
 			},
 			{
@@ -98,8 +110,8 @@ module.exports = {
 				},
 				include: [
 					path.resolve(__dirname, 'src'),
-					path.resolve(__dirname, 'node_modules/@supermap'),
-					path.resolve(__dirname, 'node_modules/mapbox-gl-draw')
+					// path.resolve(__dirname, 'node_modules/@supermap'),
+					// path.resolve(__dirname, 'node_modules/mapbox-gl-draw')
 				],
 				// exclude: /(node_modules|dist|Cesium)/
 			}
@@ -126,7 +138,13 @@ module.exports = {
 				to: 'Cesium'
 			},
 		]),
-		new webpack.HotModuleReplacementPlugin()
+		new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: production ? '[name].[hash].css' : '[name].css',
+      chunkFilename: production ? '[id].[hash].css' : '[id].css',
+    }),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 	resolve: {
 		alias: {
@@ -140,11 +158,5 @@ module.exports = {
 			themes: `${__dirname}/src/themes`,
 		},
 		extensions: ['*', '.js', '.jsx']
-	},
-	devServer: {
-			contentBase: path.join(__dirname, "dist"),
-			compress: true,
-			port: 9000,
-			hot: true
 	}
 }

@@ -9,16 +9,8 @@ import echarts from 'echarts';
  *     license: BSD 3-clause
  * 
  */
-(function webpackUniversalModuleDefinition(root, factory) {
-	if (typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("echarts"));
-	else if (typeof define === 'function' && define.amd)
-		define(["echarts"], factory);
-	else if (typeof exports === 'object')
-		exports["EchartsLayer"] = factory(require("echarts"));
-	else
-		root["EchartsLayer"] = factory(root["echarts"]);
-})(this, function (__WEBPACK_EXTERNAL_MODULE_2__) {
+
+function factory (__WEBPACK_EXTERNAL_MODULE_2__) {
 	return /******/ (function (modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -393,4 +385,6 @@ import echarts from 'echarts';
 				/***/
 			}
 /******/])
-});
+}
+
+export default factory(echarts)

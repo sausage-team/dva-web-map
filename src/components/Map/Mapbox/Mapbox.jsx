@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl';
 import draw from 'mapbox-gl-draw';
 import { connect } from 'dva';
 // import { Logo, QueryByBoundsParameters, QueryService } from ;
-require('@supermap/iclient-mapboxgl');
+import * as SuperMap from '@supermap/iclient-mapboxgl'
 class Mapbox extends React.Component {
   constructor(props) {
     super(props);

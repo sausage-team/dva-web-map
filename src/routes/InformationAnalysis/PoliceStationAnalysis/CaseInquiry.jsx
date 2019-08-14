@@ -9,8 +9,6 @@ import { Button } from 'antd'
 import DataStatistics from '../../../components/DataTab/DataStatistics'
 import ModelStatistics from '../../../components/Model/ModelStatistics';
 import MapPublic from '../../../components/Map/MapController/MapPublic'
-require('echarts');
-require('@supermap/iclient-mapboxgl');
 import EchartsLayer from '../../../components/Map/MapLayer/ScatterPlotDemo';
 import Iframe from 'react-iframe';
 import {bdpConfig} from '../../../services/config';
@@ -169,7 +167,7 @@ class CaseInquiry extends React.Component {
   render() {
     return (
       <div className={styles.mainIndex}>
-<Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>
+        <Iframe id="J_bridge" url={bdpConfig} display="none"></Iframe>
         <Mapbox />
         <Button className={styles.but} type="primary" onClick={this.butClick}>案件查询</Button>
         <ModelStatistics />

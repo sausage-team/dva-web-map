@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './Layout.css';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet'
-// import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb, Icon, LocaleProvider } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, ConfigProvider} from 'antd';
 import Loader from '../Loader/Loader';
 import favicon from '../../assets/favicon.ico';
 import logo from '../../../public/img/guohui.png'
@@ -31,9 +30,9 @@ class SiderDemo extends React.Component {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <link rel="icon" href={logo} type="image/x-icon" />
         </Helmet>
-        <LocaleProvider locale={zhCN}>
+        <ConfigProvider locale={zhCN}>
           {this.props.children}
-        </LocaleProvider>
+        </ConfigProvider>
       </Layout>)
     } else {
       return (
@@ -55,9 +54,9 @@ class SiderDemo extends React.Component {
             <LeftMenu />
             <Layout>
               <Content style={{ background: '#fff', padding: 0, margin: 0, minHeight: 280 }}>
-                <LocaleProvider locale={zhCN}>
+                <ConfigProvider locale={zhCN}>
                   {this.props.children}
-                </LocaleProvider>
+                </ConfigProvider>
               </Content>
             </Layout>
           </Layout>

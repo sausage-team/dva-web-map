@@ -1,5 +1,4 @@
 import dva, { message } from 'dva';
-import './index.less';
 import createLoading from 'dva-loading'
 import Router from './router'
 import indexPage from './models/indexPage'
@@ -26,6 +25,8 @@ import userlist from './models/userlist'
 import userrole from './models/userrole'
 import range from './models/range'
 import policeArea from './models/policeArea'
+import 'antd/dist/antd.less'
+import './index.less';
 
 // 1. Initialize
 const app = dva({

@@ -5,7 +5,7 @@ import { Icon, Checkbox } from 'antd';
 import mapboxgl from 'mapbox-gl';
 import turf from 'turf';
 import html2canvas from 'html2canvas';
-require('@supermap/iclient-mapboxgl');
+import * as SuperMap from '@supermap/iclient-mapboxgl'
 // import { NiuniuCaptureObject, rgb2value, StartCapture } from './Niuniu';
 import { iserverBasePath,ThreeServerApi } from '../../../services/config'
 const CheckboxGroup = Checkbox.Group;
