@@ -7,91 +7,91 @@ const { ConnectedRouter } = routerRedux
 function RouterConfig({ history, app }) {
   const IndexPage = dynamic({
     app,
-    component: () => import(/*  "IndexPage" */ './routes/IndexPage/IndexPage'),
+    component: () => import('./routes/IndexPage/IndexPage'),
   });
   const Users = dynamic({
     app,
-    component: () => import(/*  "Users" */ './routes/Users/Users'),
+    component: () => import('./routes/Users/Users'),
   });
   const UserManagement = dynamic({
     app,
-    component: () => import(/*  "UserManagement" */ './routes/SystemManagement/UserManagement'),
+    component: () => import('./routes/SystemManagement/UserManagement'),
   });
   const RoleManagement = dynamic({
     app,
-    component: () => import(/*  "RoleManagement" */ './routes/SystemManagement/RoleManagement'),
+    component: () => import('./routes/SystemManagement/RoleManagement'),
   });
   const RangeQuery = dynamic({
     app,
-    component: () => import(/*  "RangeQuery" */ './routes/Community/RangeQuery'),
+    component: () => import('./routes/Community/RangeQuery'),
   });
   const PoliceAreaQuery = dynamic({
     app,
-    component: () => import(/*  "PoliceAreaQuery" */ './routes/Community/PoliceAreaQuery'),
+    component: () => import( './routes/Community/PoliceAreaQuery'),
   });
   const SimulatedMapBrowsing = dynamic({
     app,
-    component: () => import(/*  "SimulatedMapBrowsing" */ './routes/ThreeDimensionalSituation/SimulatedMapBrowsing'),
+    component: () => import( './routes/ThreeDimensionalSituation/SimulatedMapBrowsing'),
   });
   const ThreeCameraManagement = dynamic({
     app,
-    component: () => import(/*  "ThreeCameraManagement" */ './routes/ThreeDimensionalSituation/ThreeCameraManagement'),
+    component: () => import('./routes/ThreeDimensionalSituation/ThreeCameraManagement'),
   });
   const PavementAnalysis = dynamic({
     app,
-    component: () => import(/*  "PavementAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/PavementAnalysis'),
+    component: () => import('./routes/InformationAnalysis/NetworkAnalysis/PavementAnalysis'),
   });
   const CaseEntry = dynamic({
     app,
-    component: () => import(/*  "CaseEntry" */ './routes/CaseAnalysis/CaseEntry'),
+    component: () => import('./routes/CaseAnalysis/CaseEntry'),
   });
   const Error = dynamic({
     app,
-    component: () => import(/*  "Error" */ './routes/Error/Error'),
+    component: () => import('./routes/Error/Error'),
   });
   const NuclearDensityAnalysis = dynamic({
     app,
-    component: () => import(/*  "NuclearDensityAnalysis" */ './routes/InformationAnalysis/PoliceStationAnalysis/NuclearDensityAnalysis'),
+    component: () => import('./routes/InformationAnalysis/PoliceStationAnalysis/NuclearDensityAnalysis'),
   })
   const CaseInquiry = dynamic({
     app,
-    component: () => import(/*  "CaseInquiry" */ './routes/InformationAnalysis/PoliceStationAnalysis/CaseInquiry'),
+    component: () => import('./routes/InformationAnalysis/PoliceStationAnalysis/CaseInquiry'),
   })
   const CaseManagement = dynamic({
     app,
-    component: () => import(/*  "CaseManagement" */ './routes/Community/CaseManagement'),
+    component: () => import('./routes/Community/CaseManagement'),
   })
   const AreaSpecialMap = dynamic({
     app,
-    component: () => import(/*  "AreaSpecialMap" */ './routes/Community/AreaSpecialMap'),
+    component: () => import('./routes/Community/AreaSpecialMap'),
   })
   const PersonnelTrajectory = dynamic({
     app,
-    component: () => import(/*  "PersonnelTrajectory" */ './routes/ThreeDimensionalSituation/PersonnelTrajectory'),
+    component: () => import('./routes/ThreeDimensionalSituation/PersonnelTrajectory'),
   })
   const CameraAnalysis = dynamic({
     app,
-    component: () => import(/*  "CameraAnalysis" */ './routes/InformationAnalysis/NetworkAnalysis/CameraAnalysis'),
+    component: () => import('./routes/InformationAnalysis/NetworkAnalysis/CameraAnalysis'),
   })
   const FlightPathManagement = dynamic({
     app,
-    component: () => import(/*  "FlightPathManagement" */  './routes/ThreeDimensionalSituation/FlightPathManagement'),
+    component: () => import( './routes/ThreeDimensionalSituation/FlightPathManagement'),
   })
   const FlightManagement = dynamic({
     app,
-    component: () => import(/*  "FlightManagement" */ './routes/ThreeDimensionalSituation/FlightManagement'),
+    component: () => import('./routes/ThreeDimensionalSituation/FlightManagement'),
   })
   const TrajectoryBrowsing = dynamic({
     app,
-    component: () => import(/*  "TrajectoryBrowsing" */ './routes/ThreeDimensionalSituation/TrajectoryBrowsing'),
+    component: () => import('./routes/ThreeDimensionalSituation/TrajectoryBrowsing'),
   })
   const CameraManagement = dynamic({
     app,
-    component: () => import(/*  "CameraManagement" */ './routes/Community/CameraManagement'),
+    component: () => import('./routes/Community/CameraManagement'),
   })
   const PersonnelManagement = dynamic({
     app,
-    component:()=>import(/*  "PersonnelManagement" */ './routes/InformationManagement/PersonnelManagement')
+    component:()=>import('./routes/InformationManagement/PersonnelManagement')
   })
   return (
     <ConnectedRouter history={history}>

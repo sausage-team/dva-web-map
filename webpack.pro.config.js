@@ -101,16 +101,16 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/,
 				loader: 'babel-loader',
-				options: {
-					presets: [
-            '@babel/preset-env',
-            {
-              plugins: [
-								'@babel/plugin-proposal-class-properties'
-              ]
-            }
-          ]
-				},
+				// options: {
+				// 	presets: [
+        //     '@babel/preset-env',
+        //     {
+        //       plugins: [
+				// 				'@babel/plugin-proposal-class-properties'
+        //       ]
+        //     }
+        //   ]
+				// },
 				include: [
 					path.resolve(__dirname, 'src')
 				],
@@ -149,16 +149,51 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {
-      chunks: 'initial',
       cacheGroups: {
-        vendors: {
+        libs: {
+          name: "chunk-libs",
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
+          priority: 20,
+          chunks: "initial" // 只打包初始时依赖的第三方
         },
-        default: {
-          minChunks: 2,
-          priority: -20,
+        commons: {
+          name: "chunk-commons",
+          test: path.resolve("src/components"), // 可自定义拓展你的规则
+          minChunks: 2, // 最小共用次数
+          priority: 5,
           reuseExistingChunk: true
+        },
+        echartsVendor: {
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]echarts[\\/]/,
+          priority: 120,
+          name: 'echartsVendor',
+          reuseExistingChunk: true
+        },
+        supermapVendor: {
+          chunks: 'all',
+          test: (module) => {
+            if (module.resource) return module.resource.includes('@supermap')
+          },
+          priority: 110,
+          name: 'supermapVendor',
+          reuseExistingChunk: true
+        },
+        mapboxglVendor: {
+          test: (module) => {
+            if (module.resource) {
+              return module.resource.includes('mapbox-gl')
+                && !module.resource.includes('react-map-gl')
+            }
+          },
+          priority: 100,
+          name: 'mapboxglVendor',
+          reuseExistingChunk: true
+        },
+        antdVendor: {
+          test: /[\\/]node_modules[\\/]antd[\\/]/,
+          priority: 100,
+          name: 'antdVendor'
         }
       }
     }

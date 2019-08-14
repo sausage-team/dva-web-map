@@ -50,14 +50,14 @@ module.exports = {
               hmr: env === 'development',
             },
           },
-					{ 
+					{
 						loader: 'css-loader',
 						options: {
 							// sourceMap: true,
 							modules: false
 						}
 					},
-					{ 
+					{
 						loader: 'less-loader',
 						options: {
 							javascriptEnabled: true,
@@ -74,17 +74,17 @@ module.exports = {
 				test: /\.(css|less)$/,
 				use: [
 					'style-loader',
-					{ 
+					{
 						loader: 'css-loader',
 						options: {
 							sourceMap: true,
 							modules: {
 								mode: 'local',
-            		localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]'
 							}
 						}
 					},
-					{ 
+					{
 						loader: 'less-loader',
 						options: {
 							javascriptEnabled: true,
@@ -98,22 +98,9 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/,
 				loader: 'babel-loader',
-				options: {
-					presets: [
-            '@babel/preset-env',
-            {
-              plugins: [
-								'@babel/plugin-proposal-class-properties'
-              ]
-            }
-          ]
-				},
 				include: [
 					path.resolve(__dirname, 'src'),
-					// path.resolve(__dirname, 'node_modules/@supermap'),
-					// path.resolve(__dirname, 'node_modules/mapbox-gl-draw')
 				],
-				// exclude: /(node_modules|dist|Cesium)/
 			}
 		],
 		noParse: /(mapbox-gl)\.js$/
@@ -145,7 +132,42 @@ module.exports = {
       chunkFilename: production ? '[id].[hash].css' : '[id].css',
     }),
 		new webpack.HotModuleReplacementPlugin(),
-	],
+  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          chunks: 'all',
+          test: /(react|react-dom|dva)/,
+          priority: 100,
+          name: 'vendors',
+        },
+        echartsVendor: {
+          chunks: 'async',
+          test: /(echarts)/,
+          priority: 90,
+          name: 'echartsVenodr'
+        },
+        mapboxglVendor: {
+          chunks: 'async',
+          test: /(mapbox-gl)/,
+          priority: 90,
+          name: 'mapboxglVendor'
+        },
+        supermapVendor: {
+          chunks: 'async',
+          test: /(iclient-mapboxgl)/,
+          priority: 90,
+          name: 'supermapVendor'
+        },
+        default: {
+          minChunks: 2,
+          priority: 10,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
 	resolve: {
 		alias: {
 			components: `${__dirname}/src/components`,
@@ -158,5 +180,10 @@ module.exports = {
 			themes: `${__dirname}/src/themes`,
 		},
 		extensions: ['*', '.js', '.jsx']
-	}
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
+  }
 }
