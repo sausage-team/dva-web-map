@@ -136,34 +136,50 @@ module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        vendors: {
-          chunks: 'all',
-          test: /(react|react-dom|dva)/,
-          priority: 100,
-          name: 'vendors',
+        libs: {
+          name: "chunk-libs",
+          test: /[\\/]node_modules[\\/]/,
+          priority: 20,
+          chunks: "initial" // 只打包初始时依赖的第三方
+        },
+        commons: {
+          name: "chunk-commons",
+          test: path.resolve("src/components"), // 可自定义拓展你的规则
+          minChunks: 2, // 最小共用次数
+          priority: 5,
+          reuseExistingChunk: true
         },
         echartsVendor: {
-          chunks: 'async',
-          test: /(echarts)/,
-          priority: 90,
-          name: 'echartsVenodr'
-        },
-        mapboxglVendor: {
-          chunks: 'async',
-          test: /(mapbox-gl)/,
-          priority: 90,
-          name: 'mapboxglVendor'
+          chunks: 'all',
+          test: /[\\/]node_modules[\\/]echarts[\\/]/,
+          priority: 120,
+          name: 'echartsVendor',
+          reuseExistingChunk: true
         },
         supermapVendor: {
-          chunks: 'async',
-          test: /(iclient-mapboxgl)/,
-          priority: 90,
-          name: 'supermapVendor'
-        },
-        default: {
-          minChunks: 2,
-          priority: 10,
+          chunks: 'all',
+          test: (module) => {
+            if (module.resource) return module.resource.includes('@supermap')
+          },
+          priority: 110,
+          name: 'supermapVendor',
           reuseExistingChunk: true
+        },
+        mapboxglVendor: {
+          test: (module) => {
+            if (module.resource) {
+              return module.resource.includes('mapbox-gl')
+                && !module.resource.includes('react-map-gl')
+            }
+          },
+          priority: 100,
+          name: 'mapboxglVendor',
+          reuseExistingChunk: true
+        },
+        antdVendor: {
+          test: /[\\/]node_modules[\\/]antd[\\/]/,
+          priority: 100,
+          name: 'antdVendor'
         }
       }
     }

@@ -145,7 +145,7 @@ module.exports = {
       chunkFilename: production ? '[id].[hash].css' : '[id].css',
     }),
 		new webpack.HotModuleReplacementPlugin(),
-		new BundleAnalyzerPlugin()
+		// new BundleAnalyzerPlugin()
   ],
   optimization: {
     splitChunks: {
